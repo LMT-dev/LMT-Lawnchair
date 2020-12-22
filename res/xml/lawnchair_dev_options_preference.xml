@@ -72,7 +72,7 @@
     <ch.deletescape.lawnchair.preferences.StyledSwitchPreferenceCompat
         android:key="pref_showCrashNotifications"
         android:title="Show bug report notifications"
-        android:defaultValue="true" />
+        android:defaultValue="false" />
 
     <ch.deletescape.lawnchair.preferences.StyledSwitchPreferenceCompat
         android:key="pref_autoUploadBugReport"
