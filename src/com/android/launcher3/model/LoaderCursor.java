@@ -32,7 +32,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.LongSparseArray;
 
-import ch.deletescape.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.LawnchairPreferences;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.IconCache;
 import com.android.launcher3.InvariantDeviceProfile;

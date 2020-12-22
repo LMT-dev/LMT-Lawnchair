@@ -19,7 +19,6 @@ package com.android.launcher3;
 import android.Manifest;
 import android.Manifest.permission;
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.WallpaperManager;
@@ -28,7 +27,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.LauncherActivityInfo;
 import android.content.pm.PackageInfo;
@@ -39,7 +37,6 @@ import android.content.res.Resources;
 import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.hardware.input.InputManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
@@ -70,16 +67,14 @@ import android.util.Pair;
 import android.util.Property;
 import android.util.TypedValue;
 import android.view.Display;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Interpolator;
 
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
-import ch.deletescape.lawnchair.HiddenApiCompat;
-import ch.deletescape.lawnchair.LawnchairApp;
-import ch.deletescape.lawnchair.LawnchairAppKt;
+import fr.letmethink.lawnchair.HiddenApiCompat;
+import fr.letmethink.lawnchair.LawnchairAppKt;
 import com.android.launcher3.compat.LauncherAppsCompat;
 import com.android.launcher3.config.FeatureFlags;
 
@@ -87,7 +82,6 @@ import com.android.launcher3.graphics.BitmapInfo;
 import com.android.launcher3.graphics.LauncherIcons;
 import com.android.launcher3.uioverrides.OverviewState;
 import com.android.launcher3.util.PackageManagerHelper;
-import com.android.systemui.shared.recents.model.Task;
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.IOException;
@@ -105,10 +99,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import ch.deletescape.lawnchair.LawnchairLauncher;
-import ch.deletescape.lawnchair.LawnchairPreferences;
-import ch.deletescape.lawnchair.backup.RestoreBackupActivity;
-import ch.deletescape.lawnchair.settings.ui.SettingsActivity;
+import fr.letmethink.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.backup.RestoreBackupActivity;
+import fr.letmethink.lawnchair.settings.ui.SettingsActivity;
 
 /**
  * Various utilities shared amongst the Launcher's classes.

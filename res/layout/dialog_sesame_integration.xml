@@ -16,7 +16,7 @@
   ~     along with Lawnchair Launcher.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-<ch.deletescape.lawnchair.sesame.views.LCDialogLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<fr.letmethink.lawnchair.sesame.views.LCDialogLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dialog_material_background"
@@ -43,7 +43,7 @@
             android:src="@mipmap/ic_launcher"
             android:visibility="gone"/>
 
-        <ch.deletescape.lawnchair.sesame.views.LCDialogTitle
+        <fr.letmethink.lawnchair.sesame.views.LCDialogTitle
             android:id="@+id/alertTitle"
             style="?android:attr/windowTitleStyle"
             android:layout_width="match_parent"
@@ -90,17 +90,17 @@
             android:layoutDirection="locale"
             android:orientation="horizontal">
 
-            <ch.deletescape.lawnchair.sesame.views.LCButton
+            <fr.letmethink.lawnchair.sesame.views.LCButton
                 android:id="@android:id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@android:string/cancel"/>
 
-            <ch.deletescape.lawnchair.sesame.views.LCButton
+            <fr.letmethink.lawnchair.sesame.views.LCButton
                 android:id="@android:id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/allow"/>
         </android.support.v7.widget.ButtonBarLayout>
 
-</ch.deletescape.lawnchair.sesame.views.LCDialogLinearLayout>
+</fr.letmethink.lawnchair.sesame.views.LCDialogLinearLayout>

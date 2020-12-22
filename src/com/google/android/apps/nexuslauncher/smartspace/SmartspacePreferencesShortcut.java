@@ -2,7 +2,7 @@ package com.google.android.apps.nexuslauncher.smartspace;
 
 import android.content.Intent;
 import android.view.View;
-import ch.deletescape.lawnchair.settings.ui.SettingsActivity;
+import fr.letmethink.lawnchair.settings.ui.SettingsActivity;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.userevent.nano.LauncherLogProto;

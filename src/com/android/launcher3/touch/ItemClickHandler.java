@@ -32,7 +32,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-import ch.deletescape.lawnchair.LawnchairUtilsKt;
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.BubbleTextView;
 import com.android.launcher3.FolderInfo;

@@ -8,8 +8,8 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 
-import ch.deletescape.lawnchair.LawnchairLauncher;
-import ch.deletescape.lawnchair.animations.LawnchairAppTransitionManagerImpl;
+import fr.letmethink.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.animations.LawnchairAppTransitionManagerImpl;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.BaseDraggingActivity;
 import com.android.launcher3.ItemInfo;

@@ -139,7 +139,7 @@
 
 -keep class com.google.android.apps.nexuslauncher.CustomAppPredictor { *; }
 
--keep class ch.deletescape.lawnchair.preferences.HiddenAppsFragment
+-keep class fr.letmethink.lawnchair.preferences.HiddenAppsFragment
 
 -keep class android.support.animation.DynamicAnimation {
   float mVelocity;
@@ -147,9 +147,9 @@
   boolean mStartValueIsSet;
 }
 
--keep class ch.deletescape.lawnchair.iconpack.LawnchairIconProvider { *; }
+-keep class fr.letmethink.lawnchair.iconpack.LawnchairIconProvider { *; }
 
--keep class ch.deletescape.lawnchair.iconpack.LawnchairDrawableFactory { *; }
+-keep class fr.letmethink.lawnchair.iconpack.LawnchairDrawableFactory { *; }
 
 -keep,allowshrinking,allowoptimization class me.jfenn.attribouter.** {
  *;
@@ -232,4 +232,4 @@
   EdgeEffect mEdgeGlowBottom;
 }
 
--keep class ch.deletescape.lawnchair.smartspace.accu.** { *; }
+-keep class fr.letmethink.lawnchair.smartspace.accu.** { *; }

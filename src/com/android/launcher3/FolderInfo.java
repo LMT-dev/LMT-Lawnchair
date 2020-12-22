@@ -26,12 +26,12 @@ import android.os.Process;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.FrameLayout;
-import ch.deletescape.lawnchair.LawnchairLauncher;
-import ch.deletescape.lawnchair.folder.FirstItemProvider;
-import ch.deletescape.lawnchair.iconpack.IconPack;
-import ch.deletescape.lawnchair.iconpack.IconPackManager;
-import ch.deletescape.lawnchair.iconpack.IconPackManager.CustomIconEntry;
-import ch.deletescape.lawnchair.override.CustomInfoProvider;
+import fr.letmethink.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.folder.FirstItemProvider;
+import fr.letmethink.lawnchair.iconpack.IconPack;
+import fr.letmethink.lawnchair.iconpack.IconPackManager;
+import fr.letmethink.lawnchair.iconpack.IconPackManager.CustomIconEntry;
+import fr.letmethink.lawnchair.override.CustomInfoProvider;
 import com.android.launcher3.folder.Folder;
 import com.android.launcher3.folder.FolderIcon;
 import com.android.launcher3.graphics.BitmapRenderer;
@@ -193,7 +193,7 @@ public class FolderInfo extends ItemInfo {
     }
 
     public ComponentKey toComponentKey() {
-        return new ComponentKey(new ComponentName("ch.deletescape.lawnchair.folder", String.valueOf(id)), Process.myUserHandle());
+        return new ComponentKey(new ComponentName("fr.letmethink.lawnchair.folder", String.valueOf(id)), Process.myUserHandle());
     }
 
     public Drawable getIcon(Context context) {

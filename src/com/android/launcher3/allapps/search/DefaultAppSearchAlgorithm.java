@@ -21,10 +21,10 @@ import android.content.pm.LauncherActivityInfo;
 import android.os.Handler;
 import android.os.UserHandle;
 
-import ch.deletescape.lawnchair.LawnchairAppFilter;
-import ch.deletescape.lawnchair.globalsearch.SearchProvider;
-import ch.deletescape.lawnchair.globalsearch.SearchProviderController;
-import ch.deletescape.lawnchair.globalsearch.providers.web.WebSearchProvider;
+import fr.letmethink.lawnchair.LawnchairAppFilter;
+import fr.letmethink.lawnchair.globalsearch.SearchProvider;
+import fr.letmethink.lawnchair.globalsearch.SearchProviderController;
+import fr.letmethink.lawnchair.globalsearch.providers.web.WebSearchProvider;
 import com.android.launcher3.AppFilter;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.IconCache;

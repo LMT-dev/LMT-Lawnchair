@@ -6,13 +6,12 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import ch.deletescape.lawnchair.FeedBridge;
+import fr.letmethink.lawnchair.FeedBridge;
 import com.android.launcher3.Alarm;
 import com.android.launcher3.LauncherModel;
 import com.google.android.apps.nexuslauncher.smartspace.nano.SmartspaceProto.i;
 import com.google.android.apps.nexuslauncher.utils.ActionIntentFilter;
 import com.google.android.apps.nexuslauncher.utils.ProtoStore;
-import com.google.android.libraries.gsa.launcherclient.LauncherClient;
 
 import java.io.PrintWriter;
 import java.util.List;

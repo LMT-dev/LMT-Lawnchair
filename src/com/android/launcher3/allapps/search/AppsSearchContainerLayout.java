@@ -34,7 +34,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 
-import ch.deletescape.lawnchair.allapps.FuzzyAppSearchAlgorithm;
+import fr.letmethink.lawnchair.allapps.FuzzyAppSearchAlgorithm;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ExtendedEditText;
 import com.android.launcher3.Insettable;

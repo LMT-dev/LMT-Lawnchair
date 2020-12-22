@@ -7,9 +7,9 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 
-import ch.deletescape.lawnchair.globalsearch.SearchProvider;
-import ch.deletescape.lawnchair.globalsearch.SearchProviderController;
-import ch.deletescape.lawnchair.globalsearch.providers.web.WebSearchProvider;
+import fr.letmethink.lawnchair.globalsearch.SearchProvider;
+import fr.letmethink.lawnchair.globalsearch.SearchProviderController;
+import fr.letmethink.lawnchair.globalsearch.providers.web.WebSearchProvider;
 import com.android.launcher3.BuildConfig;
 import com.android.launcher3.allapps.search.AllAppsSearchBarController;
 import com.android.launcher3.allapps.search.SearchAlgorithm;

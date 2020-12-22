@@ -26,21 +26,18 @@ import static com.android.launcher3.LauncherState.OVERVIEW;
 import static com.android.launcher3.allapps.DiscoveryBounce.HOME_BOUNCE_SEEN;
 import static com.android.launcher3.allapps.DiscoveryBounce.SHELF_BOUNCE_SEEN;
 
-import android.Manifest;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.CancellationSignal;
-import android.support.v4.content.ContextCompat;
 import android.util.Base64;
 
-import ch.deletescape.lawnchair.ClockVisibilityManager;
-import ch.deletescape.lawnchair.ClockVisibilityManager.ClockStateHandler;
-import ch.deletescape.lawnchair.LawnchairLauncher;
-import ch.deletescape.lawnchair.gestures.VerticalSwipeGestureController;
-import ch.deletescape.lawnchair.touch.PinchStateChangeTouchController;
+import fr.letmethink.lawnchair.ClockVisibilityManager;
+import fr.letmethink.lawnchair.ClockVisibilityManager.ClockStateHandler;
+import fr.letmethink.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.gestures.VerticalSwipeGestureController;
+import fr.letmethink.lawnchair.touch.PinchStateChangeTouchController;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;

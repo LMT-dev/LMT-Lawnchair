@@ -67,7 +67,7 @@
         attributes and intent filters the same
         -->
         <activity
-            android:name="ch.deletescape.lawnchair.LawnchairLauncher"
+            android:name="fr.letmethink.lawnchair.LawnchairLauncher"
             android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
             android:stateNotNeeded="true"

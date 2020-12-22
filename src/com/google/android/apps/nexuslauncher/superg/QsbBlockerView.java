@@ -12,11 +12,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ch.deletescape.lawnchair.LawnchairAppKt;
-import ch.deletescape.lawnchair.LawnchairUtilsKt;
-import ch.deletescape.lawnchair.smartspace.LawnchairSmartspaceController;
-import ch.deletescape.lawnchair.smartspace.LawnchairSmartspaceController.CardData;
-import ch.deletescape.lawnchair.smartspace.LawnchairSmartspaceController.WeatherData;
+import fr.letmethink.lawnchair.LawnchairAppKt;
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
+import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController;
+import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController.CardData;
+import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController.WeatherData;
 import com.android.launcher3.BubbleTextView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ItemInfo;
@@ -26,7 +26,6 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.Workspace.OnStateChangeListener;
 import com.android.launcher3.anim.AnimatorSetBuilder;
 import com.google.android.apps.nexuslauncher.smartspace.SmartspacePreferencesShortcut;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**

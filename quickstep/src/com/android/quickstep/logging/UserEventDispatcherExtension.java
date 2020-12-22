@@ -25,7 +25,7 @@ import static com.android.systemui.shared.system.LauncherEventUtil.DISMISS;
 import static com.android.systemui.shared.system.LauncherEventUtil.RECENTS_QUICK_SCRUB_ONBOARDING_TIP;
 import static com.android.systemui.shared.system.LauncherEventUtil.RECENTS_SWIPE_UP_ONBOARDING_TIP;
 
-import ch.deletescape.lawnchair.predictions.LawnchairEventPredictor;
+import fr.letmethink.lawnchair.predictions.LawnchairEventPredictor;
 import com.android.launcher3.userevent.nano.LauncherLogProto;
 
 /**

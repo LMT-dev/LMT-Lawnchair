@@ -47,8 +47,8 @@ import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 
-import ch.deletescape.lawnchair.LawnchairPreferences;
-import ch.deletescape.lawnchair.colors.ColorEngine.Resolvers;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.colors.ColorEngine.Resolvers;
 import com.android.launcher3.LauncherSettings.Favorites;
 import com.android.launcher3.accessibility.DragAndDropAccessibilityDelegate;
 import com.android.launcher3.accessibility.FolderAccessibilityHelper;

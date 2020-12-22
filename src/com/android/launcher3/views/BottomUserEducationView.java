@@ -27,7 +27,7 @@ import android.view.accessibility.AccessibilityEvent;
 
 import android.widget.ImageView;
 import android.widget.TextView;
-import ch.deletescape.lawnchair.colors.ColorEngine;
+import fr.letmethink.lawnchair.colors.ColorEngine;
 import com.android.launcher3.Insettable;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;

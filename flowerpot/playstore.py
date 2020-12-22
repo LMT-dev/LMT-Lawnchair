@@ -195,7 +195,7 @@ ADDITIONAL_URLS = [
     BASE_URL,
     f"{BASE_URL}editors_choice",
     f"{BASE_URL}top",
-    f"{DETAIL_URL}ch.deletescape.lawnchair.plah",
+    f"{DETAIL_URL}fr.letmethink.lawnchair.plah",
     f"{DETAIL_URL}amirz.rootless.nexuslauncher",
     f"{DETAIL_URL}com.edzondm.linebit",
     f"{DETAIL_URL}com.jndapp.line.x.iconpack",

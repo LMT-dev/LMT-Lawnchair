@@ -21,7 +21,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ch.deletescape.lawnchair.views.PreferenceRecyclerView
+    <fr.letmethink.lawnchair.views.PreferenceRecyclerView
         android:id="@+id/list"
         style="?attr/preferenceFragmentListStyle"
         android:layout_width="match_parent"

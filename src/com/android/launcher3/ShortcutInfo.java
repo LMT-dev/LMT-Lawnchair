@@ -26,10 +26,8 @@ import android.os.UserHandle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import android.util.DisplayMetrics;
-import android.util.Log;
-import ch.deletescape.lawnchair.iconpack.IconPackManager;
-import ch.deletescape.lawnchair.sesame.SesameShortcutInfo;
+import fr.letmethink.lawnchair.iconpack.IconPackManager;
+import fr.letmethink.lawnchair.sesame.SesameShortcutInfo;
 import com.android.launcher3.LauncherSettings.Favorites;
 import com.android.launcher3.compat.UserManagerCompat;
 import com.android.launcher3.model.ModelWriter;

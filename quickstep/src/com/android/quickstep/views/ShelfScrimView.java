@@ -29,7 +29,7 @@ import android.graphics.Path.Direction;
 import android.graphics.Path.Op;
 import android.util.AttributeSet;
 
-import ch.deletescape.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.LawnchairPreferences;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;

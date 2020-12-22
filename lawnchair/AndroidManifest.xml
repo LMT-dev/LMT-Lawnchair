@@ -95,18 +95,18 @@
 
     <application
         android:networkSecurityConfig="@xml/network_security_config"
-        android:name="ch.deletescape.lawnchair.LawnchairApp">
+        android:name="fr.letmethink.lawnchair.LawnchairApp">
 
         <activity
             android:excludeFromRecents="true"
-            android:name="ch.deletescape.lawnchair.LawnchairLauncher$Screenshot"
+            android:name="fr.letmethink.lawnchair.LawnchairLauncher$Screenshot"
             android:screenOrientation="portrait"
             android:theme="@style/ScreenshotTheme"/>
 
         <activity
             android:autoRemoveFromRecents="true"
             android:label="@string/derived_app_name"
-            android:name="ch.deletescape.lawnchair.settings.ui.SettingsActivity"
+            android:name="fr.letmethink.lawnchair.settings.ui.SettingsActivity"
             android:theme="@style/SettingsTheme.V2"
             android:taskAffinity="${applicationId}.tasks.SETTINGS">
             <intent-filter>
@@ -119,8 +119,8 @@
 
         <!-- TODO: Display only inside Lawnchair -->
         <activity-alias
-            android:name="ch.deletescape.lawnchair.settings.ui.SettingsLauncherActivity"
-            android:targetActivity="ch.deletescape.lawnchair.settings.ui.SettingsActivity"
+            android:name="fr.letmethink.lawnchair.settings.ui.SettingsLauncherActivity"
+            android:targetActivity="fr.letmethink.lawnchair.settings.ui.SettingsActivity"
             android:label="@string/lawnchair_settings"
             android:icon="@mipmap/ic_settings_adaptive">
             <intent-filter>
@@ -134,28 +134,28 @@
         <activity
             android:autoRemoveFromRecents="true"
             android:label="@string/derived_app_name"
-            android:name="ch.deletescape.lawnchair.settings.ui.search.SettingsSearchActivity"
+            android:name="fr.letmethink.lawnchair.settings.ui.search.SettingsSearchActivity"
             android:theme="@style/SettingsTheme.V2"
-            android:parentActivityName="ch.deletescape.lawnchair.settings.ui.SettingsActivity" />
+            android:parentActivityName="fr.letmethink.lawnchair.settings.ui.SettingsActivity" />
 
         <activity
             android:autoRemoveFromRecents="true"
             android:label="@string/about"
-            android:name="ch.deletescape.lawnchair.settings.ui.SettingsAboutActivity"
+            android:name="fr.letmethink.lawnchair.settings.ui.SettingsAboutActivity"
             android:theme="@style/SettingsTheme.V2"
-            android:parentActivityName="ch.deletescape.lawnchair.settings.ui.SettingsActivity" />
+            android:parentActivityName="fr.letmethink.lawnchair.settings.ui.SettingsActivity" />
 
         <activity
             android:autoRemoveFromRecents="true"
-            android:name="ch.deletescape.lawnchair.preferences.SelectableAppsActivity"
+            android:name="fr.letmethink.lawnchair.preferences.SelectableAppsActivity"
             android:theme="@style/SettingsTheme.V2" />
 
         <activity
             android:autoRemoveFromRecents="true"
             android:label="@string/derived_app_name"
-            android:name="ch.deletescape.lawnchair.font.settingsui.FontSelectionActivity"
+            android:name="fr.letmethink.lawnchair.font.settingsui.FontSelectionActivity"
             android:theme="@style/SettingsTheme.V2"
-            android:parentActivityName="ch.deletescape.lawnchair.settings.ui.SettingsActivity" />
+            android:parentActivityName="fr.letmethink.lawnchair.settings.ui.SettingsActivity" />
 
         <activity
             android:name="com.android.launcher3.SettingsActivity"
@@ -215,18 +215,18 @@
 
         <activity
             android:label="@string/backups"
-            android:name="ch.deletescape.lawnchair.backup.BackupListActivity"
-            android:parentActivityName="ch.deletescape.lawnchair.settings.ui.SettingsActivity"
+            android:name="fr.letmethink.lawnchair.backup.BackupListActivity"
+            android:parentActivityName="fr.letmethink.lawnchair.settings.ui.SettingsActivity"
             android:theme="@style/SettingsTheme.V2"/>
         <activity
             android:label="@string/new_backup"
-            android:name="ch.deletescape.lawnchair.backup.NewBackupActivity"
-            android:parentActivityName="ch.deletescape.lawnchair.backup.BackupListActivity"
+            android:name="fr.letmethink.lawnchair.backup.NewBackupActivity"
+            android:parentActivityName="fr.letmethink.lawnchair.backup.BackupListActivity"
             android:theme="@style/SettingsTheme.V2"/>
         <activity
             android:label="@string/restore_backup"
-            android:name="ch.deletescape.lawnchair.backup.RestoreBackupActivity"
-            android:parentActivityName="ch.deletescape.lawnchair.backup.BackupListActivity"
+            android:name="fr.letmethink.lawnchair.backup.RestoreBackupActivity"
+            android:parentActivityName="fr.letmethink.lawnchair.backup.BackupListActivity"
             android:theme="@style/SettingsTheme.V2">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -262,8 +262,8 @@
 
         <activity
             android:label="@string/pref_integrations"
-            android:name="ch.deletescape.lawnchair.settings.ui.SettingsIntegrationActivity"
-            android:parentActivityName="ch.deletescape.lawnchair.settings.ui.SettingsActivity"
+            android:name="fr.letmethink.lawnchair.settings.ui.SettingsIntegrationActivity"
+            android:parentActivityName="fr.letmethink.lawnchair.settings.ui.SettingsActivity"
             android:theme="@style/SettingsTheme.V2">
             <intent-filter>
                 <action android:name="ninja.sesame.app.action.CONFIG_INTEGRATION"/>
@@ -274,8 +274,8 @@
 
         <activity
             android:label="@string/search"
-            android:name="ch.deletescape.lawnchair.settings.ui.SettingsSearchActivity"
-            android:parentActivityName="ch.deletescape.lawnchair.settings.ui.SettingsActivity"
+            android:name="fr.letmethink.lawnchair.settings.ui.SettingsSearchActivity"
+            android:parentActivityName="fr.letmethink.lawnchair.settings.ui.SettingsActivity"
             android:theme="@style/SettingsTheme.V2" />
 
         <!-- Mimetype for .shed backup files -->
@@ -291,10 +291,10 @@
 
         <!-- Apply directly from iconpack -->
         <activity
-            android:name="ch.deletescape.lawnchair.iconpack.ApplyIconPackActivity"
+            android:name="fr.letmethink.lawnchair.iconpack.ApplyIconPackActivity"
             android:theme="@style/SettingsTheme.V2.Transparent">
             <intent-filter>
-                <action android:name="ch.deletescape.lawnchair.APPLY_ICONS"/>
+                <action android:name="fr.letmethink.lawnchair.APPLY_ICONS"/>
 
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
@@ -302,18 +302,18 @@
 
         <!-- Icon picker -->
         <activity
-            android:name="ch.deletescape.lawnchair.iconpack.EditIconActivity"
+            android:name="fr.letmethink.lawnchair.iconpack.EditIconActivity"
             android:theme="@style/SettingsTheme.V2"
             android:taskAffinity="${applicationId}.tasks.EDIT_ICON"/>
         <activity
-            android:name="ch.deletescape.lawnchair.iconpack.IconPickerActivity"
+            android:name="fr.letmethink.lawnchair.iconpack.IconPickerActivity"
             android:theme="@style/SettingsTheme.V2"/>
 
         <!-- Actions -->
         <activity
             android:icon="@mipmap/ic_launcher"
             android:label="@string/lawnchair_actions"
-            android:name="ch.deletescape.lawnchair.gestures.LawnchairShortcutActivity"
+            android:name="fr.letmethink.lawnchair.gestures.LawnchairShortcutActivity"
             android:theme="@style/SettingsTheme.V2">
             <intent-filter>
                 <action android:name="android.intent.action.CREATE_SHORTCUT"/>
@@ -322,11 +322,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ch.deletescape.lawnchair.gestures.ui.RunHandlerActivity"
+            android:name="fr.letmethink.lawnchair.gestures.ui.RunHandlerActivity"
             android:theme="@style/SettingsTheme.V2.Transparent"
             android:taskAffinity="${applicationId}.tasks.RUN_HANDLER">
             <intent-filter>
-                <action android:name="ch.deletescape.lawnchair.START_ACTION"/>
+                <action android:name="fr.letmethink.lawnchair.START_ACTION"/>
 
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
@@ -335,14 +335,14 @@
         <!-- Gesture app selection -->
         <activity
             android:label="@string/action_open_app_select_app"
-            android:name="ch.deletescape.lawnchair.gestures.ui.SelectAppActivity"
+            android:name="fr.letmethink.lawnchair.gestures.ui.SelectAppActivity"
             android:theme="@style/SettingsTheme.V2"/>
         <activity
-            android:name="ch.deletescape.lawnchair.BlankActivity"
+            android:name="fr.letmethink.lawnchair.BlankActivity"
             android:theme="@style/Theme.Transparent"/>
 
         <activity
-            android:name="ch.deletescape.lawnchair.FakeLauncher"
+            android:name="fr.letmethink.lawnchair.FakeLauncher"
             android:enabled="false">
 
             <intent-filter>
@@ -355,14 +355,14 @@
 
         <!-- DT2S using screen timeout -->
         <activity
-            android:name="ch.deletescape.lawnchair.gestures.handlers.SleepTimeoutActivity"
+            android:name="fr.letmethink.lawnchair.gestures.handlers.SleepTimeoutActivity"
             android:screenOrientation="locked"
             android:theme="@style/SleepTimeoutTheme"/>
 
         <!-- DT2S using device admin -->
         <receiver
             android:description="@string/dt2s_admin_hint"
-            android:name="ch.deletescape.lawnchair.gestures.handlers.SleepMethodDeviceAdmin$SleepDeviceAdmin"
+            android:name="fr.letmethink.lawnchair.gestures.handlers.SleepMethodDeviceAdmin$SleepDeviceAdmin"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data
                 android:name="android.app.device_admin"
@@ -374,7 +374,7 @@
         </receiver>
 
         <service
-            android:name="ch.deletescape.lawnchair.LawnchairAccessibilityService"
+            android:name="fr.letmethink.lawnchair.LawnchairAccessibilityService"
             android:label="@string/derived_app_name"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
@@ -384,7 +384,7 @@
 
         <!-- Kustom 5s support -->
         <provider
-            android:name="ch.deletescape.lawnchair.FiveSecsProvider"
+            android:name="fr.letmethink.lawnchair.FiveSecsProvider"
             android:authorities="${applicationId}.fivesecsprovider"
             android:exported="true"
             android:grantUriPermissions="true"/>
@@ -392,13 +392,13 @@
         <service
             android:enabled="true"
             android:exported="false"
-            android:name="ch.deletescape.lawnchair.bugreport.BugReportService"
+            android:name="fr.letmethink.lawnchair.bugreport.BugReportService"
             android:process=":bugReport" />
 
         <service
             android:enabled="true"
             android:exported="false"
-            android:name="ch.deletescape.lawnchair.bugreport.DogbinUploadService"
+            android:name="fr.letmethink.lawnchair.bugreport.DogbinUploadService"
             android:process=":bugReport" />
     </application>
 

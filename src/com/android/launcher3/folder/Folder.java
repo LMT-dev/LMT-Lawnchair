@@ -48,7 +48,7 @@ import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
-import ch.deletescape.lawnchair.groups.DrawerFolderInfo;
+import fr.letmethink.lawnchair.groups.DrawerFolderInfo;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.Alarm;
 import com.android.launcher3.AppInfo;

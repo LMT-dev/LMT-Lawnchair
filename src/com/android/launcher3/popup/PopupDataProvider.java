@@ -23,12 +23,11 @@ import android.service.notification.StatusBarNotification;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import ch.deletescape.lawnchair.popup.LawnchairShortcut;
-import ch.deletescape.lawnchair.sesame.Sesame;
-import ch.deletescape.lawnchair.sesame.SesameShortcutInfo;
+import fr.letmethink.lawnchair.popup.LawnchairShortcut;
+import fr.letmethink.lawnchair.sesame.Sesame;
+import fr.letmethink.lawnchair.sesame.SesameShortcutInfo;
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
-import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.badge.BadgeInfo;
 import com.android.launcher3.model.WidgetItem;

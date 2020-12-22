@@ -95,7 +95,7 @@
             android:persistent="false">
             <intent
                 android:action="android.settings.APPLICATION_DETAILS_SETTINGS"
-                android:data="package:ch.deletescape.lawnchair" />
+                android:data="package:fr.letmethink.lawnchair" />
         </Preference>
 
         <Preference

@@ -33,7 +33,7 @@ import android.animation.ValueAnimator;
 import android.view.MotionEvent;
 import android.view.animation.Interpolator;
 
-import ch.deletescape.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.LawnchairLauncher;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;

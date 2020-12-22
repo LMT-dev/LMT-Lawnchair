@@ -16,7 +16,7 @@ import android.view.View.AccessibilityDelegate;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction;
 
-import ch.deletescape.lawnchair.LawnchairUtilsKt;
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.AppWidgetResizeFrame;
 import com.android.launcher3.BubbleTextView;

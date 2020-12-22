@@ -16,12 +16,12 @@
   ~     along with Lawnchair Launcher.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-<ch.deletescape.lawnchair.views.PreferenceNestedScrollView
+<fr.letmethink.lawnchair.views.PreferenceNestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ch.deletescape.lawnchair.views.InsettableLinearLayout
+    <fr.letmethink.lawnchair.views.InsettableLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -52,5 +52,5 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false" />
-    </ch.deletescape.lawnchair.views.InsettableLinearLayout>
-</ch.deletescape.lawnchair.views.PreferenceNestedScrollView>
+    </fr.letmethink.lawnchair.views.InsettableLinearLayout>
+</fr.letmethink.lawnchair.views.PreferenceNestedScrollView>

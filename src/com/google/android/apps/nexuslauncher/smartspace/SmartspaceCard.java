@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -14,17 +13,15 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
-import ch.deletescape.lawnchair.FeedBridge;
+import fr.letmethink.lawnchair.FeedBridge;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
-import com.android.launcher3.graphics.ShadowGenerator;
 import com.google.android.apps.nexuslauncher.smartspace.nano.SmartspaceProto.b;
 import com.google.android.apps.nexuslauncher.smartspace.nano.SmartspaceProto.c;
 import com.google.android.apps.nexuslauncher.smartspace.nano.SmartspaceProto.e;
 import com.google.android.apps.nexuslauncher.smartspace.nano.SmartspaceProto.i;
 import com.google.android.apps.nexuslauncher.utils.ColorManipulation;
-import com.google.android.libraries.gsa.launcherclient.LauncherClient;
 
 import java.net.URISyntaxException;
 

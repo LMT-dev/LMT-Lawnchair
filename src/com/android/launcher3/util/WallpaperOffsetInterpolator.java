@@ -12,11 +12,8 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.view.animation.Interpolator;
 
-import ch.deletescape.lawnchair.LawnchairLauncher;
-import ch.deletescape.lawnchair.LawnchairPreferences;
-import ch.deletescape.lawnchair.LawnchairUtilsKt;
-import ch.deletescape.lawnchair.blur.BlurWallpaperProvider;
-import com.android.launcher3.LauncherAppState;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.blur.BlurWallpaperProvider;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.Workspace;
 import com.android.launcher3.anim.Interpolators;

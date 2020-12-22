@@ -41,7 +41,7 @@ import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 
 import android.widget.Button;
-import ch.deletescape.lawnchair.colors.ColorEngine;
+import fr.letmethink.lawnchair.colors.ColorEngine;
 import com.android.launcher3.BaseActivity;
 import com.android.launcher3.InstallShortcutReceiver;
 import com.android.launcher3.InvariantDeviceProfile;

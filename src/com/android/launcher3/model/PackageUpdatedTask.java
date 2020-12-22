@@ -23,8 +23,8 @@ import android.os.UserHandle;
 import android.util.ArrayMap;
 import android.util.Log;
 
-import ch.deletescape.lawnchair.LawnchairPreferences;
-import ch.deletescape.lawnchair.LawnchairUtilsKt;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
 import com.android.launcher3.AllAppsList;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.IconCache;

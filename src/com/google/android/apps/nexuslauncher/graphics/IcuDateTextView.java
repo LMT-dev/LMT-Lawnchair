@@ -9,7 +9,7 @@ import android.icu.text.DisplayContext;
 import android.support.annotation.RequiresApi;
 import android.text.format.DateUtils;
 import android.util.AttributeSet;
-import ch.deletescape.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.LawnchairPreferences;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 

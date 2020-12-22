@@ -8,10 +8,10 @@ Lawnchair is a customisable home app for Android. Taking AOSP’s *Launcher3* as
 The `/lawnchair` subdirectory houses custom classes and resources.
 
 ### Adding Search Providers
-The `ch.deletescape.lawnchair.globalsearch.provider` package lists search providers included in Lawnchair. To add a new provider, register the relevant Intent in `ch.deletescape.lawnchair.globalsearch.SearchProviderController`.
+The `fr.letmethink.lawnchair.globalsearch.provider` package lists search providers included in Lawnchair. To add a new provider, register the relevant Intent in `fr.letmethink.lawnchair.globalsearch.SearchProviderController`.
 
 ### Building the App
-In your IDE’s *Build Variants* panel, pick any variant whose name starts with `quickstepLawnchairDev`. When redistributing Lawnchair, please refrain from using the `ch.deletescape.lawnchair.plah` and `ch.deletescape.lawnchair.ci` package names.
+In your IDE’s *Build Variants* panel, pick any variant whose name starts with `quickstepLawnchairDev`. When redistributing Lawnchair, please refrain from using the `fr.letmethink.lawnchair.plah` and `fr.letmethink.lawnchair.ci` package names.
 
 ### Localising Copy
 Visit our [*Crowdin* page](https://translate.lawnchair.app) to help translate Lawnchair.

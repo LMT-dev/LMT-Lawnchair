@@ -39,7 +39,7 @@ import android.util.Xml;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 
-import ch.deletescape.lawnchair.adaptive.IconShapeManager;
+import fr.letmethink.lawnchair.adaptive.IconShapeManager;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.anim.RoundedRectRevealOutlineProvider;
@@ -178,7 +178,7 @@ public abstract class IconShape {
 
     public static class AdaptiveIconShape extends PathShape {
 
-        private final ch.deletescape.lawnchair.adaptive.IconShape mIconShape;
+        private final fr.letmethink.lawnchair.adaptive.IconShape mIconShape;
 
         public AdaptiveIconShape(Context context) {
             mIconShape = IconShapeManager.Companion.getInstance(context).getIconShape();

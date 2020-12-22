@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewParent;
 
 import com.android.launcher3.AppFilter;
-import com.android.launcher3.AppInfo;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.allapps.AllAppsContainerView;
 import com.android.launcher3.logging.UserEventDispatcher;
@@ -25,7 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import ch.deletescape.lawnchair.settings.ui.SettingsActivity;
+import fr.letmethink.lawnchair.settings.ui.SettingsActivity;
 
 public class CustomAppPredictor extends UserEventDispatcher implements SharedPreferences.OnSharedPreferenceChangeListener {
     protected static final int MAX_PREDICTIONS = 12;

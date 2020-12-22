@@ -30,8 +30,8 @@ import android.util.Xml;
 import android.view.Display;
 import android.view.WindowManager;
 
-import ch.deletescape.lawnchair.LawnchairPreferences;
-import ch.deletescape.lawnchair.settings.IconScale;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.settings.IconScale;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.util.Thunk;
 

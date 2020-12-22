@@ -16,7 +16,7 @@
 
 package com.android.launcher3;
 
-import static ch.deletescape.lawnchair.views.LawnchairBackgroundView.ALPHA_INDEX_STATE;
+import static fr.letmethink.lawnchair.views.LawnchairBackgroundView.ALPHA_INDEX_STATE;
 import static com.android.launcher3.LauncherAnimUtils.DRAWABLE_ALPHA;
 import static com.android.launcher3.LauncherAnimUtils.SCALE_PROPERTY;
 import static com.android.launcher3.LauncherState.HOTSEAT_ICONS;
@@ -33,11 +33,10 @@ import static com.android.launcher3.graphics.WorkspaceAndHotseatScrim.SYSUI_PROG
 
 import android.view.View;
 import android.view.animation.Interpolator;
-import ch.deletescape.lawnchair.LawnchairLauncher;
-import ch.deletescape.lawnchair.util.InvertedMultiValueAlpha;
-import ch.deletescape.lawnchair.util.InvertedMultiValueAlpha.InvertedAlphaProperty;
-import ch.deletescape.lawnchair.views.LawnchairBackgroundView;
-import ch.deletescape.lawnchair.views.OptionsPanel;
+import fr.letmethink.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.util.InvertedMultiValueAlpha;
+import fr.letmethink.lawnchair.views.LawnchairBackgroundView;
+import fr.letmethink.lawnchair.views.OptionsPanel;
 import com.android.launcher3.LauncherState.PageAlphaProvider;
 import com.android.launcher3.LauncherStateManager.AnimationConfig;
 import com.android.launcher3.anim.AnimatorSetBuilder;

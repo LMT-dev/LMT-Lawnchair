@@ -84,7 +84,7 @@
                 android:textColor="?workspaceTextColor"
                 android:textSize="@dimen/smartspace_title_size"/>
 
-            <ch.deletescape.lawnchair.smartspace.SmartspaceDividerView
+            <fr.letmethink.lawnchair.smartspace.SmartspaceDividerView
                 android:id="@+id/title_sep"
                 android:layout_width="@dimen/smartspace_title_sep_width"
                 android:layout_height="20dp"

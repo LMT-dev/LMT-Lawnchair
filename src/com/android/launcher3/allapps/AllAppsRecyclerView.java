@@ -27,8 +27,8 @@ import android.util.SparseIntArray;
 import android.view.MotionEvent;
 import android.view.View;
 
-import ch.deletescape.lawnchair.colors.ColorEngine.ColorResolver;
-import ch.deletescape.lawnchair.colors.ColorEngine.ResolveInfo;
+import fr.letmethink.lawnchair.colors.ColorEngine.ColorResolver;
+import fr.letmethink.lawnchair.colors.ColorEngine.ResolveInfo;
 import com.android.launcher3.BaseRecyclerView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ItemInfo;

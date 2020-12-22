@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import ch.deletescape.lawnchair.LawnchairUtilsKt;
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;

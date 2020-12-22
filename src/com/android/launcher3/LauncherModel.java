@@ -36,8 +36,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 
-import ch.deletescape.lawnchair.LawnchairUtilsKt;
-import ch.deletescape.lawnchair.blur.BlurWallpaperProvider;
 import com.android.launcher3.compat.LauncherAppsCompat;
 import com.android.launcher3.compat.PackageInstallerCompat.PackageInstallInfo;
 import com.android.launcher3.compat.UserManagerCompat;

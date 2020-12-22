@@ -37,7 +37,7 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import ch.deletescape.lawnchair.HiddenApiCompat;
+import fr.letmethink.lawnchair.HiddenApiCompat;
 import com.android.launcher3.BaseDraggingActivity;
 import com.android.launcher3.BuildConfig;
 import com.android.launcher3.DeviceProfile;

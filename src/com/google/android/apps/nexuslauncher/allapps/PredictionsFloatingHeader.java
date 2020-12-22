@@ -6,7 +6,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.FloatProperty;
 import android.view.animation.Interpolator;
-import ch.deletescape.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.LawnchairPreferences;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Insettable;
 import com.android.launcher3.Launcher;

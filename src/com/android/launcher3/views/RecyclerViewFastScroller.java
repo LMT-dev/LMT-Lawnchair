@@ -33,7 +33,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.TextView;
 
-import ch.deletescape.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.LawnchairPreferences;
 import com.android.launcher3.BaseRecyclerView;
 import com.android.launcher3.BaseRecyclerView.PositionThumbInfo;
 import com.android.launcher3.R;
