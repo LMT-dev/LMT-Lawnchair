@@ -473,7 +473,7 @@
     <string name="title_disable_suggestions_prompt">Disable App Suggestions</string>
     <string name="msg_disable_suggestions_prompt">"Usage data will be deleted."</string>
 
-    <string name="app_name_lawnchair">Lawnchair</string>
+    <string name="app_name_lawnchair">LMT</string>
     <string name="pixel_style_pref_title">Google Pixel</string>
 
     <string name="label_turn_off_suggestions">Disable</string>

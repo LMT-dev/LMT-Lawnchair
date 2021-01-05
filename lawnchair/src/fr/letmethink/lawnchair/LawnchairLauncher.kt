@@ -23,6 +23,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -31,16 +32,19 @@ import android.graphics.Rect
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.nfc.NfcAdapter
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.ResultReceiver
+import android.preference.PreferenceManager
 import android.provider.Settings
 import android.support.v4.app.ActivityCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import com.android.launcher3.*
 import com.android.launcher3.uioverrides.OverviewState
 import com.android.launcher3.util.ComponentKey
@@ -76,6 +80,7 @@ open class LawnchairLauncher : NexusLauncherActivity(),
     protected open val isScreenshotMode = false
     private val prefCallback = LawnchairPreferencesChangeCallback(this)
     private var paused = false
+    private var mNfcAdapter: NfcAdapter? = null
 
     private val customLayoutInflater by lazy {
         LawnchairLayoutInflater(
@@ -111,6 +116,28 @@ open class LawnchairLauncher : NexusLauncherActivity(),
         } else {
             nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
         }
+        mNfcAdapter = NfcAdapter.getDefaultAdapter(this)
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val isLaunched = preferences.getBoolean("IsLaunched", false)
+        val editor = preferences.edit()
+        if (isLaunched) {
+            editor.putBoolean("IsLaunched", false)
+            editor.apply()
+            val nm: NotificationManager = applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+            if (!nm.isNotificationPolicyAccessGranted) {
+                startActivityForResult(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS), 0)
+            } else {
+                nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+            }
+            finishAffinity()
+        } else {
+            editor.putBoolean("IsLaunched", true)
+            editor.apply()
+        }
+
     }
 
     override fun startActivitySafely(v: View?, intent: Intent, item: ItemInfo?): Boolean {
