@@ -23,7 +23,6 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -44,7 +43,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Toast
 import com.android.launcher3.*
 import com.android.launcher3.uioverrides.OverviewState
 import com.android.launcher3.util.ComponentKey
@@ -69,8 +67,8 @@ import java.util.concurrent.Semaphore
 
 
 open class LawnchairLauncher : NexusLauncherActivity(),
-        LawnchairPreferences.OnPreferenceChangeListener,
-        ColorEngine.OnColorChangeListener {
+                               LawnchairPreferences.OnPreferenceChangeListener,
+                               ColorEngine.OnColorChangeListener {
     val hideStatusBarKey = "pref_hideStatusBar"
     val gestureController by lazy { GestureController(this) }
     val background by lazy { findViewById<LawnchairBackgroundView>(R.id.lawnchair_background)!! }
@@ -105,12 +103,13 @@ open class LawnchairLauncher : NexusLauncherActivity(),
         lawnchairPrefs.addOnPreferenceChangeListener(hideStatusBarKey, this)
 
         if (lawnchairPrefs.autoLaunchRoot) {
-            RootHelperManager.getInstance(this).run {  }
+            RootHelperManager.getInstance(this).run { }
         }
 
         ColorEngine.getInstance(this).addColorChangeListeners(this, *colorsToWatch)
 
-        val nm: NotificationManager = applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val nm: NotificationManager =
+                applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         if (!nm.isNotificationPolicyAccessGranted) {
             startActivityForResult(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS), 0)
         } else {
@@ -120,24 +119,33 @@ open class LawnchairLauncher : NexusLauncherActivity(),
     }
 
     override fun onNewIntent(intent: Intent?) {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val isLaunched = preferences.getBoolean("IsLaunched", false)
-        val editor = preferences.edit()
-        if (isLaunched) {
-            editor.putBoolean("IsLaunched", false)
-            editor.apply()
-            val nm: NotificationManager = applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-            if (!nm.isNotificationPolicyAccessGranted) {
-                startActivityForResult(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS), 0)
-            } else {
-                nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+        if (intent != null) {
+            if (intent.`package` != null) {
+                val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+                val isLaunched = preferences.getBoolean("IsLaunched", false)
+                val editor = preferences.edit()
+                if (isLaunched) {
+                    editor.putBoolean("IsLaunched", false)
+                    editor.apply()
+                    val nm: NotificationManager = applicationContext.getSystemService(
+                            NOTIFICATION_SERVICE) as NotificationManager
+                    if (!nm.isNotificationPolicyAccessGranted) {
+                        startActivityForResult(
+                                Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS),
+                                0)
+                    } else {
+                        nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+                    }
+                    changeDefaultHome(this)
+                    finishAffinity()
+                } else {
+                    editor.putBoolean("IsLaunched", true)
+                    editor.apply()
+                    changeDefaultHome(this)
+                }
+                setIntent(null)
             }
-            finishAffinity()
-        } else {
-            editor.putBoolean("IsLaunched", true)
-            editor.apply()
         }
-
     }
 
     override fun startActivitySafely(v: View?, intent: Intent, item: ItemInfo?): Boolean {
@@ -302,17 +310,21 @@ open class LawnchairLauncher : NexusLauncherActivity(),
         currentEditInfo = itemInfo
         val intent = EditIconActivity.newIntent(this, infoProvider.getTitle(itemInfo),
                                                 itemInfo is FolderInfo, component)
-        val flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        val flags =
+                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS or Intent.FLAG_ACTIVITY_CLEAR_TASK
         BlankActivity.startActivityForResult(this, intent, CODE_EDIT_ICON,
-                                             flags) { resultCode, data -> handleEditIconResult(
-                resultCode, data) }
+                                             flags) { resultCode, data ->
+            handleEditIconResult(
+                    resultCode, data)
+        }
     }
 
     private fun handleEditIconResult(resultCode: Int, data: Bundle?) {
         if (resultCode == Activity.RESULT_OK) {
             val itemInfo = currentEditInfo ?: return
             val entryString = data?.getString(EditIconActivity.EXTRA_ENTRY)
-            val customIconEntry = entryString?.let { IconPackManager.CustomIconEntry.fromString(it) }
+            val customIconEntry =
+                    entryString?.let { IconPackManager.CustomIconEntry.fromString(it) }
             CustomInfoProvider.forItem<ItemInfo>(this, itemInfo)?.setIcon(itemInfo, customIconEntry)
         }
     }
@@ -321,19 +333,21 @@ open class LawnchairLauncher : NexusLauncherActivity(),
                                             grantResults: IntArray?) {
         if (requestCode == REQUEST_PERMISSION_STORAGE_ACCESS) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                                                                    android.Manifest.permission.READ_EXTERNAL_STORAGE)){
+                                                                    android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 AlertDialog.Builder(this)
                         .setTitle(R.string.title_storage_permission_required)
                         .setMessage(R.string.content_storage_permission_required)
-                        .setPositiveButton(android.R.string.ok) { _, _ -> Utilities.requestStoragePermission(
-                                this@LawnchairLauncher) }
+                        .setPositiveButton(android.R.string.ok) { _, _ ->
+                            Utilities.requestStoragePermission(
+                                    this@LawnchairLauncher)
+                        }
                         .setCancelable(false)
                         .create().apply {
                             show()
                             applyAccent()
                         }
-                }
-        } else if(requestCode == REQUEST_PERMISSION_LOCATION_ACCESS) {
+            }
+        } else if (requestCode == REQUEST_PERMISSION_LOCATION_ACCESS) {
             lawnchairApp.smartspace.updateWeatherData()
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -437,8 +451,8 @@ open class LawnchairLauncher : NexusLauncherActivity(),
         @JvmStatic
         fun getLauncher(context: Context): LawnchairLauncher {
             return context as? LawnchairLauncher
-                    ?: (context as ContextWrapper).baseContext as? LawnchairLauncher
-                    ?: LauncherAppState.getInstance(context).launcher as LawnchairLauncher
+                   ?: (context as ContextWrapper).baseContext as? LawnchairLauncher
+                   ?: LauncherAppState.getInstance(context).launcher as LawnchairLauncher
         }
 
         fun takeScreenshotSync(context: Context): Uri? {
@@ -453,7 +467,8 @@ open class LawnchairLauncher : NexusLauncherActivity(),
             return uri
         }
 
-        fun takeScreenshot(context: Context, handler: Handler = Handler(), callback: (Uri?) -> Unit) {
+        fun takeScreenshot(context: Context, handler: Handler = Handler(),
+                           callback: (Uri?) -> Unit) {
             context.startActivity(Intent(context, Screenshot::class.java).apply {
                 putExtra("screenshot", true)
                 putExtra("callback", object : ResultReceiver(handler) {
