@@ -26,23 +26,24 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.provider.Settings
 import android.support.annotation.Keep
-import fr.letmethink.lawnchair.blur.BlurWallpaperProvider
-import fr.letmethink.lawnchair.flowerpot.Flowerpot
-import fr.letmethink.lawnchair.bugreport.BugReportClient
-import fr.letmethink.lawnchair.bugreport.BugReportService
-import fr.letmethink.lawnchair.iconpack.IconPackManager
-import fr.letmethink.lawnchair.sesame.Sesame
-import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController
-import fr.letmethink.lawnchair.theme.ThemeManager
-import fr.letmethink.lawnchair.util.extensions.d
 import com.android.launcher3.BuildConfig
 import com.android.launcher3.R
 import com.android.launcher3.Utilities
 import com.android.quickstep.RecentsActivity
 import com.squareup.leakcanary.LeakCanary
+import fr.letmethink.lawnchair.blur.BlurWallpaperProvider
+import fr.letmethink.lawnchair.bugreport.BugReportClient
+import fr.letmethink.lawnchair.bugreport.BugReportService
+import fr.letmethink.lawnchair.flowerpot.Flowerpot
+import fr.letmethink.lawnchair.iconpack.IconPackManager
+import fr.letmethink.lawnchair.sesame.Sesame
+import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController
+import fr.letmethink.lawnchair.theme.ThemeManager
+import fr.letmethink.lawnchair.util.extensions.d
 import ninja.sesame.lib.bridge.v1.SesameFrontend
 import ninja.sesame.lib.bridge.v1.SesameInitOnComplete
 import ninja.sesame.lib.bridge.v1_1.LookFeelKeys
+
 
 class LawnchairApp : Application() {
 
@@ -81,16 +82,18 @@ class LawnchairApp : Application() {
         }
 
         if (BuildConfig.FEATURE_QUINOA) {
-            SesameFrontend.init(this, object: SesameInitOnComplete {
+            SesameFrontend.init(this, object : SesameInitOnComplete {
                 override fun onConnect() {
                     val thiz = this@LawnchairApp
-                    SesameFrontend.setIntegrationDialog(thiz, R.layout.dialog_sesame_integration, android.R.id.button2, android.R.id.button1)
+                    SesameFrontend.setIntegrationDialog(thiz, R.layout.dialog_sesame_integration,
+                                                        android.R.id.button2, android.R.id.button1)
                     val ipm = IconPackManager.getInstance(thiz)
                     ipm.addListener {
                         if (thiz.lawnchairPrefs.syncLookNFeelWithSesame) {
                             runOnUiWorkerThread {
                                 val pkg = ipm.packList.currentPack().packPackageName
-                                Sesame.LookAndFeel[LookFeelKeys.ICON_PACK_PKG] = if (pkg == "") null else pkg
+                                Sesame.LookAndFeel[LookFeelKeys.ICON_PACK_PKG] =
+                                        if (pkg == "") null else pkg
                             }
                         }
                     }
@@ -118,7 +121,7 @@ class LawnchairApp : Application() {
             accessibilityService!!.performGlobalAction(action)
         } else {
             startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                                  .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             false
         }
     }
