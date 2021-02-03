@@ -23,12 +23,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.android.launcher3.R
+import com.android.launcher3.util.ComponentKey
 import fr.letmethink.lawnchair.applyAccent
 import fr.letmethink.lawnchair.flowerpot.Flowerpot
 import fr.letmethink.lawnchair.theme.ThemeOverride
 import fr.letmethink.lawnchair.util.ThemedContextProvider
-import com.android.launcher3.R
-import com.android.launcher3.util.ComponentKey
 
 class FlowerpotTabs(manager: AppGroupsManager) : DrawerTabs(manager, AppGroupsManager.CategorizationType.Flowerpot) {
 
@@ -142,7 +142,7 @@ class FlowerpotTabs(manager: AppGroupsManager) : DrawerTabs(manager, AppGroupsMa
         }
 
         private fun updateSummary(view: View) {
-            view.findViewById<TextView>(R.id.current_category).setText(displayName)
+            view.findViewById<TextView>(R.id.current_category).text = displayName
         }
 
         override fun clone(): Group.Customization<String, String> {

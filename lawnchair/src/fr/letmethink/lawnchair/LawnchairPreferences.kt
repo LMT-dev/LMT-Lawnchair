@@ -25,6 +25,11 @@ import android.net.Uri
 import android.os.Looper
 import android.provider.Settings
 import android.text.TextUtils
+import com.android.launcher3.*
+import com.android.launcher3.allapps.search.DefaultAppSearchAlgorithm
+import com.android.launcher3.util.ComponentKey
+import com.android.quickstep.OverviewInteractionState
+import com.google.android.apps.nexuslauncher.allapps.PredictionsFloatingHeader
 import fr.letmethink.lawnchair.bugreport.BugReportClient
 import fr.letmethink.lawnchair.colors.ColorEngine
 import fr.letmethink.lawnchair.gestures.BlankGestureHandler
@@ -42,11 +47,6 @@ import fr.letmethink.lawnchair.smartspace.*
 import fr.letmethink.lawnchair.theme.ThemeManager
 import fr.letmethink.lawnchair.util.Temperature
 import fr.letmethink.lawnchair.util.extensions.d
-import com.android.launcher3.*
-import com.android.launcher3.allapps.search.DefaultAppSearchAlgorithm
-import com.android.launcher3.util.ComponentKey
-import com.android.quickstep.OverviewInteractionState
-import com.google.android.apps.nexuslauncher.allapps.PredictionsFloatingHeader
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -897,7 +897,7 @@ class LawnchairPreferences(val context: Context) : SharedPreferences.OnSharedPre
         // Home widget
         val pillQsb = prefs.getBoolean("pref_showPixelBar", true)
                       // The new dock qsb should be close enough I guess
-                      && !prefs.getBoolean("pref_fullWidthSearchbar", false);
+                      && !prefs.getBoolean("pref_fullWidthSearchbar", false)
         putBoolean("pref_use_pill_qsb", pillQsb)
         if (pillQsb) {
             putBoolean("pref_dockSearchBar", false)

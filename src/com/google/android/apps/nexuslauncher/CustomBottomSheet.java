@@ -35,13 +35,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import fr.letmethink.lawnchair.LawnchairLauncher;
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.gestures.BlankGestureHandler;
-import fr.letmethink.lawnchair.gestures.GestureHandler;
-import fr.letmethink.lawnchair.gestures.ui.LauncherGesturePreference;
-import fr.letmethink.lawnchair.override.CustomInfoProvider;
-import fr.letmethink.lawnchair.preferences.MultiSelectTabPreference;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.FolderInfo;
 import com.android.launcher3.ItemInfo;
@@ -54,9 +47,17 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.util.PackageManagerHelper;
 import com.android.launcher3.widget.WidgetsBottomSheet;
+import fr.letmethink.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.gestures.BlankGestureHandler;
+import fr.letmethink.lawnchair.gestures.GestureHandler;
+import fr.letmethink.lawnchair.gestures.ui.LauncherGesturePreference;
+import fr.letmethink.lawnchair.override.CustomInfoProvider;
+import fr.letmethink.lawnchair.preferences.MultiSelectTabPreference;
 
 public class CustomBottomSheet extends WidgetsBottomSheet {
-    private FragmentManager mFragmentManager;
+
+    private final FragmentManager mFragmentManager;
     private EditText mEditTitle;
     private String mPreviousTitle;
     private ItemInfo mItemInfo;

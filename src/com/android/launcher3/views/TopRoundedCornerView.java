@@ -21,8 +21,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.widget.FrameLayout;
-
 import com.android.launcher3.R;
 import com.android.launcher3.util.Themes;
 
@@ -33,7 +31,7 @@ public class TopRoundedCornerView extends SpringRelativeLayout {
 
     private final RectF mRect = new RectF();
     private final Path mClipPath = new Path();
-    private float[] mRadii;
+    private final float[] mRadii;
 
     private final Paint mNavBarScrimPaint;
     private int mNavBarScrimHeight = 0;

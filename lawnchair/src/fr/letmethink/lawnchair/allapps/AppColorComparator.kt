@@ -70,7 +70,7 @@ class AppColorComparator(context: Context) : AppInfoComparator(context) {
     }
 
     companion object {
-        const val REPETITIONS = 6;
+        const val REPETITIONS = 6
 
         @JvmStatic
         fun remapHue(hue: Float) = (hue / 360 * REPETITIONS).toInt()

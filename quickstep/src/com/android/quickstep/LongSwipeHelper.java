@@ -24,9 +24,7 @@ import static com.android.quickstep.WindowTransformSwipeHandler.MIN_OVERSHOOT_DU
 
 import android.animation.ValueAnimator;
 import android.view.animation.Interpolator;
-
 import com.android.launcher3.Launcher;
-import com.android.launcher3.LauncherAnimUtils;
 import com.android.launcher3.LauncherStateManager;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
@@ -60,7 +58,7 @@ public class LongSwipeHelper {
 
     private float mMaxSwipeDistance = 1;
     private AnimatorPlaybackController mAnimator;
-    private FlingBlockCheck mFlingBlockCheck = new FlingBlockCheck();
+    private final FlingBlockCheck mFlingBlockCheck = new FlingBlockCheck();
 
     LongSwipeHelper(Launcher launcher, RemoteAnimationTargetSet targetSet) {
         mLauncher = launcher;

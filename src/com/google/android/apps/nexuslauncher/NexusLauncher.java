@@ -7,8 +7,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.graphics.ColorUtils;
 import android.view.View;
-import fr.letmethink.lawnchair.settings.ui.SettingsActivity;
-import com.android.launcher3.*;
+import com.android.launcher3.AppInfo;
+import com.android.launcher3.Launcher;
+import com.android.launcher3.LauncherCallbacks;
+import com.android.launcher3.LauncherExterns;
+import com.android.launcher3.LauncherModel;
+import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
 import com.android.launcher3.util.Themes;
@@ -22,7 +27,7 @@ import com.google.android.apps.nexuslauncher.utils.ActionIntentFilter;
 import com.google.android.libraries.gsa.launcherclient.LauncherClient;
 import com.google.android.libraries.gsa.launcherclient.LauncherClientService;
 import com.google.android.libraries.gsa.launcherclient.StaticInteger;
-
+import fr.letmethink.lawnchair.settings.ui.SettingsActivity;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -42,7 +47,7 @@ public class NexusLauncher {
     private final Bundle mUiInformation = new Bundle();
     private ItemInfoUpdateReceiver mItemInfoUpdateReceiver;
     QsbAnimationController mQsbAnimationController;
-    private Handler handler = new Handler(LauncherModel.getUiWorkerLooper());
+    private final Handler handler = new Handler(LauncherModel.getUiWorkerLooper());
 
     public NexusLauncher(NexusLauncherActivity activity) {
         mLauncher = activity;
@@ -56,8 +61,12 @@ public class NexusLauncher {
         mCallbacks.registerSmartspaceView(smartspace);
     }
 
-    class NexusLauncherCallbacks implements LauncherCallbacks, SharedPreferences.OnSharedPreferenceChangeListener, WallpaperColorInfo.OnChangeListener {
-        private Set<SmartspaceView> mSmartspaceViews = Collections.newSetFromMap(new WeakHashMap<>());
+    class NexusLauncherCallbacks implements LauncherCallbacks,
+            SharedPreferences.OnSharedPreferenceChangeListener,
+            WallpaperColorInfo.OnChangeListener {
+
+        private final Set<SmartspaceView> mSmartspaceViews = Collections
+                .newSetFromMap(new WeakHashMap<>());
         private final FeedReconnector mFeedReconnector = new FeedReconnector();
 
         private final Runnable mUpdatePredictionsIfResumed = this::updatePredictionsIfResumed;
@@ -244,16 +253,13 @@ public class NexusLauncher {
             View gIcon = mLauncher.findViewById(R.id.g_icon);
             while (gIcon != null && !gIcon.isClickable()) {
                 if (gIcon.getParent() instanceof View) {
-                    gIcon = (View)gIcon.getParent();
+                    gIcon = (View) gIcon.getParent();
                 } else {
                     gIcon = null;
                 }
             }
-            if (gIcon != null && gIcon.performClick()) {
-//                mExterns.clearTypedText();
-                return true;
-            }
-            return false;
+            //                mExterns.clearTypedText();
+            return gIcon != null && gIcon.performClick();
         }
 
         @Override

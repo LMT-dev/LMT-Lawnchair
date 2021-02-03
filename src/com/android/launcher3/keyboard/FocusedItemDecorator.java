@@ -22,7 +22,6 @@ import android.support.v7.widget.RecyclerView.ItemDecoration;
 import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-
 import com.android.launcher3.keyboard.FocusIndicatorHelper.SimpleFocusIndicatorHelper;
 
 /**
@@ -30,7 +29,7 @@ import com.android.launcher3.keyboard.FocusIndicatorHelper.SimpleFocusIndicatorH
  */
 public class FocusedItemDecorator extends ItemDecoration {
 
-    private FocusIndicatorHelper mHelper;
+    private final FocusIndicatorHelper mHelper;
 
     public FocusedItemDecorator(View container) {
         mHelper = new SimpleFocusIndicatorHelper(container);

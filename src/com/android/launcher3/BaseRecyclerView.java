@@ -22,11 +22,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.android.launcher3.views.RecyclerViewFastScroller;
 import fr.letmethink.lawnchair.colors.ColorEngine;
 import fr.letmethink.lawnchair.colors.ColorEngine.OnColorChangeListener;
 import fr.letmethink.lawnchair.colors.ColorEngine.ResolveInfo;
-import com.android.launcher3.views.RecyclerViewFastScroller;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -154,10 +153,7 @@ public abstract class BaseRecyclerView extends RecyclerView implements OnColorCh
 
         // IF scroller is at the very top OR there is no scroll bar because there is probably not
         // enough items to scroll, THEN it's okay for the container to be pulled down.
-        if (getCurrentScrollY() == 0) {
-            return true;
-        }
-        return false;
+        return getCurrentScrollY() == 0;
     }
 
     /**

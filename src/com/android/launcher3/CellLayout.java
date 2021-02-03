@@ -46,9 +46,6 @@ import android.view.View;
 import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
-
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.colors.ColorEngine.Resolvers;
 import com.android.launcher3.LauncherSettings.Favorites;
 import com.android.launcher3.accessibility.DragAndDropAccessibilityDelegate;
 import com.android.launcher3.accessibility.FolderAccessibilityHelper;
@@ -64,7 +61,8 @@ import com.android.launcher3.util.ParcelableSparseArray;
 import com.android.launcher3.util.Themes;
 import com.android.launcher3.util.Thunk;
 import com.android.launcher3.widget.LauncherAppWidgetHostView;
-
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.colors.ColorEngine.Resolvers;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
@@ -338,11 +336,8 @@ public class CellLayout extends ViewGroup {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        if (mUseTouchHelper ||
-                (mInterceptTouchListener != null && mInterceptTouchListener.onTouch(this, ev))) {
-            return true;
-        }
-        return false;
+        return mUseTouchHelper ||
+                (mInterceptTouchListener != null && mInterceptTouchListener.onTouch(this, ev));
     }
 
     @Override
@@ -933,9 +928,7 @@ public class CellLayout extends ViewGroup {
                         lp.isLockedToGrid = true;
                         child.requestLayout();
                     }
-                    if (mReorderAnimators.containsKey(lp)) {
-                        mReorderAnimators.remove(lp);
-                    }
+                    mReorderAnimators.remove(lp);
                 }
                 public void onAnimationCancel(Animator animation) {
                     cancelled = true;
@@ -1231,7 +1224,7 @@ public class CellLayout extends ViewGroup {
      *         nearest the requested location.
      */
     private int[] findNearestArea(int cellX, int cellY, int spanX, int spanY, int[] direction,
-            boolean[][] occupied, boolean blockOccupied[][], int[] result) {
+            boolean[][] occupied, boolean[][] blockOccupied, int[] result) {
         // Keep track of best-scoring drop area
         final int[] bestXY = result != null ? result : new int[2];
         float bestDistance = Float.MAX_VALUE;
@@ -1814,7 +1807,7 @@ public class CellLayout extends ViewGroup {
 
         // We find the nearest cell into which we would place the dragged item, assuming there's
         // nothing in its way.
-        int result[] = new int[2];
+        int[] result = new int[2];
         result = findNearestArea(pixelX, pixelY, spanX, spanY, result);
 
         boolean success;
@@ -2272,7 +2265,7 @@ public class CellLayout extends ViewGroup {
     }
 
     int[] performReorder(int pixelX, int pixelY, int minSpanX, int minSpanY, int spanX, int spanY,
-            View dragView, int[] result, int resultSpan[], int mode) {
+            View dragView, int[] result, int[] resultSpan, int mode) {
         // First we determine if things have moved enough to cause a different layout
         result = findNearestArea(pixelX, pixelY, spanX, spanY, result);
 

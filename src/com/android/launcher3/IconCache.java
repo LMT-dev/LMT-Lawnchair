@@ -20,7 +20,11 @@ import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.*;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.LauncherActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -38,8 +42,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.graphics.ColorUtils;
 import android.text.TextUtils;
 import android.util.Log;
-import fr.letmethink.lawnchair.iconpack.LawnchairIconProvider;
-import fr.letmethink.lawnchair.override.AppInfoProvider;
 import com.android.launcher3.compat.LauncherAppsCompat;
 import com.android.launcher3.compat.UserManagerCompat;
 import com.android.launcher3.graphics.BitmapInfo;
@@ -52,7 +54,8 @@ import com.android.launcher3.util.Preconditions;
 import com.android.launcher3.util.Provider;
 import com.android.launcher3.util.SQLiteCacheHelper;
 import com.android.launcher3.util.Thunk;
-
+import fr.letmethink.lawnchair.iconpack.LawnchairIconProvider;
+import fr.letmethink.lawnchair.override.AppInfoProvider;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -282,7 +285,7 @@ public class IconCache {
             // Update icon cache. This happens in segments and {@link #onPackageIconsUpdated}
             // is called by the icon cache when the job is complete.
             updateDBIcons(user, apps, Process.myUserHandle().equals(user)
-                    ? ignorePackagesForMainUser : Collections.<String>emptySet());
+                    ? ignorePackagesForMainUser : Collections.emptySet());
         }
     }
 
@@ -465,7 +468,7 @@ public class IconCache {
      */
     public synchronized void updateTitleAndIcon(AppInfo application) {
         CacheEntry entry = cacheLocked(application.componentName,
-                Provider.<LauncherActivityInfo>of(null),
+                Provider.of(null),
                 application.user, false, application.usingLowResIcon);
         if (entry.icon != null && !isDefaultIcon(entry.icon, application.user)) {
             applyCacheEntry(entry, application);

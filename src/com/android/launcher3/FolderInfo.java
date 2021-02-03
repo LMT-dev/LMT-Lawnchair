@@ -22,16 +22,9 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Process;
-
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.FrameLayout;
-import fr.letmethink.lawnchair.LawnchairLauncher;
-import fr.letmethink.lawnchair.folder.FirstItemProvider;
-import fr.letmethink.lawnchair.iconpack.IconPack;
-import fr.letmethink.lawnchair.iconpack.IconPackManager;
-import fr.letmethink.lawnchair.iconpack.IconPackManager.CustomIconEntry;
-import fr.letmethink.lawnchair.override.CustomInfoProvider;
 import com.android.launcher3.folder.Folder;
 import com.android.launcher3.folder.FolderIcon;
 import com.android.launcher3.graphics.BitmapRenderer;
@@ -39,7 +32,12 @@ import com.android.launcher3.graphics.DrawableFactory;
 import com.android.launcher3.model.ModelWriter;
 import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.util.ContentWriter;
-
+import fr.letmethink.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.folder.FirstItemProvider;
+import fr.letmethink.lawnchair.iconpack.IconPack;
+import fr.letmethink.lawnchair.iconpack.IconPackManager;
+import fr.letmethink.lawnchair.iconpack.IconPackManager.CustomIconEntry;
+import fr.letmethink.lawnchair.override.CustomInfoProvider;
 import java.util.ArrayList;
 import org.jetbrains.annotations.Nullable;
 
@@ -78,7 +76,7 @@ public class FolderInfo extends ItemInfo {
 
     public String swipeUpAction;
 
-    private FirstItemProvider firstItemProvider = new FirstItemProvider(this);
+    private final FirstItemProvider firstItemProvider = new FirstItemProvider(this);
 
     public FolderInfo() {
         itemType = LauncherSettings.Favorites.ITEM_TYPE_FOLDER;
@@ -155,13 +153,18 @@ public class FolderInfo extends ItemInfo {
     }
 
     public interface FolderListener {
-        public void onAdd(ShortcutInfo item, int rank);
-        public void onRemove(ShortcutInfo item);
-        public void onTitleChanged(CharSequence title);
-        public void onItemsChanged(boolean animate);
-        public void prepareAutoUpdate();
 
-        public default void onIconChanged() {
+        void onAdd(ShortcutInfo item, int rank);
+
+        void onRemove(ShortcutInfo item);
+
+        void onTitleChanged(CharSequence title);
+
+        void onItemsChanged(boolean animate);
+
+        void prepareAutoUpdate();
+
+        default void onIconChanged() {
             // do nothing
         }
     }

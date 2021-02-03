@@ -19,9 +19,7 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.util.SparseArray;
 import android.view.animation.Interpolator;
-
 import com.android.launcher3.LauncherAnimUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +39,7 @@ public class AnimatorSetBuilder {
     protected final ArrayList<Animator> mAnims = new ArrayList<>();
 
     private final SparseArray<Interpolator> mInterpolators = new SparseArray<>();
-    private List<Runnable> mOnFinishRunnables = new ArrayList<>();
+    private final List<Runnable> mOnFinishRunnables = new ArrayList<>();
 
     /**
      * Associates a tag with all the animations added after this call.

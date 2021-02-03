@@ -26,14 +26,12 @@ import android.os.Looper;
 import android.os.Trace;
 import android.util.Log;
 import android.util.LruCache;
-
 import com.android.internal.annotations.GuardedBy;
 import com.android.systemui.shared.recents.model.RecentsTaskLoadPlan.Options;
 import com.android.systemui.shared.recents.model.RecentsTaskLoadPlan.PreloadOptions;
 import com.android.systemui.shared.recents.model.Task.TaskKey;
 import com.android.systemui.shared.recents.model.TaskKeyLruCache.EvictionCallback;
 import com.android.systemui.shared.system.ActivityManagerWrapper;
-
 import java.io.PrintWriter;
 import java.util.Map;
 
@@ -77,12 +75,12 @@ public class RecentsTaskLoader {
     private final int mMaxThumbnailCacheSize;
     private final int mMaxIconCacheSize;
     private int mNumVisibleTasksLoaded;
-    private int mSvelteLevel;
+    private final int mSvelteLevel;
 
     private int mDefaultTaskBarBackgroundColor;
     private int mDefaultTaskViewBackgroundColor;
 
-    private EvictionCallback mClearActivityInfoOnEviction = new EvictionCallback() {
+    private final EvictionCallback mClearActivityInfoOnEviction = new EvictionCallback() {
         @Override
         public void onEntryEvicted(TaskKey key) {
             if (key != null) {

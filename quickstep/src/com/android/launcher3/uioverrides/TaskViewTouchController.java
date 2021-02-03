@@ -22,7 +22,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.view.MotionEvent;
-
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.BaseDraggingActivity;
 import com.android.launcher3.LauncherAnimUtils;
@@ -64,7 +63,7 @@ public abstract class TaskViewTouchController<T extends BaseDraggingActivity>
     private float mDisplacementShift;
     private float mProgressMultiplier;
     private float mEndDisplacement;
-    private FlingBlockCheck mFlingBlockCheck = new FlingBlockCheck();
+    private final FlingBlockCheck mFlingBlockCheck = new FlingBlockCheck();
 
     private TaskView mTaskBeingDragged;
 
@@ -178,7 +177,7 @@ public abstract class TaskViewTouchController<T extends BaseDraggingActivity>
 
         mCurrentAnimationIsGoingUp = goingUp;
         BaseDragLayer dl = mActivity.getDragLayer();
-        long maxDuration = (long) (2 * dl.getHeight());
+        long maxDuration = 2 * dl.getHeight();
 
         if (goingUp) {
             mPendingAnimation = mRecentsView.createTaskDismissAnimation(mTaskBeingDragged,

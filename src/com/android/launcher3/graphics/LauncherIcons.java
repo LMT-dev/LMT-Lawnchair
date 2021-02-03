@@ -16,31 +16,47 @@
 
 package com.android.launcher3.graphics;
 
+import static android.graphics.Paint.DITHER_FLAG;
+import static android.graphics.Paint.FILTER_BITMAP_FLAG;
+import static com.android.launcher3.graphics.ShadowGenerator.BLUR_FACTOR;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Intent.ShortcutIconResource;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.graphics.*;
-import android.graphics.drawable.*;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.PaintFlagsDrawFilter;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PaintDrawable;
 import android.os.Process;
 import android.os.UserHandle;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import fr.letmethink.lawnchair.NonAdaptiveIconDrawable;
-import fr.letmethink.lawnchair.iconpack.AdaptiveIconCompat;
-import fr.letmethink.lawnchair.iconpack.LawnchairIconProvider;
-import com.android.launcher3.*;
+import com.android.launcher3.AppInfo;
+import com.android.launcher3.FastBitmapDrawable;
+import com.android.launcher3.IconCache;
+import com.android.launcher3.IconProvider;
+import com.android.launcher3.InvariantDeviceProfile;
+import com.android.launcher3.ItemInfoWithIcon;
+import com.android.launcher3.LauncherAppState;
+import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.model.PackageItemInfo;
 import com.android.launcher3.shortcuts.DeepShortcutManager;
 import com.android.launcher3.shortcuts.ShortcutInfoCompat;
 import com.android.launcher3.util.Provider;
 import com.android.launcher3.util.Themes;
-
-import static android.graphics.Paint.DITHER_FLAG;
-import static android.graphics.Paint.FILTER_BITMAP_FLAG;
-import static com.android.launcher3.graphics.ShadowGenerator.BLUR_FACTOR;
+import fr.letmethink.lawnchair.NonAdaptiveIconDrawable;
+import fr.letmethink.lawnchair.iconpack.AdaptiveIconCompat;
+import fr.letmethink.lawnchair.iconpack.LawnchairIconProvider;
 
 /**
  * Helper methods for generating various launcher icons
@@ -104,7 +120,7 @@ public class LauncherIcons implements AutoCloseable {
     private AdaptiveIconCompat mWrapperIcon;
     private int mWrapperBackgroundColor = DEFAULT_WRAPPER_BACKGROUND;
 
-    private IconProvider iconProvider;
+    private final IconProvider iconProvider;
 
     // sometimes we store linked lists of these things
     private LauncherIcons next;
@@ -250,7 +266,7 @@ public class LauncherIcons implements AutoCloseable {
             if (mWrapperIcon == null || !mWrapperIcon.isMaskValid()) {
                 mWrapperIcon = LawnchairIconProvider.getAdaptiveIconDrawableWrapper(mContext);
             }
-            AdaptiveIconCompat dr = (AdaptiveIconCompat) mWrapperIcon;
+            AdaptiveIconCompat dr = mWrapperIcon;
             dr.setBounds(0, 0, 1, 1);
             scale = getNormalizer().getScale(icon, outIconBounds, dr.getIconMask(), outShape);
             if (!outShape[0] && (icon instanceof NonAdaptiveIconDrawable)) {

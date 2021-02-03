@@ -37,14 +37,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import fr.letmethink.lawnchair.LawnchairLauncher;
-import fr.letmethink.lawnchair.LawnchairUtilsKt;
-import fr.letmethink.lawnchair.gestures.BlankGestureHandler;
-import fr.letmethink.lawnchair.gestures.GestureController;
-import fr.letmethink.lawnchair.gestures.GestureHandler;
-import fr.letmethink.lawnchair.gestures.RunnableGestureHandler;
-import fr.letmethink.lawnchair.gestures.handlers.ViewSwipeUpGestureHandler;
-import fr.letmethink.lawnchair.groups.DrawerFolderInfo;
 import com.android.launcher3.Alarm;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.BubbleTextView;
@@ -78,6 +70,14 @@ import com.android.launcher3.touch.ItemClickHandler;
 import com.android.launcher3.util.PackageUserKey;
 import com.android.launcher3.util.Thunk;
 import com.android.launcher3.widget.PendingAddShortcutInfo;
+import fr.letmethink.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
+import fr.letmethink.lawnchair.gestures.BlankGestureHandler;
+import fr.letmethink.lawnchair.gestures.GestureController;
+import fr.letmethink.lawnchair.gestures.GestureHandler;
+import fr.letmethink.lawnchair.gestures.RunnableGestureHandler;
+import fr.letmethink.lawnchair.gestures.handlers.ViewSwipeUpGestureHandler;
+import fr.letmethink.lawnchair.groups.DrawerFolderInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -111,19 +111,19 @@ public class FolderIcon extends FrameLayout implements FolderListener, OnResumeC
     ClippedFolderIconLayoutRule mPreviewLayoutRule;
     private PreviewItemManager mPreviewItemManager;
     private PreviewItemDrawingParams mTmpParams = new PreviewItemDrawingParams(0, 0, 0, 0);
-    private List<BubbleTextView> mCurrentPreviewItems = new ArrayList<>();
+    private final List<BubbleTextView> mCurrentPreviewItems = new ArrayList<>();
 
     boolean mAnimating = false;
-    private Rect mTempBounds = new Rect();
+    private final Rect mTempBounds = new Rect();
 
     private float mSlop;
 
-    private Alarm mOpenAlarm = new Alarm();
+    private final Alarm mOpenAlarm = new Alarm();
 
     private FolderBadgeInfo mBadgeInfo = new FolderBadgeInfo();
     private BadgeRenderer mBadgeRenderer;
     private float mBadgeScale;
-    private Point mTempSpaceForBadgeOffset = new Point();
+    private final Point mTempSpaceForBadgeOffset = new Point();
 
     private GestureHandler mSwipeUpHandler;
 
@@ -422,8 +422,8 @@ public class FolderIcon extends FrameLayout implements FolderListener, OnResumeC
             }
             int[] center = new int[2];
             float scale = getLocalCenterForIndex(index, numItemsInPreview, center);
-            center[0] = (int) Math.round(scaleRelativeToDragLayer * center[0]);
-            center[1] = (int) Math.round(scaleRelativeToDragLayer * center[1]);
+            center[0] = Math.round(scaleRelativeToDragLayer * center[0]);
+            center[1] = Math.round(scaleRelativeToDragLayer * center[1]);
 
             to.offset(center[0] - animateView.getMeasuredWidth() / 2,
                     center[1] - animateView.getMeasuredHeight() / 2);

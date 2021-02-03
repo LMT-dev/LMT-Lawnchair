@@ -31,9 +31,7 @@ import android.os.Build;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.Surface;
 import android.view.animation.Interpolator;
-
 import com.android.launcher3.BaseDraggingActivity;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.R;
@@ -50,8 +48,6 @@ import com.android.systemui.shared.system.SyncRtSurfaceTransactionApplier;
 import com.android.systemui.shared.system.SyncRtSurfaceTransactionApplier.SurfaceParams;
 import com.android.systemui.shared.system.TransactionCompat;
 import com.android.systemui.shared.system.WindowManagerWrapper;
-
-import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
 /**
@@ -95,7 +91,7 @@ public class ClipAnimationHelper {
     // Whether to boost the opening animation target layers, or the closing
     private int mBoostModeTargetLayers = -1;
     // Wether or not applyTransform has been called yet since prepareAnimation()
-    private boolean mIsFirstFrame = true;
+    private final boolean mIsFirstFrame = true;
 
     private BiFunction<RemoteAnimationTargetCompat, Float, Float> mTaskAlphaCallback =
             (t, a1) -> a1;

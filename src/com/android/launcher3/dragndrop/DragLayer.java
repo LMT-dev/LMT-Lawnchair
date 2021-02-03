@@ -36,8 +36,6 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.view.animation.Interpolator;
 import android.widget.TextView;
-
-import fr.letmethink.lawnchair.touch.WorkspaceOptionModeTouchHelper;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.CellLayout;
 import com.android.launcher3.DropTargetBar;
@@ -54,7 +52,7 @@ import com.android.launcher3.keyboard.ViewGroupFocusHelper;
 import com.android.launcher3.uioverrides.UiFactory;
 import com.android.launcher3.util.Thunk;
 import com.android.launcher3.views.BaseDragLayer;
-
+import fr.letmethink.lawnchair.touch.WorkspaceOptionModeTouchHelper;
 import java.util.ArrayList;
 
 /**
@@ -275,7 +273,7 @@ public class DragLayer extends BaseDragLayer<Launcher> {
         Rect r = new Rect();
         getViewRectRelativeToSelf(dragView, r);
 
-        int coord[] = new int[2];
+        int[] coord = new int[2];
         float childScale = child.getScaleX();
         coord[0] = lp.x + (int) (child.getMeasuredWidth() * (1 - childScale) / 2);
         coord[1] = lp.y + (int) (child.getMeasuredHeight() * (1 - childScale) / 2);

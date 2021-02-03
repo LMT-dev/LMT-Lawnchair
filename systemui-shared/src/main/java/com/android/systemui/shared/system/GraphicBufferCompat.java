@@ -25,7 +25,7 @@ import android.os.Parcelable;
  */
 public class GraphicBufferCompat implements Parcelable {
 
-    private GraphicBuffer mBuffer;
+    private final GraphicBuffer mBuffer;
 
     public GraphicBufferCompat(GraphicBuffer buffer) {
         mBuffer = buffer;

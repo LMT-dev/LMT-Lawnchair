@@ -12,8 +12,6 @@ import android.graphics.PorterDuffColorFilter;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-
-import fr.letmethink.lawnchair.FeedBridge;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
@@ -22,7 +20,7 @@ import com.google.android.apps.nexuslauncher.smartspace.nano.SmartspaceProto.c;
 import com.google.android.apps.nexuslauncher.smartspace.nano.SmartspaceProto.e;
 import com.google.android.apps.nexuslauncher.smartspace.nano.SmartspaceProto.i;
 import com.google.android.apps.nexuslauncher.utils.ColorManipulation;
-
+import fr.letmethink.lawnchair.FeedBridge;
 import java.net.URISyntaxException;
 
 public class SmartspaceCard {
@@ -33,7 +31,7 @@ public class SmartspaceCard {
     private final boolean dM;
     private final long dN;
     private final Context mContext;
-    private Bitmap mIcon;
+    private final Bitmap mIcon;
     private final Intent mIntent;
 
     public SmartspaceCard(final Context context, final b di, final Intent mIntent, final boolean dm, final Bitmap mIcon, final boolean dl, final long dn, final long dj, final int dk) {
@@ -182,7 +180,7 @@ public class SmartspaceCard {
         }
         String cn = cg.cN;
         if (this.cL(cg)) {
-            return String.format(cn, (Object[]) this.cK(cg.cO, s));
+            return String.format(cn, this.cK(cg.cO, s));
         }
         if (cn == null) {
             cn = "";

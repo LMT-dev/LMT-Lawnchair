@@ -31,8 +31,6 @@ import android.provider.BaseColumns;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.LongSparseArray;
-
-import fr.letmethink.lawnchair.LawnchairPreferences;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.IconCache;
 import com.android.launcher3.InvariantDeviceProfile;
@@ -51,7 +49,7 @@ import com.android.launcher3.logging.FileLog;
 import com.android.launcher3.util.ContentWriter;
 import com.android.launcher3.util.GridOccupancy;
 import com.android.launcher3.util.LongArrayMap;
-
+import fr.letmethink.lawnchair.LawnchairPreferences;
 import java.net.URISyntaxException;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
@@ -419,7 +417,7 @@ public class LoaderCursor extends CursorWrapper {
             }
 
             final GridOccupancy hotseatOccupancy =
-                    occupied.get((long) LauncherSettings.Favorites.CONTAINER_HOTSEAT);
+                    occupied.get(LauncherSettings.Favorites.CONTAINER_HOTSEAT);
 
             int hotseatRows = Utilities.getLawnchairPrefs(mContext).getDockRowsCount();
             int hotseatSize = mIDP.numHotseatIcons;
@@ -447,11 +445,11 @@ public class LoaderCursor extends CursorWrapper {
             } else {
                 final GridOccupancy occupancy = new GridOccupancy(hotseatSize, hotseatRows);
                 occupancy.cells[hotseatX][hotseatY] = true;
-                occupied.put((long) LauncherSettings.Favorites.CONTAINER_HOTSEAT, occupancy);
+                occupied.put(LauncherSettings.Favorites.CONTAINER_HOTSEAT, occupancy);
                 return true;
             }
         } else if (item.container == LauncherSettings.Favorites.CONTAINER_DESKTOP) {
-            if (!workspaceScreens.contains((Long) item.screenId)) {
+            if (!workspaceScreens.contains(item.screenId)) {
                 // The item has an invalid screen id.
                 return false;
             }

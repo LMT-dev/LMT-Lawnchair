@@ -37,7 +37,6 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import fr.letmethink.lawnchair.HiddenApiCompat;
 import com.android.launcher3.BaseDraggingActivity;
 import com.android.launcher3.BuildConfig;
 import com.android.launcher3.DeviceProfile;
@@ -59,6 +58,7 @@ import com.android.systemui.shared.recents.view.RecentsTransition;
 import com.android.systemui.shared.system.ActivityManagerWrapper;
 import com.android.systemui.shared.system.ActivityOptionsCompat;
 import com.android.systemui.shared.system.WindowManagerWrapper;
+import fr.letmethink.lawnchair.HiddenApiCompat;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
@@ -114,7 +114,7 @@ public class TaskSystemShortcut<T extends SystemShortcut> extends SystemShortcut
 
     public static class SplitScreen extends TaskSystemShortcut {
 
-        private Handler mHandler;
+        private final Handler mHandler;
 
         public SplitScreen() {
             super(R.drawable.ic_split_screen, R.string.recent_task_option_split_screen);
@@ -225,7 +225,7 @@ public class TaskSystemShortcut<T extends SystemShortcut> extends SystemShortcut
 
         private static final String TAG = Pin.class.getSimpleName();
 
-        private Handler mHandler;
+        private final Handler mHandler;
 
         public Pin() {
             super(R.drawable.ic_pin, R.string.recent_task_option_pin);

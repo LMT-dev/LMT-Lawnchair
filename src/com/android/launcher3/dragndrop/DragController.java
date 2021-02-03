@@ -20,7 +20,6 @@ import static com.android.launcher3.LauncherAnimUtils.SPRING_LOADED_EXIT_DELAY;
 import static com.android.launcher3.LauncherState.NORMAL;
 
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -31,7 +30,6 @@ import android.view.HapticFeedbackConstants;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-
 import com.android.launcher3.DragSource;
 import com.android.launcher3.DropTarget;
 import com.android.launcher3.ItemInfo;
@@ -43,20 +41,22 @@ import com.android.launcher3.util.ItemInfoMatcher;
 import com.android.launcher3.util.Thunk;
 import com.android.launcher3.util.TouchController;
 import com.android.launcher3.util.UiThreadHelper;
-
 import java.util.ArrayList;
 
 /**
  * Class for initiating a drag within a view or across multiple views.
  */
 public class DragController implements DragDriver.EventListener, TouchController {
+
     private static final boolean PROFILE_DRAWING_DURING_DRAG = false;
 
-    @Thunk Launcher mLauncher;
-    private FlingToDeleteHelper mFlingToDeleteHelper;
-
+    private final FlingToDeleteHelper mFlingToDeleteHelper;
     // temporaries to avoid gc thrash
-    private Rect mRectTemp = new Rect();
+    private final Rect mRectTemp = new Rect();
+    /**
+     * Who can receive drop events
+     */
+    private final ArrayList<DropTarget> mDropTargets = new ArrayList<>();
     private final int[] mCoordinatesTemp = new int[2];
 
     /**
@@ -65,34 +65,39 @@ public class DragController implements DragDriver.EventListener, TouchController
      */
     private DragDriver mDragDriver = null;
 
-    /** Options controlling the drag behavior. */
+    /**
+     * Options controlling the drag behavior.
+     */
     private DragOptions mOptions;
-
-    /** X coordinate of the down event. */
-    private int mMotionDownX;
-
-    /** Y coordinate of the down event. */
-    private int mMotionDownY;
+    private final ArrayList<DragListener> mListeners = new ArrayList<>();
+    private final int[] mTmpPoint = new int[2];
 
     private DropTarget.DragObject mDragObject;
-
-    /** Who can receive drop events */
-    private ArrayList<DropTarget> mDropTargets = new ArrayList<>();
-    private ArrayList<DragListener> mListeners = new ArrayList<>();
-
-    /** The window token used as the parent for the DragView. */
-    private IBinder mWindowToken;
+    private final Rect mDragLayerRect = new Rect();
+    @Thunk
+    Launcher mLauncher;
+    @Thunk
+    long mLastTouchUpTime = -1;
 
     private View mMoveTarget;
 
     private DropTarget mLastDropTarget;
-
-    @Thunk int mLastTouch[] = new int[2];
-    @Thunk long mLastTouchUpTime = -1;
-    @Thunk int mDistanceSinceScroll = 0;
-
-    private int mTmpPoint[] = new int[2];
-    private Rect mDragLayerRect = new Rect();
+    @Thunk
+    int mDistanceSinceScroll = 0;
+    @Thunk
+    int[] mLastTouch = new int[2];
+    /**
+     * X coordinate of the down event.
+     */
+    private int mMotionDownX;
+    /**
+     * Y coordinate of the down event.
+     */
+    private int mMotionDownY;
+    /**
+     * The window token used as the parent for the DragView.
+     */
+    private IBinder mWindowToken;
 
     private boolean mIsInPreDrag;
 
@@ -100,6 +105,7 @@ public class DragController implements DragDriver.EventListener, TouchController
      * Interface to receive notifications when a drag starts or stops
      */
     public interface DragListener {
+
         /**
          * A drag has begun
          *

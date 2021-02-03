@@ -22,18 +22,18 @@ import android.support.v4.graphics.ColorUtils;
 import android.util.AttributeSet;
 import android.view.ContextThemeWrapper;
 import android.view.View;
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.colors.ColorEngine;
-import fr.letmethink.lawnchair.colors.ColorEngine.ResolveInfo;
-import fr.letmethink.lawnchair.colors.ColorEngine.Resolvers;
-import fr.letmethink.lawnchair.globalsearch.SearchProvider;
-import fr.letmethink.lawnchair.globalsearch.SearchProviderController;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.compat.LauncherAppsCompat;
 import com.android.launcher3.util.PackageManagerHelper;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.colors.ColorEngine;
+import fr.letmethink.lawnchair.colors.ColorEngine.ResolveInfo;
+import fr.letmethink.lawnchair.colors.ColorEngine.Resolvers;
+import fr.letmethink.lawnchair.globalsearch.SearchProvider;
+import fr.letmethink.lawnchair.globalsearch.SearchProviderController;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
@@ -79,7 +79,7 @@ public class HotseatQsbWidget extends AbstractQsbLayout implements o,
                 .addColorChangeListeners(this, Resolvers.HOTSEAT_QSB_BG);
         dW();
         super.onAttachedToWindow();
-        this.Ds.a((o) this);
+        this.Ds.a(this);
         dH();
         setOnFocusChangeListener(this.mActivity.mFocusHandler);
     }

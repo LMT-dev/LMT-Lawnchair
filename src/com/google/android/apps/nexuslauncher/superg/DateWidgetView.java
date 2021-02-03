@@ -10,12 +10,10 @@ import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import fr.letmethink.lawnchair.LawnchairUtilsKt;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
-
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
 import java.util.Locale;
 
 public class DateWidgetView extends LinearLayout implements TextWatcher {
@@ -60,7 +58,9 @@ public class DateWidgetView extends LinearLayout implements TextWatcher {
             DeviceProfile deviceProfile = Launcher.getLauncher(getContext()).getDeviceProfile();
             int size = MeasureSpec.getSize(widthMeasureSpec) / deviceProfile.inv.numColumns;
             marginEnd = (size - deviceProfile.iconSizePx) / 2;
-            mWidth = (deviceProfile.inv.numColumns - Math.max(1, (int) Math.ceil((double) (getResources().getDimension(R.dimen.qsb_min_width_with_mic) / ((float) size))))) * size;
+            mWidth = (deviceProfile.inv.numColumns - Math.max(1, (int) Math.ceil(
+                    getResources().getDimension(R.dimen.qsb_min_width_with_mic) / ((float) size))))
+                    * size;
             mText = "";
             update();
         } else {

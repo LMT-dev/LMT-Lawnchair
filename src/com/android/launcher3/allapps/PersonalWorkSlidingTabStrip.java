@@ -28,6 +28,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import com.android.launcher3.Launcher;
+import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
+import com.android.launcher3.pageindicators.PageIndicator;
+import com.android.launcher3.util.Themes;
 import fr.letmethink.lawnchair.allapps.AllAppsTabs;
 import fr.letmethink.lawnchair.allapps.AllAppsTabs.Tab;
 import fr.letmethink.lawnchair.colors.ColorEngine;
@@ -35,11 +40,6 @@ import fr.letmethink.lawnchair.colors.ColorEngine.OnColorChangeListener;
 import fr.letmethink.lawnchair.colors.ColorEngine.ResolveInfo;
 import fr.letmethink.lawnchair.preferences.DrawerTabEditBottomSheet;
 import fr.letmethink.lawnchair.views.ColoredButton;
-import com.android.launcher3.Launcher;
-import com.android.launcher3.R;
-import com.android.launcher3.Utilities;
-import com.android.launcher3.pageindicators.PageIndicator;
-import com.android.launcher3.util.Themes;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -57,7 +57,7 @@ public class PersonalWorkSlidingTabStrip extends LinearLayout implements PageInd
     private final Paint mDividerPaint;
     private final SharedPreferences mSharedPreferences;
 
-    private int mSelectedIndicatorHeight;
+    private final int mSelectedIndicatorHeight;
     private int mIndicatorLeft = -1;
     private int mIndicatorRight = -1;
     private float mScrollOffset;
@@ -65,10 +65,10 @@ public class PersonalWorkSlidingTabStrip extends LinearLayout implements PageInd
 
     private AllAppsContainerView mContainerView;
     private int mLastActivePage = 0;
-    private boolean mIsRtl;
+    private final boolean mIsRtl;
 
-    private ArgbEvaluator mArgbEvaluator = new ArgbEvaluator();
-    private Path mIndicatorPath = new Path();
+    private final ArgbEvaluator mArgbEvaluator = new ArgbEvaluator();
+    private final Path mIndicatorPath = new Path();
 
     public PersonalWorkSlidingTabStrip(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);

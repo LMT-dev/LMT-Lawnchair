@@ -22,20 +22,16 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.BaseDraggingActivity;
 import com.android.launcher3.LauncherAnimUtils;
@@ -68,7 +64,7 @@ public class TaskMenuView extends AbstractFloatingView {
     private static final int REVEAL_OPEN_DURATION = 150;
     private static final int REVEAL_CLOSE_DURATION = 100;
 
-    private BaseDraggingActivity mActivity;
+    private final BaseDraggingActivity mActivity;
     private TextView mTaskIconAndName;
     private AnimatorSet mOpenCloseAnimator;
     private TaskView mTaskView;

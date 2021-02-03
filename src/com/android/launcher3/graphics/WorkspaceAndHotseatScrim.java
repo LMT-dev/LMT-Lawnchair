@@ -38,8 +38,6 @@ import android.support.v4.graphics.ColorUtils;
 import android.util.DisplayMetrics;
 import android.util.Property;
 import android.view.View;
-
-import fr.letmethink.lawnchair.theme.ThemeManager;
 import com.android.launcher3.CellLayout;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
@@ -47,6 +45,7 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.Workspace;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
 import com.android.launcher3.util.Themes;
+import fr.letmethink.lawnchair.theme.ThemeManager;
 
 /**
  * View scrim which draws behind hotseat and workspace
@@ -80,7 +79,7 @@ public class WorkspaceAndHotseatScrim implements
                 }
             };
 
-    private static Property<WorkspaceAndHotseatScrim, Float> SYSUI_ANIM_MULTIPLIER =
+    private static final Property<WorkspaceAndHotseatScrim, Float> SYSUI_ANIM_MULTIPLIER =
             new Property<WorkspaceAndHotseatScrim, Float>(Float.TYPE, "sysUiAnimMultiplier") {
                 @Override
                 public Float get(WorkspaceAndHotseatScrim scrim) {

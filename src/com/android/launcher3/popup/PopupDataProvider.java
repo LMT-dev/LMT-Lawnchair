@@ -22,10 +22,6 @@ import android.content.pm.LauncherApps;
 import android.service.notification.StatusBarNotification;
 import android.support.annotation.NonNull;
 import android.util.Log;
-
-import fr.letmethink.lawnchair.popup.LawnchairShortcut;
-import fr.letmethink.lawnchair.sesame.Sesame;
-import fr.letmethink.lawnchair.sesame.SesameShortcutInfo;
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.Utilities;
@@ -40,7 +36,9 @@ import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.util.MultiHashMap;
 import com.android.launcher3.util.PackageUserKey;
 import com.android.launcher3.widget.WidgetListRowEntry;
-
+import fr.letmethink.lawnchair.popup.LawnchairShortcut;
+import fr.letmethink.lawnchair.sesame.Sesame;
+import fr.letmethink.lawnchair.sesame.SesameShortcutInfo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -58,21 +56,29 @@ public class PopupDataProvider implements NotificationListener.NotificationsChan
     private static final boolean LOGD = false;
     private static final String TAG = "PopupDataProvider";
 
-    /** Note that these are in order of priority. */
+    /**
+     * Note that these are in order of priority.
+     */
     private final SystemShortcut[] mSystemShortcuts;
 
     private final Launcher mLauncher;
 
-    /** Maps launcher activity components to their list of shortcut ids. */
+    /**
+     * Maps packages to their BadgeInfo's .
+     */
+    private final Map<PackageUserKey, BadgeInfo> mPackageUserToBadgeInfos = new HashMap<>();
+    /**
+     * Maps launcher activity components to their list of shortcut ids.
+     */
     private MultiHashMap<ComponentKey, String> mDeepShortcutMap = new MultiHashMap<>();
-    /** Maps packages to their BadgeInfo's . */
-    private Map<PackageUserKey, BadgeInfo> mPackageUserToBadgeInfos = new HashMap<>();
-    /** Maps packages to their Widgets */
+    /**
+     * Maps packages to their Widgets
+     */
     private ArrayList<WidgetListRowEntry> mAllWidgets = new ArrayList<>();
 
     public PopupDataProvider(Launcher launcher) {
         mLauncher = launcher;
-        mSystemShortcuts = new SystemShortcut[] {
+        mSystemShortcuts = new SystemShortcut[]{
                 new SystemShortcut.AppInfo(),
                 new SystemShortcut.Widgets(),
                 new SystemShortcut.Install()

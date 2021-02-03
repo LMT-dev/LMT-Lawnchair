@@ -39,7 +39,17 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewDebug;
 import android.widget.TextView;
-
+import com.android.launcher3.IconCache.IconLoadRequest;
+import com.android.launcher3.IconCache.ItemInfoUpdateReceiver;
+import com.android.launcher3.Launcher.OnResumeCallback;
+import com.android.launcher3.badge.BadgeInfo;
+import com.android.launcher3.badge.BadgeRenderer;
+import com.android.launcher3.folder.FolderIcon;
+import com.android.launcher3.graphics.BitmapInfo;
+import com.android.launcher3.graphics.DrawableFactory;
+import com.android.launcher3.graphics.IconPalette;
+import com.android.launcher3.graphics.PreloadIconDrawable;
+import com.android.launcher3.model.PackageItemInfo;
 import fr.letmethink.lawnchair.LawnchairLauncher;
 import fr.letmethink.lawnchair.LawnchairPreferences;
 import fr.letmethink.lawnchair.LawnchairUtilsKt;
@@ -52,18 +62,6 @@ import fr.letmethink.lawnchair.gestures.GestureController;
 import fr.letmethink.lawnchair.gestures.GestureHandler;
 import fr.letmethink.lawnchair.gestures.handlers.ViewSwipeUpGestureHandler;
 import fr.letmethink.lawnchair.override.CustomInfoProvider;
-import com.android.launcher3.IconCache.IconLoadRequest;
-import com.android.launcher3.IconCache.ItemInfoUpdateReceiver;
-import com.android.launcher3.Launcher.OnResumeCallback;
-import com.android.launcher3.badge.BadgeInfo;
-import com.android.launcher3.badge.BadgeRenderer;
-import com.android.launcher3.folder.FolderIcon;
-import com.android.launcher3.graphics.BitmapInfo;
-import com.android.launcher3.graphics.DrawableFactory;
-import com.android.launcher3.graphics.IconPalette;
-import com.android.launcher3.graphics.PreloadIconDrawable;
-import com.android.launcher3.model.PackageItemInfo;
-
 import java.text.NumberFormat;
 import org.jetbrains.annotations.NotNull;
 
@@ -135,8 +133,8 @@ public class BubbleTextView extends TextView implements ItemInfoUpdateReceiver, 
     private int mBadgeColor;
     private float mBadgeScale;
     private boolean mForceHideBadge;
-    private Point mTempSpaceForBadgeOffset = new Point();
-    private Rect mTempIconBounds = new Rect();
+    private final Point mTempSpaceForBadgeOffset = new Point();
+    private final Rect mTempIconBounds = new Rect();
 
     @ViewDebug.ExportedProperty(category = "launcher")
     private boolean mStayPressed;

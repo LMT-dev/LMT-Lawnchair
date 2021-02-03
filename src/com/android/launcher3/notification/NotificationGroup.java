@@ -24,7 +24,7 @@ import java.util.Set;
  */
 public class NotificationGroup {
     private String mGroupSummaryKey;
-    private Set<String> mChildKeys;
+    private final Set<String> mChildKeys;
 
     public NotificationGroup() {
         mChildKeys = new HashSet<>();

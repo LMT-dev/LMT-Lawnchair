@@ -99,7 +99,7 @@ public class DeferredTouchConsumer implements TouchConsumer {
     public boolean deferNextEventToMainThread() {
         // If our target is still null, defer the next target as well
         TouchConsumer target = mTarget;
-        return target == null ? true : target.deferNextEventToMainThread();
+        return target == null || target.deferNextEventToMainThread();
     }
 
     @Override

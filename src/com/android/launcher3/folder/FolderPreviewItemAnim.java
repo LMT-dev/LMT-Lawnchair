@@ -18,7 +18,6 @@ package com.android.launcher3.folder;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
-
 import com.android.launcher3.LauncherAnimUtils;
 
 /**
@@ -26,9 +25,10 @@ import com.android.launcher3.LauncherAnimUtils;
  */
 class FolderPreviewItemAnim {
 
-    private static PreviewItemDrawingParams sTmpParams = new PreviewItemDrawingParams(0, 0, 0, 0);
+    private static final PreviewItemDrawingParams sTmpParams = new PreviewItemDrawingParams(0, 0, 0,
+            0);
 
-    private ValueAnimator mValueAnimator;
+    private final ValueAnimator mValueAnimator;
 
     float finalScale;
     float finalTransX;

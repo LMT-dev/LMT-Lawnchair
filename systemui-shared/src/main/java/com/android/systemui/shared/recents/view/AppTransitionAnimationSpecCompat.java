@@ -24,9 +24,9 @@ import android.view.AppTransitionAnimationSpec;
  */
 public class AppTransitionAnimationSpecCompat {
 
-    private int mTaskId;
-    private Bitmap mBuffer;
-    private Rect mRect;
+    private final int mTaskId;
+    private final Bitmap mBuffer;
+    private final Rect mRect;
 
     public AppTransitionAnimationSpecCompat(int taskId, Bitmap buffer, Rect rect) {
         mTaskId = taskId;

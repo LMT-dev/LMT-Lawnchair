@@ -60,8 +60,14 @@ import android.view.ViewDebug;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ListView;
-
-import com.android.launcher3.*;
+import com.android.launcher3.AbstractFloatingView;
+import com.android.launcher3.BaseActivity;
+import com.android.launcher3.BaseDraggingActivity;
+import com.android.launcher3.DeviceProfile;
+import com.android.launcher3.Insettable;
+import com.android.launcher3.PagedView;
+import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.anim.AnimatorPlaybackController;
 import com.android.launcher3.anim.PropertyListBuilder;
 import com.android.launcher3.config.FeatureFlags;
@@ -84,7 +90,6 @@ import com.android.systemui.shared.system.ActivityManagerWrapper;
 import com.android.systemui.shared.system.BackgroundExecutor;
 import com.android.systemui.shared.system.PackageManagerWrapper;
 import com.android.systemui.shared.system.TaskStackChangeListener;
-
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
@@ -239,7 +244,7 @@ public abstract class RecentsView<T extends BaseDraggingActivity> extends PagedV
     private float mContentAlpha = 1;
 
     // Keeps track of task views whose visual state should not be reset
-    private ArraySet<TaskView> mIgnoreResetTaskViews = new ArraySet<>();
+    private final ArraySet<TaskView> mIgnoreResetTaskViews = new ArraySet<>();
 
     // Variables for empty state
     private final Drawable mEmptyIcon;
@@ -250,13 +255,13 @@ public abstract class RecentsView<T extends BaseDraggingActivity> extends PagedV
     private boolean mShowEmptyMessage;
     private Layout mEmptyTextLayout;
 
-    private BaseActivity.MultiWindowModeChangedListener mMultiWindowModeChangedListener =
+    private final BaseActivity.MultiWindowModeChangedListener mMultiWindowModeChangedListener =
             (inMultiWindowMode) -> {
-        if (!inMultiWindowMode && mOverviewStateEnabled) {
-            // TODO: Re-enable layout transitions for addition of the unpinned task
-            reloadIfNeeded();
-        }
-    };
+                if (!inMultiWindowMode && mOverviewStateEnabled) {
+                    // TODO: Re-enable layout transitions for addition of the unpinned task
+                    reloadIfNeeded();
+                }
+            };
 
     public RecentsView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);

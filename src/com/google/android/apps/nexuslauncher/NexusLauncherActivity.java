@@ -4,15 +4,16 @@ import android.animation.AnimatorSet;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import fr.letmethink.lawnchair.FeedBridge;
-import fr.letmethink.lawnchair.settings.ui.SettingsActivity;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.Utilities;
 import com.google.android.apps.nexuslauncher.smartspace.SmartspaceView;
 import com.google.android.libraries.gsa.launcherclient.LauncherClient;
+import fr.letmethink.lawnchair.FeedBridge;
+import fr.letmethink.lawnchair.settings.ui.SettingsActivity;
 
 public class NexusLauncherActivity extends Launcher {
-    private NexusLauncher mLauncher;
+
+    private final NexusLauncher mLauncher;
 
     public NexusLauncherActivity() {
         mLauncher = new NexusLauncher(this);

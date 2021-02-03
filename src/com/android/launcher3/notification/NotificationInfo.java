@@ -27,13 +27,13 @@ import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.service.notification.StatusBarNotification;
 import android.view.View;
-import fr.letmethink.lawnchair.LawnchairUtilsKt;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.graphics.IconPalette;
 import com.android.launcher3.util.PackageUserKey;
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
 
 /**
  * An object that contains relevant information from a {@link StatusBarNotification}. This should
@@ -55,7 +55,7 @@ public class NotificationInfo implements View.OnClickListener {
     private int mBadgeIcon;
     private Drawable mIconDrawable;
     private int mIconColor;
-    private boolean mIsIconLarge;
+    private final boolean mIsIconLarge;
 
     /**
      * Extracts the data that we need from the StatusBarNotification.

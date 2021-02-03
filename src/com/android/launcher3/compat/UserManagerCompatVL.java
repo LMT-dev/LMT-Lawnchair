@@ -17,7 +17,6 @@
 package com.android.launcher3.compat;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -116,7 +115,7 @@ public class UserManagerCompatVL extends UserManagerCompat {
         }
 
         List<UserHandle> users = mUserManager.getUserProfiles();
-        return users == null ? Collections.<UserHandle>emptyList() : users;
+        return users == null ? Collections.emptyList() : users;
     }
 
     @Override

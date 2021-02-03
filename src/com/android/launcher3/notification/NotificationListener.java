@@ -16,6 +16,8 @@
 
 package com.android.launcher3.notification;
 
+import static fr.letmethink.lawnchair.settings.ui.SettingsActivity.NOTIFICATION_BADGING;
+
 import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -31,12 +33,10 @@ import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.Log;
 import android.util.Pair;
-
 import com.android.launcher3.LauncherModel;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.util.PackageUserKey;
 import com.android.launcher3.util.SettingsObserver;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -44,8 +44,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import static fr.letmethink.lawnchair.settings.ui.SettingsActivity.NOTIFICATION_BADGING;
 
 /**
  * A {@link NotificationListenerService} that sends updates to its
@@ -174,7 +172,7 @@ public class NotificationListener extends NotificationListenerService {
             // User turned off badging globally, so we unbound this service;
             // tell the listener that there are no notifications to remove dots.
             sNotificationsChangedListener.onNotificationFullRefresh(
-                    Collections.<StatusBarNotification>emptyList());
+                    Collections.emptyList());
         }
     }
 
@@ -339,7 +337,7 @@ public class NotificationListener extends NotificationListenerService {
                 .getActiveNotifications(NotificationKeyData.extractKeysOnly(keys)
                         .toArray(new String[keys.size()]));
         return notifications == null
-                ? Collections.<StatusBarNotification>emptyList() : Arrays.asList(notifications);
+                ? Collections.emptyList() : Arrays.asList(notifications);
     }
 
     /**

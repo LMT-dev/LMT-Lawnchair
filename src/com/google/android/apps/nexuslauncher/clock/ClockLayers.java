@@ -5,12 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
-
 import android.os.Process;
-import fr.letmethink.lawnchair.iconpack.AdaptiveIconCompat;
 import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.graphics.LauncherIcons;
-
+import fr.letmethink.lawnchair.iconpack.AdaptiveIconCompat;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -63,9 +61,12 @@ public class ClockLayers {
         if (mDrawable instanceof AdaptiveIconCompat) {
             icon = new AdaptiveIconCompat(icon, null);
         }
-        iconBitmap = launcherIcons.createBadgedIconBitmap(icon, Process.myUserHandle(), 26, false, tmp).icon;
+        iconBitmap = launcherIcons
+                .createBadgedIconBitmap(icon, Process.myUserHandle(), 26, false, tmp).icon;
         scale = tmp[0];
-        offset = (int) Math.ceil((double) (0.0104167f * ((float) LauncherAppState.getInstance(context).getInvariantDeviceProfile().iconBitmapSize)));
+        offset = (int) Math.ceil(
+                0.0104167f * ((float) LauncherAppState.getInstance(context)
+                        .getInvariantDeviceProfile().iconBitmapSize));
         launcherIcons.recycle();
     }
 

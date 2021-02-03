@@ -15,6 +15,9 @@
  */
 package com.android.launcher3.graphics;
 
+import static com.android.launcher3.Utilities.getDevicePrefs;
+import static com.android.launcher3.Utilities.getPrefs;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -26,19 +29,13 @@ import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.text.TextUtils;
 import android.util.Log;
-
-import fr.letmethink.lawnchair.iconpack.AdaptiveIconCompat;
 import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.LauncherModel;
 import com.android.launcher3.Utilities;
-
 import com.android.launcher3.util.LooperExecutor;
+import fr.letmethink.lawnchair.iconpack.AdaptiveIconCompat;
 import java.lang.reflect.Field;
 import java.util.Arrays;
-
-import static com.android.launcher3.Utilities.getDevicePrefs;
-import static com.android.launcher3.Utilities.getPrefs;
-import static com.android.launcher3.Utilities.restartLauncher;
 
 /**
  * Utility class to override shape of {@link android.graphics.drawable.AdaptiveIconDrawable}.
@@ -120,7 +117,7 @@ public class IconShapeOverride {
         String devValue = getDevicePrefs(context).getString(KEY_PREFERENCE, "");
         if (!TextUtils.isEmpty(devValue)) {
             // Migrate to general preferences to back up shape overrides
-            getPrefs(context).edit().putString(KEY_PREFERENCE, devValue).apply();;
+            getPrefs(context).edit().putString(KEY_PREFERENCE, devValue).apply();
             getDevicePrefs(context).edit().remove(KEY_PREFERENCE).apply();
         }
 

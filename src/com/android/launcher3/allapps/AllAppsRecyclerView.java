@@ -26,9 +26,6 @@ import android.util.AttributeSet;
 import android.util.SparseIntArray;
 import android.view.MotionEvent;
 import android.view.View;
-
-import fr.letmethink.lawnchair.colors.ColorEngine.ColorResolver;
-import fr.letmethink.lawnchair.colors.ColorEngine.ResolveInfo;
 import com.android.launcher3.BaseRecyclerView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ItemInfo;
@@ -40,7 +37,8 @@ import com.android.launcher3.logging.UserEventDispatcher.LogContainerProvider;
 import com.android.launcher3.userevent.nano.LauncherLogProto.ContainerType;
 import com.android.launcher3.userevent.nano.LauncherLogProto.Target;
 import com.android.launcher3.views.RecyclerViewFastScroller;
-
+import fr.letmethink.lawnchair.colors.ColorEngine.ColorResolver;
+import fr.letmethink.lawnchair.colors.ColorEngine.ResolveInfo;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
@@ -54,12 +52,12 @@ public class AllAppsRecyclerView extends BaseRecyclerView implements LogContaine
     private final int mNumAppsPerRow;
 
     // The specific view heights that we use to calculate scroll
-    private SparseIntArray mViewHeights = new SparseIntArray();
-    private SparseIntArray mCachedScrollPositions = new SparseIntArray();
+    private final SparseIntArray mViewHeights = new SparseIntArray();
+    private final SparseIntArray mCachedScrollPositions = new SparseIntArray();
 
     // The empty-search result background
     private AllAppsBackgroundDrawable mEmptySearchBackground;
-    private int mEmptySearchBackgroundTopOffset;
+    private final int mEmptySearchBackgroundTopOffset;
 
     private float mSpringShift;
 

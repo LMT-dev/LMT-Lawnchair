@@ -20,21 +20,20 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.view.View;
-
 import com.android.launcher3.util.Thunk;
 
 /**
- * A convenience class for two-way animations, e.g. a fadeIn/fadeOut animation.
- * With a regular ValueAnimator, if you call reverse to show the 'out' animation, you'll get
- * a frame-by-frame mirror of the 'in' animation -- i.e., the interpolated values will
- * be exactly reversed. Using this class, both the 'in' and the 'out' animation use the
- * interpolator in the same direction.
+ * A convenience class for two-way animations, e.g. a fadeIn/fadeOut animation. With a regular
+ * ValueAnimator, if you call reverse to show the 'out' animation, you'll get a frame-by-frame
+ * mirror of the 'in' animation -- i.e., the interpolated values will be exactly reversed. Using
+ * this class, both the 'in' and the 'out' animation use the interpolator in the same direction.
  */
 public class InterruptibleInOutAnimator {
-    private long mOriginalDuration;
-    private float mOriginalFromValue;
-    private float mOriginalToValue;
-    private ValueAnimator mAnimator;
+
+    private final long mOriginalDuration;
+    private final float mOriginalFromValue;
+    private final float mOriginalToValue;
+    private final ValueAnimator mAnimator;
 
     private boolean mFirstRun = true;
 

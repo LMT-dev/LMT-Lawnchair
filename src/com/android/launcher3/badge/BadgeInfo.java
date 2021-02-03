@@ -19,7 +19,6 @@ package com.android.launcher3.badge;
 import com.android.launcher3.notification.NotificationInfo;
 import com.android.launcher3.notification.NotificationKeyData;
 import com.android.launcher3.util.PackageUserKey;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,14 +29,16 @@ public class BadgeInfo {
 
     public static final int MAX_COUNT = 999;
 
-    /** Used to link this BadgeInfo to icons on the workspace and all apps */
-    private PackageUserKey mPackageUserKey;
+    /**
+     * Used to link this BadgeInfo to icons on the workspace and all apps
+     */
+    private final PackageUserKey mPackageUserKey;
 
     /**
-     * The keys of the notifications that this badge represents. These keys can later be
-     * used to retrieve {@link NotificationInfo}'s.
+     * The keys of the notifications that this badge represents. These keys can later be used to
+     * retrieve {@link NotificationInfo}'s.
      */
-    private List<NotificationKeyData> mNotificationKeys;
+    private final List<NotificationKeyData> mNotificationKeys;
 
     /**
      * The current sum of the counts in {@link #mNotificationKeys},

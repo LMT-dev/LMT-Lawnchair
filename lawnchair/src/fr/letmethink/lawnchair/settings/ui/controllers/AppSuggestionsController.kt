@@ -22,6 +22,4 @@ import android.support.annotation.Keep
 import fr.letmethink.lawnchair.settings.ui.PreferenceController
 
 @Keep
-class AppSuggestionsController(context: Context) : PreferenceController(context) {
-
-}
+class AppSuggestionsController(context: Context) : PreferenceController(context)

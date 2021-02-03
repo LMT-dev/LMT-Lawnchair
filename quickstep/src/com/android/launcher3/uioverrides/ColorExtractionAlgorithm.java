@@ -24,10 +24,8 @@ import android.support.v4.graphics.ColorUtils;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Range;
-
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -55,7 +53,7 @@ public class ColorExtractionAlgorithm {
     public static final int SECONDARY_COLOR_DARK = 0xff000000;
 
     // Temporary variable to avoid allocations
-    private float[] mTmpHSL = new float[3];
+    private final float[] mTmpHSL = new float[3];
 
     public Pair<Integer, Integer> extractInto(WallpaperColorsCompat inWallpaperColors) {
         if (inWallpaperColors == null) {
@@ -750,9 +748,10 @@ public class ColorExtractionAlgorithm {
      * </ul>
      */
     static class ColorRange {
-        private Range<Float> mHue;
-        private Range<Float> mSaturation;
-        private Range<Float> mLightness;
+
+        private final Range<Float> mHue;
+        private final Range<Float> mSaturation;
+        private final Range<Float> mLightness;
 
         ColorRange(Range<Float> hue, Range<Float> saturation, Range<Float> lightness) {
             mHue = hue;
@@ -765,10 +764,9 @@ public class ColorExtractionAlgorithm {
                 return false;
             } else if (!mSaturation.contains(s)) {
                 return false;
-            } else if (!mLightness.contains(l)) {
-                return false;
+            } else {
+                return mLightness.contains(l);
             }
-            return true;
         }
 
         float[] getCenter() {

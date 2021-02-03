@@ -26,12 +26,12 @@ import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.os.IBinder
 import android.support.v4.content.ContextCompat
+import com.android.launcher3.LauncherAppState
+import com.android.launcher3.util.PackageManagerHelper
 import fr.letmethink.lawnchair.lawnchairPrefs
 import fr.letmethink.lawnchair.runOnMainThread
 import fr.letmethink.lawnchair.util.LawnchairSingletonHolder
 import fr.letmethink.lawnchair.util.extensions.e
-import com.android.launcher3.LauncherAppState
-import com.android.launcher3.util.PackageManagerHelper
 import xyz.paphonb.systemuituner.ICustomNavBar
 
 class CustomNavBar(private val context: Context) {
@@ -107,6 +107,6 @@ class CustomNavBar(private val context: Context) {
         private const val NAVBAR_SERVICE_ACTION = "$PACKAGE.intent.action.NAVBAR_SERVICE"
         const val MODIFY_NAVBAR_PERMISSION = "$PACKAGE.permission.MODIFY_NAVBAR"
 
-        private val serviceIntent = Intent(NAVBAR_SERVICE_ACTION).setPackage(PACKAGE)!!
+        private val serviceIntent = Intent(NAVBAR_SERVICE_ACTION).setPackage(PACKAGE)
     }
 }

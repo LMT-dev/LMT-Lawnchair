@@ -47,8 +47,6 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
-
-import fr.letmethink.lawnchair.groups.DrawerFolderInfo;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.Alarm;
 import com.android.launcher3.AppInfo;
@@ -82,8 +80,8 @@ import com.android.launcher3.userevent.nano.LauncherLogProto.Target;
 import com.android.launcher3.util.Thunk;
 import com.android.launcher3.views.ClipPathView;
 import com.android.launcher3.widget.PendingAddShortcutInfo;
-
 import com.google.android.apps.nexuslauncher.CustomBottomSheet;
+import fr.letmethink.lawnchair.groups.DrawerFolderInfo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -946,7 +944,7 @@ public class Folder extends AbstractFloatingView implements DragSource,
         DeviceProfile grid = mLauncher.getDeviceProfile();
 
         DragLayer.LayoutParams lp = (DragLayer.LayoutParams) getLayoutParams();
-        DragLayer parent = (DragLayer) mLauncher.findViewById(R.id.drag_layer);
+        DragLayer parent = mLauncher.findViewById(R.id.drag_layer);
         int width = getFolderWidth();
         int height = getFolderHeight();
 
@@ -1530,9 +1528,7 @@ public class Folder extends AbstractFloatingView implements DragSource,
             } else if (!dl.isEventOverView(this, ev)) {
                 if (mLauncher.getAccessibilityDelegate().isInAccessibleDrag()) {
                     // Do not close the container if in drag and drop.
-                    if (!dl.isEventOverView(mLauncher.getDropTargetBar(), ev)) {
-                        return true;
-                    }
+                    return !dl.isEventOverView(mLauncher.getDropTargetBar(), ev);
                 } else {
                     mLauncher.getUserEventDispatcher().logActionTapOutside(
                             LoggerUtils.newContainerTarget(ContainerType.FOLDER));

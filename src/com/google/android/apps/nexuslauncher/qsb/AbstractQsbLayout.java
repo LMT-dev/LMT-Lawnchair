@@ -40,9 +40,6 @@ import android.view.View.OnLongClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.android.launcher3.graphics.IconShape;
-import fr.letmethink.lawnchair.globalsearch.SearchProvider;
-import fr.letmethink.lawnchair.globalsearch.SearchProviderController;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Insettable;
 import com.android.launcher3.Launcher;
@@ -50,11 +47,14 @@ import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.compat.LauncherAppsCompat;
+import com.android.launcher3.graphics.IconShape;
 import com.android.launcher3.graphics.NinePatchDrawHelper;
 import com.android.launcher3.graphics.ShadowGenerator.Builder;
 import com.android.launcher3.util.Themes;
 import com.android.launcher3.util.TransformingTouchDelegate;
 import com.google.android.apps.nexuslauncher.NexusLauncherActivity;
+import fr.letmethink.lawnchair.globalsearch.SearchProvider;
+import fr.letmethink.lawnchair.globalsearch.SearchProviderController;
 
 public abstract class AbstractQsbLayout extends FrameLayout implements OnSharedPreferenceChangeListener,
         OnClickListener, OnLongClickListener, Insettable, SearchProviderController.OnProviderChangeListener {
@@ -403,9 +403,7 @@ public abstract class AbstractQsbLayout extends FrameLayout implements OnSharedP
 
     protected final boolean dE() {
         if (!this.Dh) {
-            if (!this.mUseTwoBubbles) {
-                return false;
-            }
+            return this.mUseTwoBubbles;
         }
         return true;
     }

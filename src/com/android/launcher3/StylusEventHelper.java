@@ -10,17 +10,22 @@ import android.view.ViewConfiguration;
  */
 public class StylusEventHelper {
 
+    private final View mView;
+    private final StylusButtonListener mListener;
+    private boolean mIsButtonPressed;
+
     /**
      * Implement this interface to receive callbacks for a stylus button press and release.
      */
     public interface StylusButtonListener {
+
         /**
          * Called when the stylus button is pressed.
          *
          * @param event The MotionEvent that the button press occurred for.
          * @return Whether the event was handled.
          */
-        public boolean onPressed(MotionEvent event);
+        boolean onPressed(MotionEvent event);
 
         /**
          * Called when the stylus button is released after a button press. This is also called if
@@ -29,12 +34,8 @@ public class StylusEventHelper {
          * @param event The MotionEvent the button release occurred for.
          * @return Whether the event was handled.
          */
-        public boolean onReleased(MotionEvent event);
+        boolean onReleased(MotionEvent event);
     }
-
-    private boolean mIsButtonPressed;
-    private View mView;
-    private StylusButtonListener mListener;
     private final float mSlop;
 
     /**

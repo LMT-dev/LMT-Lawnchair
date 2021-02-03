@@ -16,9 +16,7 @@
 package com.android.launcher3.allapps;
 
 import android.support.v7.widget.RecyclerView;
-
 import com.android.launcher3.util.Thunk;
-
 import java.util.HashSet;
 import java.util.List;
 
@@ -27,32 +25,36 @@ public class AllAppsFastScrollHelper implements AllAppsGridAdapter.BindViewCallb
     private static final int INITIAL_TOUCH_SETTLING_DURATION = 100;
     private static final int REPEAT_TOUCH_SETTLING_DURATION = 200;
 
-    private AllAppsRecyclerView mRv;
-    private AlphabeticalAppsList mApps;
+    private final AllAppsRecyclerView mRv;
+    private final AlphabeticalAppsList mApps;
 
     // Keeps track of the current and targeted fast scroll section (the section to scroll to after
     // the initial delay)
     int mTargetFastScrollPosition = -1;
-    @Thunk String mCurrentFastScrollSection;
-    @Thunk String mTargetFastScrollSection;
+    // Set of all views animated during fast scroll.  We keep track of these ourselves since there
+    // is no way to reset a view once it gets scrapped or recycled without other hacks
+    private final HashSet<RecyclerView.ViewHolder> mTrackedFastScrollViews = new HashSet<>();
+    @Thunk
+    String mCurrentFastScrollSection;
 
     // The settled states affect the delay before the fast scroll animation is applied
     private boolean mHasFastScrollTouchSettled;
     private boolean mHasFastScrollTouchSettledAtLeastOnce;
-
-    // Set of all views animated during fast scroll.  We keep track of these ourselves since there
-    // is no way to reset a view once it gets scrapped or recycled without other hacks
-    private HashSet<RecyclerView.ViewHolder> mTrackedFastScrollViews = new HashSet<>();
+    @Thunk
+    String mTargetFastScrollSection;
 
     // Smooth fast-scroll animation frames
-    @Thunk int mFastScrollFrameIndex;
-    @Thunk final int[] mFastScrollFrames = new int[10];
+    @Thunk
+    int mFastScrollFrameIndex;
+    @Thunk
+    final int[] mFastScrollFrames = new int[10];
 
     /**
-     * This runnable runs a single frame of the smooth scroll animation and posts the next frame
-     * if necessary.
+     * This runnable runs a single frame of the smooth scroll animation and posts the next frame if
+     * necessary.
      */
-    @Thunk Runnable mSmoothSnapNextFrameRunnable = new Runnable() {
+    @Thunk
+    Runnable mSmoothSnapNextFrameRunnable = new Runnable() {
         @Override
         public void run() {
             if (mFastScrollFrameIndex < mFastScrollFrames.length) {

@@ -32,7 +32,6 @@ import android.animation.ValueAnimator;
 import android.os.SystemClock;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
-
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherAnimUtils;
 import com.android.launcher3.LauncherState;
@@ -84,7 +83,7 @@ public abstract class AbstractStateChangeTouchController
     private float mProgressMultiplier;
     private float mDisplacementShift;
     private boolean mCanBlockFling;
-    private FlingBlockCheck mFlingBlockCheck = new FlingBlockCheck();
+    private final FlingBlockCheck mFlingBlockCheck = new FlingBlockCheck();
 
     protected AnimatorSet mAtomicAnim;
     // True if we want to resume playing atomic components when mAtomicAnim completes.

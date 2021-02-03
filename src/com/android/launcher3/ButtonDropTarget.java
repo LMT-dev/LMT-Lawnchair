@@ -17,7 +17,6 @@
 package com.android.launcher3;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-
 import static com.android.launcher3.LauncherState.NORMAL;
 
 import android.animation.AnimatorSet;
@@ -39,7 +38,6 @@ import android.view.View.OnClickListener;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
 import com.android.launcher3.anim.Interpolators;
 import com.android.launcher3.dragndrop.DragController;
 import com.android.launcher3.dragndrop.DragLayer;
@@ -64,7 +62,7 @@ public abstract class ButtonDropTarget extends TextView
 
     protected final Launcher mLauncher;
 
-    private int mBottomDragPadding;
+    private final int mBottomDragPadding;
     protected DropTargetBar mDropTargetBar;
 
     /** Whether this drop target is active for the current drag */

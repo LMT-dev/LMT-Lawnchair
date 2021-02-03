@@ -28,7 +28,6 @@ import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.android.launcher3.BaseActivity;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.R;
@@ -70,7 +69,7 @@ public class WidgetCell extends LinearLayout implements OnLayoutChangeListener {
     protected WidgetItem mItem;
 
     private WidgetPreviewLoader mWidgetPreviewLoader;
-    private StylusEventHelper mStylusEventHelper;
+    private final StylusEventHelper mStylusEventHelper;
 
     protected CancellationSignal mActiveRequest;
     private boolean mAnimatePreview = true;
@@ -110,9 +109,9 @@ public class WidgetCell extends LinearLayout implements OnLayoutChangeListener {
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        mWidgetImage = (WidgetImageView) findViewById(R.id.widget_preview);
-        mWidgetName = ((TextView) findViewById(R.id.widget_name));
-        mWidgetDims = ((TextView) findViewById(R.id.widget_dims));
+        mWidgetImage = findViewById(R.id.widget_preview);
+        mWidgetName = findViewById(R.id.widget_name);
+        mWidgetDims = findViewById(R.id.widget_dims);
     }
 
     /**

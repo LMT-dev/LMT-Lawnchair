@@ -22,9 +22,9 @@ import android.content.pm.PackageManager
 import android.support.annotation.Keep
 import android.support.v7.preference.Preference
 import android.text.TextUtils
+import com.android.launcher3.R
 import fr.letmethink.lawnchair.FeedBridge
 import fr.letmethink.lawnchair.settings.ui.PreferenceController
-import com.android.launcher3.R
 
 @Keep
 class MinusOneController(context: Context) : PreferenceController(context) {
@@ -38,10 +38,6 @@ class MinusOneController(context: Context) : PreferenceController(context) {
         } else {
             true
         }
-    }
-
-    override fun onPreferenceAdded(preference: Preference): Boolean {
-        return super.onPreferenceAdded(preference)
     }
 
     private fun getDisplayGoogleTitle(): String {

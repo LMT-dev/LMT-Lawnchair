@@ -62,6 +62,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import com.android.launcher3.BuildConfig;
+import com.android.launcher3.LauncherFiles;
+import com.android.launcher3.LauncherSettings.Favorites;
+import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
+import com.android.launcher3.compat.LauncherAppsCompat;
+import com.android.launcher3.notification.NotificationListener;
+import com.android.launcher3.util.ComponentKey;
+import com.android.launcher3.util.ContentWriter;
+import com.android.launcher3.util.ContentWriter.CommitParams;
+import com.android.launcher3.util.SettingsObserver;
+import com.android.launcher3.views.ButtonPreference;
+import com.google.android.apps.nexuslauncher.reflection.ReflectionClient;
 import fr.letmethink.lawnchair.FakeLauncherKt;
 import fr.letmethink.lawnchair.FeedBridge;
 import fr.letmethink.lawnchair.LawnchairLauncher;
@@ -86,19 +99,6 @@ import fr.letmethink.lawnchair.smartspace.OnboardingProvider;
 import fr.letmethink.lawnchair.theme.ThemeOverride;
 import fr.letmethink.lawnchair.theme.ThemeOverride.ThemeSet;
 import fr.letmethink.lawnchair.views.SpringRecyclerView;
-import com.android.launcher3.BuildConfig;
-import com.android.launcher3.LauncherFiles;
-import com.android.launcher3.LauncherSettings.Favorites;
-import com.android.launcher3.R;
-import com.android.launcher3.Utilities;
-import com.android.launcher3.compat.LauncherAppsCompat;
-import com.android.launcher3.notification.NotificationListener;
-import com.android.launcher3.util.ComponentKey;
-import com.android.launcher3.util.ContentWriter;
-import com.android.launcher3.util.ContentWriter.CommitParams;
-import com.android.launcher3.util.SettingsObserver;
-import com.android.launcher3.views.ButtonPreference;
-import com.google.android.apps.nexuslauncher.reflection.ReflectionClient;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Set;
@@ -376,7 +376,7 @@ public class SettingsActivity extends SettingsBaseActivity implements
 
         private RecyclerView.Adapter mCurrentRootAdapter;
         private boolean mIsDataSetObserverRegistered = false;
-        private RecyclerView.AdapterDataObserver mDataSetObserver =
+        private final RecyclerView.AdapterDataObserver mDataSetObserver =
                 new RecyclerView.AdapterDataObserver() {
                     @Override
                     public void onChanged() {

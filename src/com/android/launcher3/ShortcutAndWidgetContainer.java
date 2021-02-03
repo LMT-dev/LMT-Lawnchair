@@ -24,11 +24,10 @@ import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.settings.ui.SettingsActivity;
 import com.android.launcher3.CellLayout.ContainerType;
 import com.android.launcher3.widget.LauncherAppWidgetHostView;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.settings.ui.SettingsActivity;
 import org.jetbrains.annotations.NotNull;
 
 public class ShortcutAndWidgetContainer extends ViewGroup implements LawnchairPreferences.OnPreferenceChangeListener {
@@ -46,10 +45,10 @@ public class ShortcutAndWidgetContainer extends ViewGroup implements LawnchairPr
 
     private int mCountX;
 
-    private Launcher mLauncher;
+    private final Launcher mLauncher;
     private boolean mInvertIfRtl = false;
 
-    private LawnchairPreferences mPrefs;
+    private final LawnchairPreferences mPrefs;
 
     public ShortcutAndWidgetContainer(Context context, @ContainerType int containerType) {
         super(context);

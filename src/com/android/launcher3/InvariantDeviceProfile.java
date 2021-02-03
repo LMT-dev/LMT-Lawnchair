@@ -29,34 +29,31 @@ import android.util.DisplayMetrics;
 import android.util.Xml;
 import android.view.Display;
 import android.view.WindowManager;
-
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.settings.IconScale;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.util.Thunk;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.settings.IconScale;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 public class InvariantDeviceProfile {
 
     // This is a static that we use for the default icon size on a 4/5-inch phone
-    private static float DEFAULT_ICON_SIZE_DP = 60;
+    private static final float DEFAULT_ICON_SIZE_DP = 60;
 
     private static final float ICON_SIZE_DEFINED_IN_APP_DP = 48;
 
     // Constants that affects the interpolation curve between statically defined device profile
     // buckets.
-    private static float KNEARESTNEIGHBOR = 3;
-    private static float WEIGHT_POWER = 5;
+    private static final float KNEARESTNEIGHBOR = 3;
+    private static final float WEIGHT_POWER = 5;
 
     // used to offset float not being able to express extremely small weights in extreme cases.
-    private static float WEIGHT_EFFICIENT = 100000f;
+    private static final float WEIGHT_EFFICIENT = 100000f;
 
     // Profile-defining invariant properties
     String name;

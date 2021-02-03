@@ -27,14 +27,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckedTextView
-import fr.letmethink.lawnchair.addOrRemove
-import fr.letmethink.lawnchair.applyAccent
-import fr.letmethink.lawnchair.lawnchairPrefs
-import fr.letmethink.lawnchair.groups.DrawerTabs
-import fr.letmethink.lawnchair.groups.ui.AppCategorizationFragment
-import fr.letmethink.lawnchair.settings.ui.SettingsActivity
 import com.android.launcher3.R
 import com.android.launcher3.util.ComponentKey
+import fr.letmethink.lawnchair.addOrRemove
+import fr.letmethink.lawnchair.applyAccent
+import fr.letmethink.lawnchair.groups.DrawerTabs
+import fr.letmethink.lawnchair.groups.ui.AppCategorizationFragment
+import fr.letmethink.lawnchair.lawnchairPrefs
+import fr.letmethink.lawnchair.settings.ui.SettingsActivity
 
 class MultiSelectTabPreference(context: Context, attrs: AttributeSet?) : LauncherRecyclerViewPreference(context, attrs) {
 
@@ -42,9 +42,7 @@ class MultiSelectTabPreference(context: Context, attrs: AttributeSet?) : Launche
     private val selections = mutableMapOf<DrawerTabs.CustomTab, Boolean>()
     private val tabs = context.lawnchairPrefs.drawerTabs.getGroups().mapNotNull { it as? DrawerTabs.CustomTab }
     var edited = false
-        private set(value) {
-            field = value
-        }
+        private set
 
     override fun onBindRecyclerView(recyclerView: RecyclerView) {
         recyclerView.adapter = Adapter()

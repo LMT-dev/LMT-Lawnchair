@@ -34,7 +34,6 @@ import android.support.v4.graphics.ColorUtils;
 import android.util.Property;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import com.android.launcher3.graphics.IconShape;
 import com.android.launcher3.BubbleTextView;
 import com.android.launcher3.CellLayout;
 import com.android.launcher3.Launcher;
@@ -45,27 +44,27 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.anim.Interpolators;
 import com.android.launcher3.anim.PropertyResetListener;
 import com.android.launcher3.dragndrop.DragLayer;
+import com.android.launcher3.graphics.IconShape;
 import com.android.launcher3.util.Themes;
 import java.util.List;
 
 /**
  * Manages the opening and closing animations for a {@link Folder}.
  *
- * All of the animations are done in the Folder.
- * ie. When the user taps on the FolderIcon, we immediately hide the FolderIcon and show the Folder
- * in its place before starting the animation.
+ * All of the animations are done in the Folder. ie. When the user taps on the FolderIcon, we
+ * immediately hide the FolderIcon and show the Folder in its place before starting the animation.
  */
 public class FolderAnimationManager {
 
-    private Folder mFolder;
-    private FolderPagedView mContent;
-    private GradientDrawable mFolderBackground;
+    private final Folder mFolder;
+    private final FolderPagedView mContent;
+    private final GradientDrawable mFolderBackground;
 
-    private FolderIcon mFolderIcon;
-    private PreviewBackground mPreviewBackground;
+    private final FolderIcon mFolderIcon;
+    private final PreviewBackground mPreviewBackground;
 
-    private Context mContext;
-    private Launcher mLauncher;
+    private final Context mContext;
+    private final Launcher mLauncher;
 
     private final boolean mIsOpening;
 

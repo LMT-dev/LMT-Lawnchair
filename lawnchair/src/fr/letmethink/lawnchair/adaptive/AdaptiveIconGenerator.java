@@ -31,15 +31,14 @@ import android.support.annotation.NonNull;
 import android.support.v4.graphics.ColorUtils;
 import android.util.Log;
 import android.util.SparseIntArray;
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.iconpack.AdaptiveIconCompat;
-import fr.letmethink.lawnchair.iconpack.LawnchairIconProvider;
-
 import com.android.launcher3.Utilities;
 import com.android.launcher3.graphics.ColorExtractor;
 import com.android.launcher3.graphics.FixedScaleDrawable;
 import com.android.launcher3.graphics.IconNormalizer;
 import com.android.launcher3.graphics.LauncherIcons;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.iconpack.AdaptiveIconCompat;
+import fr.letmethink.lawnchair.iconpack.LawnchairIconProvider;
 
 // TODO: Make this thing async somehow (maybe using some drawable wrappers?)
 public class AdaptiveIconGenerator {
@@ -56,14 +55,14 @@ public class AdaptiveIconGenerator {
     // Minimal alpha to be considered opaque
     private static final int MIN_VISIBLE_ALPHA = 0xEF;
 
-    private Context context;
-    private Drawable icon;
+    private final Context context;
+    private final Drawable icon;
 
     private final boolean extractColor;
     private final boolean treatWhite;
 
     private boolean ranLoop;
-    private boolean shouldWrap;
+    private final boolean shouldWrap;
     private int backgroundColor = Color.WHITE;
     private boolean isFullBleed;
     private boolean noMixinNeeded;

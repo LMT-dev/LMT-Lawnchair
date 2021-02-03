@@ -1,7 +1,11 @@
 package com.google.android.apps.nexuslauncher.smartspace;
 
 import android.animation.ValueAnimator;
-import android.content.*;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
+import android.content.ContentUris;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -26,6 +30,18 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.android.launcher3.BubbleTextView;
+import com.android.launcher3.ItemInfo;
+import com.android.launcher3.Launcher;
+import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
+import com.android.launcher3.compat.LauncherAppsCompat;
+import com.android.launcher3.graphics.ShadowGenerator;
+import com.android.launcher3.util.Themes;
+import com.google.android.apps.nexuslauncher.DynamicIconProvider;
+import com.google.android.apps.nexuslauncher.NexusLauncherActivity;
+import com.google.android.apps.nexuslauncher.graphics.DoubleShadowTextView;
+import com.google.android.apps.nexuslauncher.graphics.IcuDateTextView;
 import fr.letmethink.lawnchair.LawnchairAppKt;
 import fr.letmethink.lawnchair.LawnchairPreferences;
 import fr.letmethink.lawnchair.LawnchairUtilsKt;
@@ -34,14 +50,6 @@ import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController.CardData
 import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController.Line;
 import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController.WeatherData;
 import fr.letmethink.lawnchair.views.SmartspacePreview;
-import com.android.launcher3.*;
-import com.android.launcher3.compat.LauncherAppsCompat;
-import com.android.launcher3.graphics.ShadowGenerator;
-import com.android.launcher3.util.Themes;
-import com.google.android.apps.nexuslauncher.DynamicIconProvider;
-import com.google.android.apps.nexuslauncher.NexusLauncherActivity;
-import com.google.android.apps.nexuslauncher.graphics.DoubleShadowTextView;
-import com.google.android.apps.nexuslauncher.graphics.IcuDateTextView;
 import java.util.ArrayList;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
@@ -75,24 +83,24 @@ public class SmartspaceView extends FrameLayout implements ISmartspace, ValueAni
     private TextView mSubtitleText;
     private ViewGroup mSubtitleWeatherContent;
     private ImageView mSubtitleWeatherIcon;
-    private boolean mEnableShadow;
+    private final boolean mEnableShadow;
     private final Handler mHandler;
 
-    private LawnchairSmartspaceController mController;
+    private final LawnchairSmartspaceController mController;
     private boolean mFinishedInflate;
     private boolean mWeatherAvailable;
-    private LawnchairPreferences mPrefs;
+    private final LawnchairPreferences mPrefs;
 
-    private ShadowGenerator mShadowGenerator;
+    private final ShadowGenerator mShadowGenerator;
 
-    private int mTitleSize;
-    private int mTitleMinSize;
-    private int mHorizontalPadding;
-    private int mSeparatorWidth;
-    private int mWeatherIconSize;
+    private final int mTitleSize;
+    private final int mTitleMinSize;
+    private final int mHorizontalPadding;
+    private final int mSeparatorWidth;
+    private final int mWeatherIconSize;
 
-    private Paint mTextPaint = new Paint();
-    private Rect mTextBounds = new Rect();
+    private final Paint mTextPaint = new Paint();
+    private final Rect mTextBounds = new Rect();
 
     private boolean mPerformingSetup = false;
 

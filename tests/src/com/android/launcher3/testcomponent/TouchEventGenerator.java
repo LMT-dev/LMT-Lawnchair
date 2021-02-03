@@ -21,7 +21,6 @@ import android.view.InputDevice;
 import android.view.MotionEvent;
 import android.view.MotionEvent.PointerCoords;
 import android.view.MotionEvent.PointerProperties;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +42,7 @@ public class TouchEventGenerator {
     /**
      * The fingers currently present on the emulated touch screen.
      */
-    private Map<Integer, Point> mFingers;
+    private final Map<Integer, Point> mFingers;
 
     /**
      * Initial event time for the current sequence.

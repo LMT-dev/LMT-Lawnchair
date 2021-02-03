@@ -17,7 +17,6 @@ package com.android.quickstep;
 
 import static android.content.pm.ActivityInfo.CONFIG_ORIENTATION;
 import static android.content.pm.ActivityInfo.CONFIG_SCREEN_SIZE;
-
 import static com.android.launcher3.LauncherAppTransitionManagerImpl.RECENTS_LAUNCH_DURATION;
 import static com.android.launcher3.LauncherAppTransitionManagerImpl.STATUS_BAR_TRANSITION_DURATION;
 import static com.android.launcher3.LauncherAppTransitionManagerImpl.STATUS_BAR_TRANSITION_PRE_DELAY;
@@ -35,7 +34,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.BaseDraggingActivity;
 import com.android.launcher3.DeviceProfile;
@@ -58,7 +56,6 @@ import com.android.systemui.shared.system.ActivityOptionsCompat;
 import com.android.systemui.shared.system.RemoteAnimationAdapterCompat;
 import com.android.systemui.shared.system.RemoteAnimationRunnerCompat;
 import com.android.systemui.shared.system.RemoteAnimationTargetCompat;
-
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
@@ -67,7 +64,7 @@ import java.io.PrintWriter;
  */
 public class RecentsActivity extends BaseDraggingActivity {
 
-    private Handler mUiHandler = new Handler(Looper.getMainLooper());
+    private final Handler mUiHandler = new Handler(Looper.getMainLooper());
     private RecentsRootView mRecentsRootView;
     private FallbackRecentsView mFallbackRecentsView;
 

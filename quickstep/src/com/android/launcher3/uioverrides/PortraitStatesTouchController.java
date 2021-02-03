@@ -32,8 +32,6 @@ import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.view.MotionEvent;
 import android.view.animation.Interpolator;
-
-import fr.letmethink.lawnchair.LawnchairLauncher;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
@@ -51,6 +49,7 @@ import com.android.quickstep.RecentsModel;
 import com.android.quickstep.TouchInteractionService;
 import com.android.quickstep.views.RecentsView;
 import com.android.quickstep.views.TaskView;
+import fr.letmethink.lawnchair.LawnchairLauncher;
 
 /**
  * Touch controller for handling various state transitions in portrait UI.
@@ -69,7 +68,7 @@ public class PortraitStatesTouchController extends AbstractStateChangeTouchContr
      */
     private static final float RECENTS_FADE_THRESHOLD = 0.88f;
 
-    private InterpolatorWrapper mAllAppsInterpolatorWrapper = new InterpolatorWrapper();
+    private final InterpolatorWrapper mAllAppsInterpolatorWrapper = new InterpolatorWrapper();
 
     // If true, we will finish the current animation instantly on second touch.
     private boolean mFinishFastOnSecondTouch;
@@ -118,10 +117,7 @@ public class PortraitStatesTouchController extends AbstractStateChangeTouchContr
         } else if ((ev.getEdgeFlags() & EDGE_NAV_BAR) != 0) {
             mGoToOverview = true;
         }
-        if (AbstractFloatingView.getTopOpenView(mLauncher) != null) {
-            return false;
-        }
-        return true;
+        return AbstractFloatingView.getTopOpenView(mLauncher) == null;
     }
 
     @Override

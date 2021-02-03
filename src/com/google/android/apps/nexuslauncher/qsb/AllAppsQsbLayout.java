@@ -13,6 +13,13 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
+import com.android.launcher3.BaseRecyclerView;
+import com.android.launcher3.Launcher;
+import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
+import com.android.launcher3.allapps.AllAppsContainerView;
+import com.android.launcher3.allapps.SearchUiManager;
+import com.google.android.apps.nexuslauncher.search.SearchThread;
 import fr.letmethink.lawnchair.LawnchairPreferences;
 import fr.letmethink.lawnchair.colors.ColorEngine;
 import fr.letmethink.lawnchair.colors.ColorEngine.ResolveInfo;
@@ -22,13 +29,6 @@ import fr.letmethink.lawnchair.globalsearch.SearchProviderController;
 import fr.letmethink.lawnchair.globalsearch.providers.AppSearchSearchProvider;
 import fr.letmethink.lawnchair.globalsearch.providers.GoogleSearchProvider;
 import fr.letmethink.lawnchair.globalsearch.providers.web.WebSearchProvider;
-import com.android.launcher3.BaseRecyclerView;
-import com.android.launcher3.Launcher;
-import com.android.launcher3.R;
-import com.android.launcher3.Utilities;
-import com.android.launcher3.allapps.AllAppsContainerView;
-import com.android.launcher3.allapps.SearchUiManager;
-import com.google.android.apps.nexuslauncher.search.SearchThread;
 import org.jetbrains.annotations.NotNull;
 
 public class AllAppsQsbLayout extends AbstractQsbLayout implements SearchUiManager, o,
@@ -44,7 +44,7 @@ public class AllAppsQsbLayout extends AbstractQsbLayout implements SearchUiManag
     private TextView mHint;
     private AllAppsContainerView mAppsView;
     boolean mDoNotRemoveFallback;
-    private LawnchairPreferences prefs;
+    private final LawnchairPreferences prefs;
     private int mForegroundColor;
 
     private final boolean mLowPerformanceMode;

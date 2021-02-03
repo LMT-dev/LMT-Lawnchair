@@ -6,9 +6,7 @@ import android.icu.text.AlphabeticIndex;
 import android.os.Build;
 import android.os.LocaleList;
 import android.util.Log;
-
 import com.android.launcher3.Utilities;
-
 import java.lang.reflect.Method;
 import java.util.Locale;
 
@@ -109,14 +107,14 @@ public class AlphabeticIndexCompat {
     }
 
     /**
-     * Reflected libcore.icu.AlphabeticIndex implementation, falls back to the base
-     * alphabetic index.
+     * Reflected libcore.icu.AlphabeticIndex implementation, falls back to the base alphabetic
+     * index.
      */
     private static class AlphabeticIndexV16 extends BaseIndex {
 
-        private Object mAlphabeticIndex;
-        private Method mGetBucketIndexMethod;
-        private Method mGetBucketLabelMethod;
+        private final Object mAlphabeticIndex;
+        private final Method mGetBucketIndexMethod;
+        private final Method mGetBucketLabelMethod;
 
         public AlphabeticIndexV16(Context context) throws Exception {
             Locale curLocale = context.getResources().getConfiguration().locale;

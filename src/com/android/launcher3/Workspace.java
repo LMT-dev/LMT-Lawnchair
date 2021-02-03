@@ -24,7 +24,12 @@ import static com.android.launcher3.LauncherState.NORMAL;
 import static com.android.launcher3.LauncherState.SPRING_LOADED;
 import static com.android.launcher3.dragndrop.DragLayer.ALPHA_INDEX_OVERLAY;
 
-import android.animation.*;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.LayoutTransition;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.annotation.SuppressLint;
 import android.app.WallpaperManager;
@@ -51,10 +56,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
-
-import fr.letmethink.lawnchair.ClockVisibilityManager;
-import fr.letmethink.lawnchair.LawnchairLauncher;
-import fr.letmethink.lawnchair.views.LawnchairBackgroundView;
 import com.android.launcher3.Launcher.LauncherOverlay;
 import com.android.launcher3.LauncherAppWidgetHost.ProviderChangedListener;
 import com.android.launcher3.LauncherStateManager.AnimationConfig;
@@ -91,7 +92,9 @@ import com.android.launcher3.widget.LauncherAppWidgetHostView;
 import com.android.launcher3.widget.PendingAddShortcutInfo;
 import com.android.launcher3.widget.PendingAddWidgetInfo;
 import com.android.launcher3.widget.PendingAppWidgetHostView;
-
+import fr.letmethink.lawnchair.ClockVisibilityManager;
+import fr.letmethink.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.views.LawnchairBackgroundView;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -1874,9 +1877,7 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
 
         if (dropOverView instanceof FolderIcon) {
             FolderIcon fi = (FolderIcon) dropOverView;
-            if (fi.acceptDrop(dragInfo)) {
-                return true;
-            }
+            return fi.acceptDrop(dragInfo);
         }
         return false;
     }
@@ -2910,7 +2911,7 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
         mLauncher.getDragLayer().getViewRectRelativeToSelf(dragView, from);
 
         int[] finalPos = new int[2];
-        float scaleXY[] = new float[2];
+        float[] scaleXY = new float[2];
         boolean scalePreview = !(info instanceof PendingAddShortcutInfo);
         getFinalPositionForDropAnimation(finalPos, scaleXY, dragView, cellLayout, info, mTargetCell,
                 scalePreview);

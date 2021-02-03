@@ -17,14 +17,9 @@ package com.android.launcher3.allapps;
 
 import android.content.Context;
 import android.content.pm.LauncherActivityInfo;
-
 import android.graphics.Color;
 import android.os.UserHandle;
 import android.support.v4.graphics.ColorUtils;
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.allapps.AppColorComparator;
-import fr.letmethink.lawnchair.groups.DrawerFolderInfo;
-import fr.letmethink.lawnchair.groups.DrawerFolderItem;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.IconCache;
 import com.android.launcher3.Launcher;
@@ -37,7 +32,10 @@ import com.android.launcher3.shortcuts.DeepShortcutManager;
 import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.util.ItemInfoMatcher;
 import com.android.launcher3.util.LabelComparator;
-
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.allapps.AppColorComparator;
+import fr.letmethink.lawnchair.groups.DrawerFolderInfo;
+import fr.letmethink.lawnchair.groups.DrawerFolderItem;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -188,15 +186,15 @@ public class AlphabeticalAppsList implements AllAppsStore.OnUpdateListener {
 
     // The of ordered component names as a result of a search query
     private ArrayList<ComponentKey> mSearchResults;
-    private HashMap<AppInfo, String> mCachedSectionNames = new HashMap<>();
+    private final HashMap<AppInfo, String> mCachedSectionNames = new HashMap<>();
     private AllAppsGridAdapter mAdapter;
-    private AlphabeticIndexCompat mIndexer;
-    private AppInfoComparator mAppNameComparator;
-    private AppColorComparator mAppColorComparator;
+    private final AlphabeticIndexCompat mIndexer;
+    private final AppInfoComparator mAppNameComparator;
+    private final AppColorComparator mAppColorComparator;
     private final int mNumAppsPerRow;
     private int mNumAppRowsInAdapter;
     private ItemInfoMatcher mItemFilter;
-    private LawnchairPreferences prefs;
+    private final LawnchairPreferences prefs;
 
     private List<String> mSearchSuggestions;
 

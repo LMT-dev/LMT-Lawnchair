@@ -21,9 +21,7 @@ import static android.view.MotionEvent.ACTION_MOVE;
 import static android.view.MotionEvent.ACTION_POINTER_UP;
 import static android.view.MotionEvent.ACTION_UP;
 import static android.view.MotionEvent.INVALID_POINTER_ID;
-
-import static com.android.systemui.shared.system.ActivityManagerWrapper
-        .CLOSE_SYSTEM_WINDOWS_REASON_RECENTS;
+import static com.android.systemui.shared.system.ActivityManagerWrapper.CLOSE_SYSTEM_WINDOWS_REASON_RECENTS;
 import static com.android.systemui.shared.system.RemoteAnimationTargetCompat.MODE_CLOSING;
 
 import android.annotation.TargetApi;
@@ -45,7 +43,6 @@ import android.view.Surface;
 import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
-
 import com.android.launcher3.MainThreadExecutor;
 import com.android.launcher3.util.TraceHelper;
 import com.android.quickstep.util.RemoteAnimationTargetSet;
@@ -58,7 +55,6 @@ import com.android.systemui.shared.system.RecentsAnimationControllerCompat;
 import com.android.systemui.shared.system.RecentsAnimationListener;
 import com.android.systemui.shared.system.RemoteAnimationTargetCompat;
 import com.android.systemui.shared.system.WindowManagerWrapper;
-
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -90,7 +86,7 @@ public class OtherActivityTouchConsumer extends ContextWrapper implements TouchC
     private float mStartDisplacement;
     private WindowTransformSwipeHandler mInteractionHandler;
     private int mDisplayRotation;
-    private Rect mStableInsets = new Rect();
+    private final Rect mStableInsets = new Rect();
 
     private VelocityTracker mVelocityTracker;
     private MotionEventQueue mEventQueue;

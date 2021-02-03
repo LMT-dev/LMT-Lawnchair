@@ -34,7 +34,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -68,20 +74,22 @@ import android.util.Property;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
-import android.view.animation.Interpolator;
-
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Interpolator;
 import android.widget.Toast;
-import fr.letmethink.lawnchair.HiddenApiCompat;
-import fr.letmethink.lawnchair.LawnchairAppKt;
 import com.android.launcher3.compat.LauncherAppsCompat;
 import com.android.launcher3.config.FeatureFlags;
-
 import com.android.launcher3.graphics.BitmapInfo;
 import com.android.launcher3.graphics.LauncherIcons;
 import com.android.launcher3.uioverrides.OverviewState;
 import com.android.launcher3.util.PackageManagerHelper;
+import fr.letmethink.lawnchair.HiddenApiCompat;
+import fr.letmethink.lawnchair.LawnchairAppKt;
+import fr.letmethink.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.backup.RestoreBackupActivity;
+import fr.letmethink.lawnchair.settings.ui.SettingsActivity;
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.IOException;
@@ -98,11 +106,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import fr.letmethink.lawnchair.LawnchairLauncher;
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.backup.RestoreBackupActivity;
-import fr.letmethink.lawnchair.settings.ui.SettingsActivity;
 
 /**
  * Various utilities shared amongst the Launcher's classes.
@@ -478,21 +481,21 @@ public final class Utilities {
         return false;
     }
 
-    public static float dpiFromPx(int size, DisplayMetrics metrics){
+    private static final List<Runnable> onStart = new ArrayList<>();
+
+    public static float dpiFromPx(int size, DisplayMetrics metrics) {
         float densityRatio = (float) metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT;
         return (size / densityRatio);
     }
+
     public static int pxFromDp(float size, DisplayMetrics metrics) {
-        return (int) Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                size, metrics));
-    }
-    public static int pxFromSp(float size, DisplayMetrics metrics) {
-        return (int) Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 size, metrics));
     }
 
     public static String createDbSelectionQuery(String columnName, Iterable<?> values) {
-        return String.format(Locale.ENGLISH, "%s IN (%s)", columnName, TextUtils.join(", ", values));
+        return String
+                .format(Locale.ENGLISH, "%s IN (%s)", columnName, TextUtils.join(", ", values));
     }
 
     public static boolean isBootCompleted() {
@@ -666,15 +669,19 @@ public final class Utilities {
         return LawnchairPreferences.Companion.getInstance(context);
     }
 
-    private static List<Runnable> onStart = new ArrayList<>();
+    public static int pxFromSp(float size, DisplayMetrics metrics) {
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                size, metrics));
+    }
 
     /**
      * ATTENTION: Only ever call this from within LawnchairLauncher.kt
      */
     public /* private */ static void onLauncherStart() {
         Log.d(TAG, "onLauncherStart: " + onStart.size());
-        for(Runnable r : onStart)
+        for (Runnable r : onStart) {
             r.run();
+        }
         onStart.clear();
     }
 

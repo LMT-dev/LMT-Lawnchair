@@ -12,11 +12,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import fr.letmethink.lawnchair.LawnchairAppKt;
-import fr.letmethink.lawnchair.LawnchairUtilsKt;
-import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController;
-import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController.CardData;
-import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController.WeatherData;
 import com.android.launcher3.BubbleTextView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ItemInfo;
@@ -26,14 +21,22 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.Workspace.OnStateChangeListener;
 import com.android.launcher3.anim.AnimatorSetBuilder;
 import com.google.android.apps.nexuslauncher.smartspace.SmartspacePreferencesShortcut;
+import fr.letmethink.lawnchair.LawnchairAppKt;
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
+import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController;
+import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController.CardData;
+import fr.letmethink.lawnchair.smartspace.LawnchairSmartspaceController.WeatherData;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * A simple view used to show the region blocked by QSB during drag and drop.
  */
-public class QsbBlockerView extends FrameLayout implements OnStateChangeListener, LawnchairSmartspaceController.Listener, View.OnLongClickListener, View.OnClickListener {
-    public static final Property<QsbBlockerView, Integer> QSB_BLOCKER_VIEW_ALPHA = new QsbBlockerViewAlpha(Integer.TYPE, "bgAlpha");
-    private LawnchairSmartspaceController mController;
+public class QsbBlockerView extends FrameLayout implements OnStateChangeListener,
+        LawnchairSmartspaceController.Listener, View.OnLongClickListener, View.OnClickListener {
+
+    public static final Property<QsbBlockerView, Integer> QSB_BLOCKER_VIEW_ALPHA = new QsbBlockerViewAlpha(
+            Integer.TYPE, "bgAlpha");
+    private final LawnchairSmartspaceController mController;
     private int mState = 0;
     private View mView;
 

@@ -42,12 +42,19 @@ import android.support.animation.FloatPropertyCompat;
 import android.support.animation.SpringAnimation;
 import android.support.animation.SpringForce;
 import android.view.View;
-
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.iconpack.AdaptiveIconCompat;
-import fr.letmethink.lawnchair.iconpack.IconPackManager;
-import fr.letmethink.lawnchair.iconpack.LawnchairIconProvider;
-import com.android.launcher3.*;
+import com.android.launcher3.FastBitmapDrawable;
+import com.android.launcher3.FolderInfo;
+import com.android.launcher3.IconProvider;
+import com.android.launcher3.ItemInfo;
+import com.android.launcher3.ItemInfoWithIcon;
+import com.android.launcher3.Launcher;
+import com.android.launcher3.LauncherAnimUtils;
+import com.android.launcher3.LauncherAppState;
+import com.android.launcher3.LauncherModel;
+import com.android.launcher3.LauncherSettings;
+import com.android.launcher3.R;
+import com.android.launcher3.ShortcutInfo;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.anim.Interpolators;
 import com.android.launcher3.compat.LauncherAppsCompat;
 import com.android.launcher3.compat.ShortcutConfigActivityInfo;
@@ -59,7 +66,10 @@ import com.android.launcher3.shortcuts.ShortcutKey;
 import com.android.launcher3.util.Themes;
 import com.android.launcher3.util.Thunk;
 import com.android.launcher3.widget.PendingAddShortcutInfo;
-
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.iconpack.AdaptiveIconCompat;
+import fr.letmethink.lawnchair.iconpack.IconPackManager;
+import fr.letmethink.lawnchair.iconpack.LawnchairIconProvider;
 import java.util.Arrays;
 import java.util.List;
 
@@ -73,7 +83,7 @@ public class DragView extends View {
     @Thunk static float sDragAlpha = 1f;
 
     private boolean mDrawBitmap = true;
-    private Bitmap mBitmap;
+    private final Bitmap mBitmap;
     private Bitmap mCrossFadeBitmap;
     @Thunk Paint mPaint;
     private final int mBlurSizeOutline;

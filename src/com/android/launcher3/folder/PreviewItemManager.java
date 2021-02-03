@@ -16,6 +16,11 @@
 
 package com.android.launcher3.folder;
 
+import static com.android.launcher3.folder.ClippedFolderIconLayoutRule.ENTER_INDEX;
+import static com.android.launcher3.folder.ClippedFolderIconLayoutRule.EXIT_INDEX;
+import static com.android.launcher3.folder.ClippedFolderIconLayoutRule.MAX_NUM_ITEMS_IN_PREVIEW;
+import static com.android.launcher3.folder.FolderIcon.DROP_IN_ANIMATION_DURATION;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
@@ -25,26 +30,19 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
-
 import com.android.launcher3.BubbleTextView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ShortcutInfo;
 import com.android.launcher3.Utilities;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.android.launcher3.folder.ClippedFolderIconLayoutRule.ENTER_INDEX;
-import static com.android.launcher3.folder.ClippedFolderIconLayoutRule.EXIT_INDEX;
-import static com.android.launcher3.folder.ClippedFolderIconLayoutRule.MAX_NUM_ITEMS_IN_PREVIEW;
-import static com.android.launcher3.folder.FolderIcon.DROP_IN_ANIMATION_DURATION;
 
 /**
  * Manages the drawing and animations of {@link PreviewItemDrawingParams} for a {@link FolderIcon}.
  */
 public class PreviewItemManager {
 
-    private FolderIcon mIcon;
+    private final FolderIcon mIcon;
 
     // These variables are all associated with the drawing of the preview; they are stored
     // as member variables for shared usage and to avoid computation on each frame
@@ -54,9 +52,9 @@ public class PreviewItemManager {
     private Drawable mReferenceDrawable = null;
 
     // These hold the first page preview items
-    private ArrayList<PreviewItemDrawingParams> mFirstPageParams = new ArrayList<>();
+    private final ArrayList<PreviewItemDrawingParams> mFirstPageParams = new ArrayList<>();
     // These hold the current page preview items. It is empty if the current page is the first page.
-    private ArrayList<PreviewItemDrawingParams> mCurrentPageParams = new ArrayList<>();
+    private final ArrayList<PreviewItemDrawingParams> mCurrentPageParams = new ArrayList<>();
 
     private float mCurrentPageItemsTransX = 0;
     private boolean mShouldSlideInFirstPage;

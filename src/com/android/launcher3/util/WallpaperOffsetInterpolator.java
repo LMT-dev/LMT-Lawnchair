@@ -11,12 +11,11 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.animation.Interpolator;
-
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.blur.BlurWallpaperProvider;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.Workspace;
 import com.android.launcher3.anim.Interpolators;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.blur.BlurWallpaperProvider;
 
 /**
  * Utility class to handle wallpaper scrolling along with workspace.
@@ -41,7 +40,7 @@ public class WallpaperOffsetInterpolator extends BroadcastReceiver {
     private boolean mLockedToDefaultPage;
     private int mNumScreens;
 
-    private LawnchairPreferences prefs;
+    private final LawnchairPreferences prefs;
 
     public WallpaperOffsetInterpolator(Workspace workspace) {
         mWorkspace = workspace;
@@ -207,7 +206,7 @@ public class WallpaperOffsetInterpolator extends BroadcastReceiver {
         private float mFinalOffset;
         private float mOffsetX;
 
-        private Context mContext;
+        private final Context mContext;
 
         public OffsetHandler(Context context) {
             super(UiThreadHelper.getBackgroundLooper());

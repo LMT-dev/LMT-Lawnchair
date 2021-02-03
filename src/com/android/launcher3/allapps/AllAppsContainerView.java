@@ -38,15 +38,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.LawnchairUtilsKt;
-import fr.letmethink.lawnchair.allapps.AllAppsTabs;
-import fr.letmethink.lawnchair.allapps.AllAppsTabsController;
-import fr.letmethink.lawnchair.colors.ColorEngine;
-import fr.letmethink.lawnchair.colors.ColorEngine.OnColorChangeListener;
-import fr.letmethink.lawnchair.colors.ColorEngine.ResolveInfo;
-import fr.letmethink.lawnchair.colors.ColorEngine.Resolvers;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.DeviceProfile.OnDeviceProfileChangeListener;
@@ -67,6 +58,14 @@ import com.android.launcher3.views.BottomUserEducationView;
 import com.android.launcher3.views.RecyclerViewFastScroller;
 import com.android.launcher3.views.SpringRelativeLayout;
 import com.google.android.apps.nexuslauncher.qsb.AllAppsQsbLayout;
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
+import fr.letmethink.lawnchair.allapps.AllAppsTabs;
+import fr.letmethink.lawnchair.allapps.AllAppsTabsController;
+import fr.letmethink.lawnchair.colors.ColorEngine;
+import fr.letmethink.lawnchair.colors.ColorEngine.OnColorChangeListener;
+import fr.letmethink.lawnchair.colors.ColorEngine.ResolveInfo;
+import fr.letmethink.lawnchair.colors.ColorEngine.Resolvers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -90,7 +89,7 @@ public class AllAppsContainerView extends SpringRelativeLayout implements DragSo
 
     private final Paint mNavBarScrimPaint;
     private int mNavBarScrimHeight = 0;
-    private int mNavBarScrimColor;
+    private final int mNavBarScrimColor;
 
     private SearchUiManager mSearchUiManager;
     private View mSearchContainer;
@@ -105,7 +104,7 @@ public class AllAppsContainerView extends SpringRelativeLayout implements DragSo
     private RecyclerViewFastScroller mTouchHandler;
     private final Point mFastScrollerOffset = new Point();
 
-    private AllAppsTabsController mTabsController;
+    private final AllAppsTabsController mTabsController;
 
     private String mLastSearchQuery;
 

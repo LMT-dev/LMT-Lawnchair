@@ -33,15 +33,13 @@
 
 package fr.letmethink.lawnchair.bugreport;
 
-import android.util.JsonReader;
 import android.os.Handler;
 import android.os.HandlerThread;
-
-
+import android.util.JsonReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
-
+import java.nio.charset.StandardCharsets;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
@@ -71,11 +69,12 @@ public final class DogbinUtils {
                     urlConnection.setDoOutput(true);
 
                     try (OutputStream output = urlConnection.getOutputStream()) {
-                        output.write(content.getBytes("UTF-8"));
+                        output.write(content.getBytes(StandardCharsets.UTF_8));
                     }
                     String key = "";
                     try (JsonReader reader = new JsonReader(
-                            new InputStreamReader(urlConnection.getInputStream(), "UTF-8"))) {
+                            new InputStreamReader(urlConnection.getInputStream(),
+                                    StandardCharsets.UTF_8))) {
                         reader.beginObject();
                         while (reader.hasNext()) {
                             String name = reader.nextName();

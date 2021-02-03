@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-
 import com.android.launcher3.AppWidgetResizeFrame;
 import com.android.launcher3.DropTarget;
 import com.android.launcher3.Launcher;
@@ -126,7 +125,7 @@ public class WidgetHostViewLoader implements DragController.DragListener {
                     return;
                 }
                 AppWidgetHostView hostView = mLauncher.getAppWidgetHost().createView(
-                        (Context) mLauncher, mWidgetLoadingId, pInfo);
+                        mLauncher, mWidgetLoadingId, pInfo);
                 mInfo.boundWidget = hostView;
 
                 // We used up the widget Id in binding the above view.

@@ -52,7 +52,6 @@ import android.view.View;
 import android.view.ViewTreeObserver.OnDrawListener;
 import android.view.WindowManager;
 import android.view.animation.Interpolator;
-
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.BaseDraggingActivity;
 import com.android.launcher3.DeviceProfile;
@@ -88,8 +87,6 @@ import com.android.systemui.shared.system.RemoteAnimationTargetCompat;
 import com.android.systemui.shared.system.SyncRtSurfaceTransactionApplier;
 import com.android.systemui.shared.system.WindowCallbacksCompat;
 import com.android.systemui.shared.system.WindowManagerWrapper;
-
-import com.google.android.apps.nexuslauncher.NexusLauncherActivity;
 import java.util.StringJoiner;
 import java.util.function.BiFunction;
 
@@ -222,7 +219,7 @@ public class WindowTransformSwipeHandler<T extends BaseDraggingActivity> {
 
     private @InteractionType int mInteractionType = INTERACTION_NORMAL;
 
-    private InputConsumerController mInputConsumer =
+    private final InputConsumerController mInputConsumer =
             InputConsumerController.getRecentsAnimationInputConsumer();
 
     private final RecentsAnimationWrapper mRecentsAnimationWrapper = new RecentsAnimationWrapper();
@@ -633,7 +630,7 @@ public class WindowTransformSwipeHandler<T extends BaseDraggingActivity> {
             dp.updateInsets(homeContentInsets);
         } else {
             if (mActivity != null) {
-                int loc[] = new int[2];
+                int[] loc = new int[2];
                 View rootView = mActivity.getRootView();
                 rootView.getLocationOnScreen(loc);
                 overviewStackBounds = new Rect(loc[0], loc[1], loc[0] + rootView.getWidth(),

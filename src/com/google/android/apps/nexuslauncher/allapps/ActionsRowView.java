@@ -22,10 +22,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.LinearLayout;
-import fr.letmethink.lawnchair.allapps.PredictionsDividerLayout;
-import fr.letmethink.lawnchair.font.CustomFontManager;
-import fr.letmethink.lawnchair.font.FontLoader.FontReceiver;
-import fr.letmethink.lawnchair.predictions.LawnchairEventPredictor;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
@@ -39,6 +35,10 @@ import com.android.launcher3.util.PackageManagerHelper;
 import com.android.launcher3.util.Themes;
 import com.android.quickstep.TouchInteractionService;
 import com.google.android.apps.nexuslauncher.allapps.ActionsController.UpdateListener;
+import fr.letmethink.lawnchair.allapps.PredictionsDividerLayout;
+import fr.letmethink.lawnchair.font.CustomFontManager;
+import fr.letmethink.lawnchair.font.FontLoader.FontReceiver;
+import fr.letmethink.lawnchair.predictions.LawnchairEventPredictor;
 import java.util.ArrayList;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
@@ -47,17 +47,17 @@ public class ActionsRowView extends PredictionsDividerLayout implements UpdateLi
         FontReceiver {
     private static final boolean DEBUG = false;
     private static final String TAG = "ActionsRowView";
-    private LauncherAccessibilityDelegate mActionAccessibilityDelegate;
+    private final LauncherAccessibilityDelegate mActionAccessibilityDelegate;
     private ActionsController mActionsController;
     private Layout mAllAppsLabelLayout;
     private boolean mDisabled;
     private boolean mHidden;
     private boolean mIsCollapsed;
-    private boolean mIsDarkTheme;
+    private final boolean mIsDarkTheme;
     private final Launcher mLauncher;
     private PredictionsFloatingHeader mParent;
     private boolean mShowAllAppsLabel;
-    private int mSpacing;
+    private final int mSpacing;
     private Typeface mAllAppsLabelTypeface = Typeface.create("sans-serif-medium", Typeface.NORMAL);
 
     public ActionsRowView(@NonNull Context context) {

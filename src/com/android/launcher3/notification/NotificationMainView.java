@@ -33,7 +33,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
@@ -51,18 +50,18 @@ import com.android.launcher3.util.Themes;
 @TargetApi(Build.VERSION_CODES.N)
 public class NotificationMainView extends FrameLayout implements SwipeDetector.Listener {
 
-    private static FloatProperty<NotificationMainView> CONTENT_TRANSLATION =
+    private static final FloatProperty<NotificationMainView> CONTENT_TRANSLATION =
             new FloatProperty<NotificationMainView>("contentTranslation") {
-        @Override
-        public void setValue(NotificationMainView view, float v) {
-            view.setContentTranslation(v);
-        }
+                @Override
+                public void setValue(NotificationMainView view, float v) {
+                    view.setContentTranslation(v);
+                }
 
-        @Override
-        public Float get(NotificationMainView view) {
-            return view.mTextAndBackground.getTranslationX();
-        }
-    };
+                @Override
+                public Float get(NotificationMainView view) {
+                    return view.mTextAndBackground.getTranslationX();
+                }
+            };
 
     // This is used only to track the notification view, so that it can be properly logged.
     public static final ItemInfo NOTIFICATION_ITEM_INFO = new ItemInfo();

@@ -19,11 +19,9 @@ package com.android.systemui.shared.recents.model;
 import android.content.ComponentName;
 import android.util.ArrayMap;
 import android.util.ArraySet;
-
 import com.android.systemui.shared.recents.model.Task.TaskKey;
 import com.android.systemui.shared.recents.utilities.AnimationProps;
 import com.android.systemui.shared.system.PackageManagerWrapper;
-
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -268,15 +266,14 @@ public class TaskStack {
     public boolean isNextLaunchTargetPip(long lastPipTime) {
         Task launchTarget = getLaunchTarget();
         Task nextLaunchTarget = getNextLaunchTargetRaw();
+        // Otherwise, if there is no next launch target, but there is a PiP, then launch
+        // the PiP task
         if (nextLaunchTarget != null && lastPipTime > 0) {
             // If the PiP time is more recent than the next launch target, then launch the PiP task
             return lastPipTime > nextLaunchTarget.key.lastActiveTime;
-        } else if (launchTarget != null && lastPipTime > 0 && getTaskCount() == 1) {
-            // Otherwise, if there is no next launch target, but there is a PiP, then launch
-            // the PiP task
-            return true;
+        } else {
+            return launchTarget != null && lastPipTime > 0 && getTaskCount() == 1;
         }
-        return false;
     }
 
     /**

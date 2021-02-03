@@ -14,11 +14,9 @@ import android.os.Handler;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
 import android.view.KeyEvent;
-
-import fr.letmethink.lawnchair.smartspace.NotificationsManager.OnChangeListener;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.notification.NotificationListener;
-
+import fr.letmethink.lawnchair.smartspace.NotificationsManager.OnChangeListener;
 import java.util.Collections;
 import java.util.List;
 import org.jetbrains.annotations.Nullable;
@@ -206,8 +204,8 @@ public class MediaListener extends MediaController.Callback
 
     class MediaNotificationController {
 
-        private MediaController controller;
-        private StatusBarNotification sbn;
+        private final MediaController controller;
+        private final StatusBarNotification sbn;
         private MediaInfo info;
 
         private MediaNotificationController(MediaController controller) {

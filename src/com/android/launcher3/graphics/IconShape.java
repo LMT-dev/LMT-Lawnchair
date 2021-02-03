@@ -38,22 +38,18 @@ import android.util.TypedValue;
 import android.util.Xml;
 import android.view.View;
 import android.view.ViewOutlineProvider;
-
-import fr.letmethink.lawnchair.adaptive.IconShapeManager;
+import androidx.annotation.Nullable;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.anim.RoundedRectRevealOutlineProvider;
 import com.android.launcher3.util.Themes;
 import com.android.launcher3.views.ClipPathView;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
+import fr.letmethink.lawnchair.adaptive.IconShapeManager;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.Nullable;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 /**
  * Abstract representation of the shape of an icon shape
@@ -62,7 +58,7 @@ public abstract class IconShape {
 
     private static IconShape sInstance = new Circle();
     private static Path sShapePath;
-    private static float sNormalizationScale = ICON_VISIBLE_AREA_FACTOR;
+    private static final float sNormalizationScale = ICON_VISIBLE_AREA_FACTOR;
 
     public static final int DEFAULT_PATH_SIZE = 100;
 
@@ -87,7 +83,7 @@ public abstract class IconShape {
 
     public boolean enableShapeDetection(){
         return false;
-    };
+    }
 
     public abstract void drawShape(Canvas canvas, float offsetX, float offsetY, float radius,
             Paint paint);

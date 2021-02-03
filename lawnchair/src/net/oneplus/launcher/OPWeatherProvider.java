@@ -11,9 +11,9 @@ import android.preference.PreferenceManager;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import fr.letmethink.lawnchair.smartspace.weather.icons.WeatherIconManager;
 import com.android.launcher3.LauncherModel;
 import com.android.launcher3.util.PackageManagerHelper;
+import fr.letmethink.lawnchair.smartspace.weather.icons.WeatherIconManager;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -40,11 +40,11 @@ public class OPWeatherProvider {
     private final String KEY_WEATHER_NAME = "weather_description";
     private final Uri WEATHER_CONTENT_URI = Uri
             .parse("content://com.oneplus.weather.ContentProvider/data");
-    private ArrayList<IWeatherCallback> mCallbacks;
-    private Context mContext;
+    private final ArrayList<IWeatherCallback> mCallbacks;
+    private final Context mContext;
     private WeatherObserver mObserver;
 
-    private Handler mUiWorkerHandler = new Handler(LauncherModel.getUiWorkerLooper());
+    private final Handler mUiWorkerHandler = new Handler(LauncherModel.getUiWorkerLooper());
 
     public interface IWeatherCallback {
 
@@ -61,7 +61,7 @@ public class OPWeatherProvider {
         TEMP_LOW(5),
         TEMP_UNIT(7);
 
-        private int index;
+        private final int index;
 
         WEATHER_COLUMNS(int i) {
             this.index = i;

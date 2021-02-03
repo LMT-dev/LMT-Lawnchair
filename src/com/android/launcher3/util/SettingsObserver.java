@@ -33,7 +33,7 @@ public interface SettingsObserver {
 
 
     abstract class Secure extends ContentObserver implements SettingsObserver {
-        private ContentResolver mResolver;
+        private final ContentResolver mResolver;
         private String mKeySetting;
 
         public Secure(ContentResolver resolver) {
@@ -66,7 +66,8 @@ public interface SettingsObserver {
     }
 
     abstract class System extends ContentObserver implements SettingsObserver {
-        private ContentResolver mResolver;
+
+        private final ContentResolver mResolver;
         private String mKeySetting;
 
         public System(ContentResolver resolver) {
@@ -75,7 +76,7 @@ public interface SettingsObserver {
         }
 
         @Override
-        public void register(String keySetting, String ... dependentSettings) {
+        public void register(String keySetting, String... dependentSettings) {
             mKeySetting = keySetting;
             mResolver.registerContentObserver(
                     Settings.System.getUriFor(mKeySetting), false, this);

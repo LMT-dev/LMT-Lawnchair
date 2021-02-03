@@ -17,19 +17,13 @@ package com.android.launcher3.allapps;
 
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.BubbleTextView;
-import com.android.launcher3.FolderInfo;
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.PromiseAppInfo;
-import com.android.launcher3.ShortcutInfo;
-import com.android.launcher3.Workspace.ItemOperator;
-import com.android.launcher3.badge.FolderBadgeInfo;
 import com.android.launcher3.folder.FolderIcon;
 import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.util.PackageUserKey;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -45,7 +39,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public class AllAppsStore {
 
-    private PackageUserKey mTempKey = new PackageUserKey(null, null);
+    private final PackageUserKey mTempKey = new PackageUserKey(null, null);
     private final HashMap<ComponentKey, AppInfo> mComponentToAppMap = new HashMap<>();
     private final List<OnUpdateListener> mUpdateListeners = new ArrayList<>();
     private final ArrayList<ViewGroup> mIconContainers = new ArrayList<>();

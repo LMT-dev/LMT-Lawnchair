@@ -58,9 +58,6 @@ import android.os.Looper;
 import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
-import fr.letmethink.lawnchair.LawnchairLauncher;
-import fr.letmethink.lawnchair.util.InvertedMultiValueAlpha;
-import fr.letmethink.lawnchair.views.LawnchairBackgroundView;
 import com.android.launcher3.DeviceProfile.OnDeviceProfileChangeListener;
 import com.android.launcher3.InsettableFrameLayout.LayoutParams;
 import com.android.launcher3.allapps.AllAppsTransitionController;
@@ -87,6 +84,9 @@ import com.android.systemui.shared.system.RemoteAnimationTargetCompat;
 import com.android.systemui.shared.system.SyncRtSurfaceTransactionApplier;
 import com.android.systemui.shared.system.SyncRtSurfaceTransactionApplier.SurfaceParams;
 import com.android.systemui.shared.system.WindowManagerWrapper;
+import fr.letmethink.lawnchair.LawnchairLauncher;
+import fr.letmethink.lawnchair.util.InvertedMultiValueAlpha;
+import fr.letmethink.lawnchair.views.LawnchairBackgroundView;
 
 /**
  * Manages the opening and closing app transitions from Launcher.
@@ -672,7 +672,8 @@ public class LauncherAppTransitionManagerImpl extends LauncherAppTransitionManag
         appAnimator.setDuration(APP_LAUNCH_DURATION);
         appAnimator.addUpdateListener(new MultiValueUpdateListener() {
             // Fade alpha for the app window.
-            FloatProp mAlpha = new FloatProp(reversed ? 1f : 0f, reversed ? 0f : 1f, 0, 60, LINEAR);
+            final FloatProp mAlpha = new FloatProp(reversed ? 1f : 0f, reversed ? 0f : 1f, 0, 60,
+                    LINEAR);
 
             @Override
             public void onUpdate(float percent) {
@@ -824,8 +825,8 @@ public class LauncherAppTransitionManagerImpl extends LauncherAppTransitionManag
         int duration = CLOSING_TRANSITION_DURATION_MS;
         closingAnimator.setDuration(duration);
         closingAnimator.addUpdateListener(new MultiValueUpdateListener() {
-            FloatProp mDy = new FloatProp(0, mClosingWindowTransY, 0, duration, DEACCEL_1_7);
-            FloatProp mAlpha = new FloatProp(1f, 0f, 25, 125, LINEAR);
+            final FloatProp mDy = new FloatProp(0, mClosingWindowTransY, 0, duration, DEACCEL_1_7);
+            final FloatProp mAlpha = new FloatProp(1f, 0f, 25, 125, LINEAR);
 
             @Override
             public void onUpdate(float percent) {

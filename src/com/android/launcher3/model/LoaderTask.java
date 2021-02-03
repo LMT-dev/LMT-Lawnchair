@@ -39,10 +39,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.LongSparseArray;
 import android.util.MutableInt;
-
-import fr.letmethink.lawnchair.iconpack.IconPackManager;
-import fr.letmethink.lawnchair.model.HomeWidgetMigrationTask;
-import fr.letmethink.lawnchair.sesame.Sesame;
 import com.android.launcher3.AllAppsList;
 import com.android.launcher3.AppInfo;
 import com.android.launcher3.FolderInfo;
@@ -74,7 +70,9 @@ import com.android.launcher3.util.MultiHashMap;
 import com.android.launcher3.util.PackageManagerHelper;
 import com.android.launcher3.util.Provider;
 import com.android.launcher3.util.TraceHelper;
-
+import fr.letmethink.lawnchair.iconpack.IconPackManager;
+import fr.letmethink.lawnchair.model.HomeWidgetMigrationTask;
+import fr.letmethink.lawnchair.sesame.Sesame;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -806,8 +804,7 @@ public class LoaderTask implements Runnable {
             ArrayList<Long> unusedScreens = new ArrayList<>(mBgDataModel.workspaceScreens);
             for (ItemInfo item: mBgDataModel.itemsIdMap) {
                 long screenId = item.screenId;
-                if (item.container == LauncherSettings.Favorites.CONTAINER_DESKTOP &&
-                        unusedScreens.contains(screenId)) {
+                if (item.container == LauncherSettings.Favorites.CONTAINER_DESKTOP) {
                     unusedScreens.remove(screenId);
                 }
             }

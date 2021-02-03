@@ -23,9 +23,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.ViewDebug;
-
 import com.android.systemui.shared.recents.utilities.Utilities;
-
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -173,7 +171,7 @@ public class Task {
     @ViewDebug.ExportedProperty(category="recents")
     public boolean isLocked;
 
-    private ArrayList<TaskCallbacks> mCallbacks = new ArrayList<>();
+    private final ArrayList<TaskCallbacks> mCallbacks = new ArrayList<>();
 
     public Task() {
         // Do nothing

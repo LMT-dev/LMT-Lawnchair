@@ -3,9 +3,9 @@ package fr.letmethink.lawnchair.globalsearch
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
-import fr.letmethink.lawnchair.settings.ui.SettingsSearchActivity
 import com.android.launcher3.R
 import com.android.launcher3.graphics.ShadowDrawable
+import fr.letmethink.lawnchair.settings.ui.SettingsSearchActivity
 
 abstract class SearchProvider(protected val context: Context) {
     abstract val name: String
@@ -57,5 +57,5 @@ abstract class SearchProvider(protected val context: Context) {
         else null
     open fun getShadowAssistantIcon() = getAssistantIcon()?.let { wrapInShadowDrawable(it) }
 
-    override fun toString() = this::class.java.name!!
+    override fun toString() = this::class.java.name
 }

@@ -33,12 +33,11 @@ import android.graphics.Shader;
 import android.support.v4.graphics.ColorUtils;
 import android.util.Property;
 import android.view.View;
-
-import com.android.launcher3.graphics.IconShape;
 import com.android.launcher3.CellLayout;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherAnimUtils;
+import com.android.launcher3.graphics.IconShape;
 import com.android.launcher3.util.Themes;
 
 /**
@@ -101,7 +100,7 @@ public class PreviewBackground {
     private ObjectAnimator mStrokeAlphaAnimator;
     private ObjectAnimator mShadowAnimator;
 
-    private boolean isInDrawer;
+    private final boolean isInDrawer;
 
     public PreviewBackground() {
         this(false);

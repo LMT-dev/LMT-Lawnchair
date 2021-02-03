@@ -31,17 +31,15 @@ import android.os.RemoteException;
 import android.provider.Settings;
 import android.support.annotation.WorkerThread;
 import android.util.Log;
-
-import fr.letmethink.lawnchair.LawnchairPreferences;
-import fr.letmethink.lawnchair.customnavbar.CustomNavBar;
 import com.android.launcher3.MainThreadExecutor;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.allapps.DiscoveryBounce;
 import com.android.launcher3.util.UiThreadHelper;
 import com.android.systemui.shared.recents.ISystemUiProxy;
-import org.jetbrains.annotations.NotNull;
-
+import fr.letmethink.lawnchair.LawnchairPreferences;
+import fr.letmethink.lawnchair.customnavbar.CustomNavBar;
 import java.util.concurrent.ExecutionException;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Sets overview interaction flags, such as:
@@ -207,8 +205,9 @@ public class OverviewInteractionState implements LawnchairPreferences.OnPreferen
     }
 
     private class SwipeUpGestureEnabledSettingObserver extends ContentObserver {
-        private Handler mHandler;
-        private ContentResolver mResolver;
+
+        private final Handler mHandler;
+        private final ContentResolver mResolver;
         private final int defaultValue;
 
         SwipeUpGestureEnabledSettingObserver(Handler handler, ContentResolver resolver) {

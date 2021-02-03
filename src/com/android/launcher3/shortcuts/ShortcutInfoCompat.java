@@ -23,7 +23,6 @@ import android.content.Intent;
 import android.content.pm.ShortcutInfo;
 import android.os.Build;
 import android.os.UserHandle;
-
 import com.android.launcher3.R;
 
 /**
@@ -36,7 +35,7 @@ public class ShortcutInfoCompat {
     private static final String INTENT_CATEGORY = "com.android.launcher3.DEEP_SHORTCUT";
     private static final String EXTRA_BADGEPKG = "badge_package";
     public static final String EXTRA_SHORTCUT_ID = "shortcut_id";
-    private ShortcutInfo mShortcutInfo;
+    private final ShortcutInfo mShortcutInfo;
 
     public ShortcutInfoCompat(ShortcutInfo shortcutInfo) {
         mShortcutInfo = shortcutInfo;

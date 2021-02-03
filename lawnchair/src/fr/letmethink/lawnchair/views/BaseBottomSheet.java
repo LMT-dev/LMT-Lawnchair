@@ -39,7 +39,7 @@ import com.android.launcher3.views.AbstractSlideInView;
 public class BaseBottomSheet extends AbstractSlideInView implements Insettable {
 
     private static final int DEFAULT_CLOSE_DURATION = 200;
-    private Rect mInsets;
+    private final Rect mInsets;
 
     protected final ColorScrim mColorScrim;
 

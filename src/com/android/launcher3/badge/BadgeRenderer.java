@@ -27,9 +27,8 @@ import android.graphics.Paint.Align;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.Log;
-
-import fr.letmethink.lawnchair.LawnchairUtilsKt;
 import com.android.launcher3.graphics.ShadowGenerator;
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
 
 /**
  * Contains parameters necessary to draw a badge for an icon (e.g. the size of the badge).
@@ -64,7 +63,7 @@ public class BadgeRenderer {
     private final float mBitmapOffset;
     private final int mSize;
 
-    private Rect mTmp = new Rect();
+    private final Rect mTmp = new Rect();
     private final boolean mDisplayCount;
 
     public BadgeRenderer(int iconSizePx, boolean displayCount) {

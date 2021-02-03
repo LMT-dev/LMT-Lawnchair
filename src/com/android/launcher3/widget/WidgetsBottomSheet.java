@@ -26,7 +26,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.android.launcher3.Insettable;
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.LauncherAppState;
@@ -35,7 +34,6 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.anim.Interpolators;
 import com.android.launcher3.model.WidgetItem;
 import com.android.launcher3.util.PackageUserKey;
-
 import java.util.List;
 
 /**
@@ -45,7 +43,7 @@ public class WidgetsBottomSheet extends BaseWidgetSheet implements Insettable {
 
     private static final int DEFAULT_CLOSE_DURATION = 200;
     private ItemInfo mOriginalItemInfo;
-    private Rect mInsets;
+    private final Rect mInsets;
 
     public boolean mNoIntercept;
 

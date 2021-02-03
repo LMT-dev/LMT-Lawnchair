@@ -18,7 +18,6 @@ package com.android.quickstep.util;
 import android.animation.AnimatorSet;
 import android.app.ActivityOptions;
 import android.os.Handler;
-
 import com.android.launcher3.LauncherAnimationRunner;
 import com.android.systemui.shared.system.ActivityOptionsCompat;
 import com.android.systemui.shared.system.RemoteAnimationAdapterCompat;
@@ -28,7 +27,7 @@ import com.android.systemui.shared.system.TransactionCompat;
 @FunctionalInterface
 public interface RemoteAnimationProvider {
 
-    static final int Z_BOOST_BASE = 800570000;
+    int Z_BOOST_BASE = 800570000;
 
     AnimatorSet createWindowAnimation(RemoteAnimationTargetCompat[] targets);
 

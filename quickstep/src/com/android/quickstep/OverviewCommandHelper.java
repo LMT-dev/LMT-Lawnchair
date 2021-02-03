@@ -18,14 +18,11 @@ package com.android.quickstep;
 import static android.content.Intent.ACTION_PACKAGE_ADDED;
 import static android.content.Intent.ACTION_PACKAGE_CHANGED;
 import static android.content.Intent.ACTION_PACKAGE_REMOVED;
-
 import static com.android.launcher3.anim.Interpolators.FAST_OUT_SLOW_IN;
 import static com.android.launcher3.anim.Interpolators.TOUCH_RESPONSE_INTERPOLATOR;
 import static com.android.quickstep.TouchConsumer.INTERACTION_NORMAL;
-import static com.android.systemui.shared.system.ActivityManagerWrapper
-        .CLOSE_SYSTEM_WINDOWS_REASON_RECENTS;
-import static com.android.systemui.shared.system.PackageManagerWrapper
-        .ACTION_PREFERRED_ACTIVITY_CHANGED;
+import static com.android.systemui.shared.system.ActivityManagerWrapper.CLOSE_SYSTEM_WINDOWS_REASON_RECENTS;
+import static com.android.systemui.shared.system.PackageManagerWrapper.ACTION_PREFERRED_ACTIVITY_CHANGED;
 import static com.android.systemui.shared.system.RemoteAnimationTargetCompat.MODE_CLOSING;
 import static com.android.systemui.shared.system.RemoteAnimationTargetCompat.MODE_OPENING;
 
@@ -46,7 +43,6 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewConfiguration;
-
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.BaseDraggingActivity;
 import com.android.launcher3.InvariantDeviceProfile;
@@ -60,8 +56,8 @@ import com.android.quickstep.ActivityControlHelper.AnimationFactory;
 import com.android.quickstep.ActivityControlHelper.FallbackActivityControllerHelper;
 import com.android.quickstep.ActivityControlHelper.LauncherActivityControllerHelper;
 import com.android.quickstep.util.ClipAnimationHelper;
-import com.android.quickstep.util.TransformedRect;
 import com.android.quickstep.util.RemoteAnimationTargetSet;
+import com.android.quickstep.util.TransformedRect;
 import com.android.quickstep.views.RecentsView;
 import com.android.systemui.shared.system.ActivityManagerWrapper;
 import com.android.systemui.shared.system.LatencyTrackerCompat;
@@ -69,7 +65,6 @@ import com.android.systemui.shared.system.PackageManagerWrapper;
 import com.android.systemui.shared.system.RemoteAnimationTargetCompat;
 import com.android.systemui.shared.system.SyncRtSurfaceTransactionApplier;
 import com.android.systemui.shared.system.TransactionCompat;
-
 import java.util.ArrayList;
 
 /**
@@ -260,16 +255,15 @@ public class OverviewCommandHelper {
             //       the menu activity which takes window focus, preventing the right condition from
             //       being run below
             RecentsView recents = mHelper.getVisibleRecentsView();
+            // The user tried to launch back into overview too quickly, either after
+            // launching an app, or before overview has actually shown, just ignore for now
             if (recents != null) {
                 // Launch the next task
                 recents.showNextTask();
                 return true;
-            } else if (elapsedTime < ViewConfiguration.getDoubleTapTimeout()) {
-                // The user tried to launch back into overview too quickly, either after
-                // launching an app, or before overview has actually shown, just ignore for now
-                return true;
+            } else {
+                return elapsedTime < ViewConfiguration.getDoubleTapTimeout();
             }
-            return false;
         }
 
         private boolean onActivityReady(T activity, Boolean wasVisible) {
@@ -338,7 +332,7 @@ public class OverviewCommandHelper {
 
             // At this point, the activity is already started and laid-out. Get the home-bounds
             // relative to the screen using the rootView of the activity.
-            int loc[] = new int[2];
+            int[] loc = new int[2];
             View rootView = mActivity.getRootView();
             rootView.getLocationOnScreen(loc);
             Rect homeBounds = new Rect(loc[0], loc[1],

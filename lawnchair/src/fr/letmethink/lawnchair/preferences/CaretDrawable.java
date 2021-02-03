@@ -23,10 +23,9 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
-
-import fr.letmethink.lawnchair.LawnchairUtilsKt;
 import com.android.launcher3.R;
 import com.android.launcher3.util.Themes;
+import fr.letmethink.lawnchair.LawnchairUtilsKt;
 
 public class CaretDrawable extends Drawable {
 
@@ -36,9 +35,9 @@ public class CaretDrawable extends Drawable {
 
     private float mCaretProgress = PROGRESS_CARET_NEUTRAL;
 
-    private Paint mShadowPaint = new Paint();
-    private Paint mCaretPaint = new Paint();
-    private Path mPath = new Path();
+    private final Paint mShadowPaint = new Paint();
+    private final Paint mCaretPaint = new Paint();
+    private final Path mPath = new Path();
     private final int mCaretSizePx;
     private final boolean mUseShadow;
     private final int mWorkspaceTextColor;

@@ -17,7 +17,6 @@
 package com.android.launcher3;
 
 import android.graphics.Rect;
-
 import com.android.launcher3.accessibility.DragViewStateAnnouncer;
 import com.android.launcher3.dragndrop.DragOptions;
 import com.android.launcher3.dragndrop.DragView;
@@ -77,7 +76,7 @@ public interface DropTarget {
          * is the appropriate point to use when determining drop location.
          */
         public final float[] getVisualCenter(float[] recycle) {
-            final float res[] = (recycle == null) ? new float[2] : recycle;
+            final float[] res = (recycle == null) ? new float[2] : recycle;
 
             // These represent the visual top and left of drag view if a dragRect was provided.
             // If a dragRect was not provided, then they correspond to the actual view left and

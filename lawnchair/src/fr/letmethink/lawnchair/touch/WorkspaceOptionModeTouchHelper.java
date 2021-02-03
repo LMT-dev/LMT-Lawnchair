@@ -9,17 +9,18 @@ import com.android.launcher3.LauncherState;
 import com.android.launcher3.Workspace;
 
 public class WorkspaceOptionModeTouchHelper {
+
     private static final String TAG = "WorkspaceOptionModeTouchHelper";
     private long mCurrentMillis;
     private boolean mIsInTouchCycle;
     private boolean mIsStillPossibleClick;
     private int mLastTouchX;
     private int mLastTouchY;
-    private Launcher mLauncher;
-    private int mMinSnapDistance;
-    private int mMinSnapVelocity;
-    private float mPossibleClickDistanceSquare = 400.0f;
-    private int mScreenWidth;
+    private final Launcher mLauncher;
+    private final int mMinSnapDistance;
+    private final int mMinSnapVelocity;
+    private final float mPossibleClickDistanceSquare = 400.0f;
+    private final int mScreenWidth;
     private int mTouchDownWorkspaceCurrentPage;
     private int mTouchDownWorkspaceScrollX;
     private int mTouchDownX;

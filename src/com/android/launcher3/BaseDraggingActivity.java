@@ -31,16 +31,15 @@ import android.util.Log;
 import android.view.ActionMode;
 import android.view.View;
 import android.widget.Toast;
-
-import fr.letmethink.lawnchair.theme.ThemeOverride;
-import fr.letmethink.lawnchair.theme.ThemeOverride.ThemeSet;
 import com.android.launcher3.LauncherSettings.Favorites;
 import com.android.launcher3.badge.BadgeInfo;
 import com.android.launcher3.compat.LauncherAppsCompat;
+import com.android.launcher3.shortcuts.DeepShortcutManager;
 import com.android.launcher3.uioverrides.DisplayRotationListener;
 import com.android.launcher3.uioverrides.WallpaperColorInfo;
-import com.android.launcher3.shortcuts.DeepShortcutManager;
 import com.android.launcher3.views.BaseDragLayer;
+import fr.letmethink.lawnchair.theme.ThemeOverride;
+import fr.letmethink.lawnchair.theme.ThemeOverride.ThemeSet;
 
 /**
  * Extension of BaseActivity allowing support for drag-n-drop
@@ -63,7 +62,7 @@ public abstract class BaseDraggingActivity extends BaseActivity
 
     private OnStartCallback mOnStartCallback;
 
-    private int mThemeRes = R.style.AppTheme;
+    private final int mThemeRes = R.style.AppTheme;
 
     private DisplayRotationListener mRotationListener;
 

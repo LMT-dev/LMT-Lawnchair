@@ -67,7 +67,7 @@ import java.util.concurrent.Semaphore
 open class LawnchairLauncher : NexusLauncherActivity(),
                                LawnchairPreferences.OnPreferenceChangeListener,
                                ColorEngine.OnColorChangeListener {
-    val hideStatusBarKey = "pref_hideStatusBar"
+    private val hideStatusBarKey = "pref_hideStatusBar"
     val gestureController by lazy { GestureController(this) }
     val background by lazy { findViewById<LawnchairBackgroundView>(R.id.lawnchair_background)!! }
     val dummyView by lazy { findViewById<View>(R.id.dummy_view)!! }

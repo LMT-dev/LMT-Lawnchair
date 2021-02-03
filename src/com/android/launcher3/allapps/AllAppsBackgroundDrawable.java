@@ -25,7 +25,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
-
 import com.android.launcher3.LauncherAnimUtils;
 import com.android.launcher3.R;
 import com.android.launcher3.util.Themes;
@@ -41,15 +40,16 @@ public class AllAppsBackgroundDrawable extends Drawable {
      * A helper class to position and orient a drawable to be drawn.
      */
     protected static class TransformedImageDrawable {
-        private Drawable mImage;
-        private float mXPercent;
-        private float mYPercent;
-        private int mGravity;
+
+        private final Drawable mImage;
+        private final float mXPercent;
+        private final float mYPercent;
+        private final int mGravity;
         private int mAlpha;
 
         /**
-         * @param gravity If one of the Gravity center values, the x and y offset will take the width
-         *                and height of the image into account to center the image to the offset.
+         * @param gravity If one of the Gravity center values, the x and y offset will take the
+         * width and height of the image into account to center the image to the offset.
          */
         public TransformedImageDrawable(Context context, int resourceId, float xPct, float yPct,
                 int gravity) {

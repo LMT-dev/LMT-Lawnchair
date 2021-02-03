@@ -28,7 +28,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
-
 import com.android.launcher3.R;
 import com.android.launcher3.allapps.AllAppsContainerView.AdapterHolder;
 import com.android.launcher3.anim.PropertySetter;
@@ -63,7 +62,7 @@ public class FloatingHeaderView extends LinearLayout implements
 
     protected ViewGroup mTabLayout;
     private AllAppsRecyclerView mCurrentRV;
-    private ArrayList<AllAppsRecyclerView> mRVs = new ArrayList<>();
+    private final ArrayList<AllAppsRecyclerView> mRVs = new ArrayList<>();
     private ViewGroup mParent;
     private boolean mHeaderCollapsed;
     private int mSnappedScrolledY;

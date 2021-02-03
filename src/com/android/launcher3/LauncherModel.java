@@ -35,7 +35,6 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
-
 import com.android.launcher3.compat.LauncherAppsCompat;
 import com.android.launcher3.compat.PackageInstallerCompat.PackageInstallInfo;
 import com.android.launcher3.compat.UserManagerCompat;
@@ -63,7 +62,6 @@ import com.android.launcher3.util.Provider;
 import com.android.launcher3.util.Thunk;
 import com.android.launcher3.util.ViewOnDrawExecutor;
 import com.android.launcher3.widget.WidgetListRowEntry;
-
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.lang.ref.WeakReference;
@@ -143,31 +141,52 @@ public class LauncherModel extends BroadcastReceiver
     };
 
     public interface Callbacks {
-        public void rebindModel();
 
-        public int getCurrentWorkspaceScreen();
-        public void clearPendingBinds();
-        public void startBinding();
-        public void bindItems(List<ItemInfo> shortcuts, boolean forceAnimateIcons);
-        public void bindScreens(ArrayList<Long> orderedScreenIds);
-        public void finishFirstPageBind(ViewOnDrawExecutor executor);
-        public void finishBindingItems(int pageBoundFirst);
-        public void bindAllApplications(ArrayList<AppInfo> apps);
-        public void bindAppsAddedOrUpdated(ArrayList<AppInfo> apps);
-        public void preAddApps();
-        public void bindAppsAdded(ArrayList<Long> newScreens,
-                                  ArrayList<ItemInfo> addNotAnimated,
-                                  ArrayList<ItemInfo> addAnimated);
-        public void bindPromiseAppProgressUpdated(PromiseAppInfo app);
-        public void bindShortcutsChanged(ArrayList<ShortcutInfo> updated, UserHandle user);
-        public void bindWidgetsRestored(ArrayList<LauncherAppWidgetInfo> widgets);
-        public void bindRestoreItemsChange(HashSet<ItemInfo> updates);
-        public void bindWorkspaceComponentsRemoved(ItemInfoMatcher matcher);
-        public void bindAppInfosRemoved(ArrayList<AppInfo> appInfos);
-        public void bindAllWidgets(ArrayList<WidgetListRowEntry> widgets);
-        public void onPageBoundSynchronously(int page);
-        public void executeOnNextDraw(ViewOnDrawExecutor executor);
-        public void bindDeepShortcutMap(MultiHashMap<ComponentKey, String> deepShortcutMap);
+        void rebindModel();
+
+        int getCurrentWorkspaceScreen();
+
+        void clearPendingBinds();
+
+        void startBinding();
+
+        void bindItems(List<ItemInfo> shortcuts, boolean forceAnimateIcons);
+
+        void bindScreens(ArrayList<Long> orderedScreenIds);
+
+        void finishFirstPageBind(ViewOnDrawExecutor executor);
+
+        void finishBindingItems(int pageBoundFirst);
+
+        void bindAllApplications(ArrayList<AppInfo> apps);
+
+        void bindAppsAddedOrUpdated(ArrayList<AppInfo> apps);
+
+        void preAddApps();
+
+        void bindAppsAdded(ArrayList<Long> newScreens,
+                ArrayList<ItemInfo> addNotAnimated,
+                ArrayList<ItemInfo> addAnimated);
+
+        void bindPromiseAppProgressUpdated(PromiseAppInfo app);
+
+        void bindShortcutsChanged(ArrayList<ShortcutInfo> updated, UserHandle user);
+
+        void bindWidgetsRestored(ArrayList<LauncherAppWidgetInfo> widgets);
+
+        void bindRestoreItemsChange(HashSet<ItemInfo> updates);
+
+        void bindWorkspaceComponentsRemoved(ItemInfoMatcher matcher);
+
+        void bindAppInfosRemoved(ArrayList<AppInfo> appInfos);
+
+        void bindAllWidgets(ArrayList<WidgetListRowEntry> widgets);
+
+        void onPageBoundSynchronously(int page);
+
+        void executeOnNextDraw(ViewOnDrawExecutor executor);
+
+        void bindDeepShortcutMap(MultiHashMap<ComponentKey, String> deepShortcutMap);
     }
 
     LauncherModel(LauncherAppState app, IconCache iconCache, AppFilter appFilter) {

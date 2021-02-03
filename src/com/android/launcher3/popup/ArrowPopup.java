@@ -36,7 +36,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.view.animation.AccelerateDecelerateInterpolator;
-
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherAnimUtils;
@@ -47,7 +46,6 @@ import com.android.launcher3.anim.RoundedRectRevealOutlineProvider;
 import com.android.launcher3.dragndrop.DragLayer;
 import com.android.launcher3.graphics.TriangleShape;
 import com.android.launcher3.util.Themes;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -340,7 +338,7 @@ public abstract class ArrowPopup extends AbstractFloatingView {
 
         final AnimatorSet openAnim = LauncherAnimUtils.createAnimatorSet();
         final Resources res = getResources();
-        final long revealDuration = (long) res.getInteger(R.integer.config_popupOpenCloseDuration);
+        final long revealDuration = res.getInteger(R.integer.config_popupOpenCloseDuration);
         final TimeInterpolator revealInterpolator = new AccelerateDecelerateInterpolator();
 
         // Rectangular reveal.
@@ -405,7 +403,7 @@ public abstract class ArrowPopup extends AbstractFloatingView {
         closeAnim.play(fadeOut);
 
         onCreateCloseAnimation(closeAnim);
-        closeAnim.setDuration((long) res.getInteger(R.integer.config_popupOpenCloseDuration));
+        closeAnim.setDuration(res.getInteger(R.integer.config_popupOpenCloseDuration));
         closeAnim.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
