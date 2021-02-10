@@ -22,7 +22,6 @@ import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.*
 import android.content.pm.ActivityInfo
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
@@ -30,7 +29,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.nfc.NfcAdapter
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.ResultReceiver
@@ -85,6 +83,10 @@ open class LawnchairLauncher : NexusLauncherActivity(),
 
     private val colorsToWatch = arrayOf(ColorEngine.Resolvers.WORKSPACE_ICON_LABEL)
 
+    fun LawnchairLauncher() {
+        setupLauncher()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Utilities.requestStoragePermission(this)
 
@@ -113,32 +115,36 @@ open class LawnchairLauncher : NexusLauncherActivity(),
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this)
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    private fun setupLauncher() {
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
         val editor = preferences.edit()
+        val settingsIntent = Intent(Settings.ACTION_HOME_SETTINGS)
+        val nm: NotificationManager = applicationContext.getSystemService(
+                NOTIFICATION_SERVICE) as NotificationManager
+        if (!nm.isNotificationPolicyAccessGranted) {
+            startActivityForResult(
+                    Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS),
+                    0)
+        }
+        val isLaunched = preferences.getBoolean("IsLaunched", false)
+        if (isLaunched) {
+            editor.putBoolean("IsLaunched", false)
+            editor.apply()
+            startActivity(settingsIntent)
+            nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+            finishAffinity()
+        } else {
+            editor.putBoolean("IsLaunched", true)
+            editor.apply()
+            startActivity(settingsIntent)
+            nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+        }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
         if (intent != null) {
             if (intent.`package` != null) {
-                val settingsIntent = Intent(Settings.ACTION_HOME_SETTINGS)
-                val nm: NotificationManager = applicationContext.getSystemService(
-                        NOTIFICATION_SERVICE) as NotificationManager
-                if (!nm.isNotificationPolicyAccessGranted) {
-                    startActivityForResult(
-                            Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS),
-                            0)
-                }
-                val isLaunched = preferences.getBoolean("IsLaunched", false)
-                if (isLaunched) {
-                    editor.putBoolean("IsLaunched", false)
-                    editor.apply()
-                    startActivity(settingsIntent)
-                    nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
-                    finishAffinity()
-                } else {
-                    editor.putBoolean("IsLaunched", true)
-                    editor.apply()
-                    startActivity(settingsIntent)
-                    nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
-                }
+                setupLauncher()
                 setIntent(null)
             }
         }
@@ -157,25 +163,6 @@ open class LawnchairLauncher : NexusLauncherActivity(),
         super.onStart()
         (launcherAppTransitionManager as LawnchairAppTransitionManagerImpl)
                 .overrideResumeAnimation(this)
-    }
-
-    private fun verifySignature(): Boolean {
-        if (!BuildConfig.SIGNATURE_VERIFICATION) return true
-
-        val signatureHash = resources.getInteger(R.integer.lawnchair_signature_hash)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            val info = packageManager.getPackageInfo(packageName,
-                                                     PackageManager.GET_SIGNING_CERTIFICATES)
-            val signingInfo = info.signingInfo
-            if (signingInfo.hasMultipleSigners()) return false
-            return signingInfo.signingCertificateHistory.any { it.hashCode() == signatureHash }
-        } else {
-            val info = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES)
-            info.signatures.forEach {
-                if (it.hashCode() != signatureHash) return false
-            }
-            return info.signatures.isNotEmpty()
-        }
     }
 
     override fun finishBindingItems(currentScreen: Int) {
@@ -241,13 +228,16 @@ open class LawnchairLauncher : NexusLauncherActivity(),
 
     override fun onResume() {
         super.onResume()
-
         restartIfPending()
         // lawnchairPrefs.checkFools()
 
         BrightnessManager.getInstance(this).startListening()
 
         paused = false
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val isLaunched = preferences.getBoolean("IsLaunched", false)
+        if (!isLaunched)
+            onNewIntent(intent)
     }
 
     override fun onPause() {
@@ -368,23 +358,6 @@ open class LawnchairLauncher : NexusLauncherActivity(),
             return customLayoutInflater
         }
         return super.getSystemService(name)
-    }
-
-    private fun isMyAppLauncherDefault(): Boolean {
-        val filter = IntentFilter(Intent.ACTION_MAIN)
-        filter.addCategory(Intent.CATEGORY_HOME)
-        val filters: MutableList<IntentFilter> = ArrayList()
-        filters.add(filter)
-        val myPackageName = packageName
-        val activities: List<ComponentName> = ArrayList()
-        val packageManager = packageManager as PackageManager
-        packageManager.getPreferredActivities(filters, activities, null)
-        for (activity in activities) {
-            if (myPackageName == activity.packageName) {
-                return true
-            }
-        }
-        return false
     }
 
     fun shouldRecreate() = !sRestart
