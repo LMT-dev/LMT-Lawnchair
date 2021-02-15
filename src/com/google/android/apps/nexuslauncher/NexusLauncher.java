@@ -118,7 +118,8 @@ public class NexusLauncher {
             SharedPreferences prefs = Utilities.getPrefs(mLauncher);
             mOverlay = new NexusLauncherOverlay(mLauncher);
             mClient = new LauncherClient(mLauncher, mOverlay, new StaticInteger(
-                    (prefs.getBoolean(SettingsActivity.ENABLE_MINUS_ONE_PREF, true) ? 1 : 0) | 2 | 4 | 8));
+                    (prefs.getBoolean(SettingsActivity.ENABLE_MINUS_ONE_PREF, false) ? 1 : 0) | 2
+                            | 4 | 8));
             mOverlay.setClient(mClient);
 
             prefs.registerOnSharedPreferenceChangeListener(this);
@@ -268,7 +269,9 @@ public class NexusLauncher {
                 case SettingsActivity.ENABLE_MINUS_ONE_PREF:
                     LauncherClient launcherClient = mClient;
                     StaticInteger i = new StaticInteger(
-                            (sharedPreferences.getBoolean(SettingsActivity.ENABLE_MINUS_ONE_PREF, true) ? 1 : 0) | 2 | 4 | 8);
+                            (sharedPreferences
+                                    .getBoolean(SettingsActivity.ENABLE_MINUS_ONE_PREF, false) ? 1
+                                    : 0) | 2 | 4 | 8);
                     if (i.mData != launcherClient.mFlags) {
                         launcherClient.mFlags = i.mData;
                         if (launcherClient.mLayoutParams != null) {
@@ -340,7 +343,8 @@ public class NexusLauncher {
 
             @Override
             public void run() {
-                if (Utilities.getPrefs(mLauncher).getBoolean(SettingsActivity.ENABLE_MINUS_ONE_PREF, true) &&
+                if (Utilities.getPrefs(mLauncher)
+                        .getBoolean(SettingsActivity.ENABLE_MINUS_ONE_PREF, false) &&
                         !mClient.mDestroyed &&
                         mClient.mLayoutParams != null &&
                         !mOverlay.mAttached &&

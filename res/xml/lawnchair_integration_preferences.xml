@@ -57,22 +57,22 @@
     <fr.letmethink.lawnchair.preferences.StyledPreferenceCategory
         android:title="@string/google">
 
-        <fr.letmethink.lawnchair.preferences.StyledSwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="pref_enable_minus_one"
-            android:title="@string/title_show_google_app"
-            app:controllerClass=".MinusOneController"/>
-
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="0"
             android:entries="@array/feedThemes"
             android:entryValues="@array/feedThemeValues"
             android:key="pref_feedTheme"
-            android:persistent="true"
+            android:persistent="false"
             android:summary="%s"
             android:title="@string/feed_theme_pref_title"
             android:dependency="pref_enable_minus_one"
-            app:controllerClass=".GFeedBackgroundController"/>
+            app:controllerClass=".GFeedBackgroundController" />
+
+        <fr.letmethink.lawnchair.preferences.StyledSwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_enable_minus_one"
+            android:title="@string/title_show_google_app"
+            app:controllerClass=".MinusOneController" />
     </fr.letmethink.lawnchair.preferences.StyledPreferenceCategory>
 
     <fr.letmethink.lawnchair.preferences.StyledPreferenceCategory

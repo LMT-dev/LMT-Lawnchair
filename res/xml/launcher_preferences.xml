@@ -47,7 +47,7 @@
     <SwitchPreference
         android:key="pref_enable_minus_one"
         android:title="@string/title_show_google_app"
-        android:defaultValue="true"
+        android:defaultValue="false"
         />
 
     <SwitchPreference

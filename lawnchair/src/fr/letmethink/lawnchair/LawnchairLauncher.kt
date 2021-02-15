@@ -54,6 +54,7 @@ import fr.letmethink.lawnchair.iconpack.IconPackManager
 import fr.letmethink.lawnchair.override.CustomInfoProvider
 import fr.letmethink.lawnchair.root.RootHelperManager
 import fr.letmethink.lawnchair.sensors.BrightnessManager
+import fr.letmethink.lawnchair.settings.ui.SettingsActivity
 import fr.letmethink.lawnchair.theme.ThemeOverride
 import fr.letmethink.lawnchair.views.LawnchairBackgroundView
 import fr.letmethink.lawnchair.views.OptionsPanel
@@ -93,8 +94,10 @@ open class LawnchairLauncher : NexusLauncherActivity(),
         IconPackManager.getInstance(this).defaultPack.dynamicClockDrawer
 
         super.onCreate(savedInstanceState)
+        val prefs = Utilities.getPrefs(this)
+        prefs.edit().putBoolean(SettingsActivity.ENABLE_MINUS_ONE_PREF, false).apply()
 
-        hookGoogleSansDialogTitle()
+        //hookGoogleSansDialogTitle()
 
         lawnchairPrefs.registerCallback(prefCallback)
         lawnchairPrefs.addOnPreferenceChangeListener(hideStatusBarKey, this)
