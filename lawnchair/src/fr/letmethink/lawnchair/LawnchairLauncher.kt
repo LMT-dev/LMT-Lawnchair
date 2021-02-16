@@ -29,6 +29,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.nfc.NfcAdapter
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.ResultReceiver
@@ -119,6 +120,7 @@ open class LawnchairLauncher : NexusLauncherActivity(),
     }
 
     private fun setupLauncher() {
+        val deviceMan = Build.MANUFACTURER
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
         val editor = preferences.edit()
         val settingsIntent = Intent(Settings.ACTION_HOME_SETTINGS)
@@ -133,13 +135,21 @@ open class LawnchairLauncher : NexusLauncherActivity(),
         if (isLaunched) {
             editor.putBoolean("IsLaunched", false)
             editor.apply()
-            startActivity(settingsIntent)
+            if (deviceMan == "samsung") {
+                changeDefaultHome(this)
+            } else {
+                startActivity(settingsIntent)
+            }
             nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
             finishAffinity()
         } else {
             editor.putBoolean("IsLaunched", true)
             editor.apply()
-            startActivity(settingsIntent)
+            if (deviceMan == "samsung") {
+                changeDefaultHome(this)
+            } else {
+                startActivity(settingsIntent)
+            }
             nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
         }
     }
