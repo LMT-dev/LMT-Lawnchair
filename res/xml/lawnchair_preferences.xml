@@ -110,11 +110,4 @@
         app:controllerClass=".DeveloperOptionsController"
         android:layout="@layout/home_preference" />
 
-    <fr.letmethink.lawnchair.preferences.StyledIconPreference
-        android:title="@string/about"
-        android:summary="@string/about_pref_summary"
-        android:icon="@drawable/ic_pref_about"
-        android:layout="@layout/home_preference"
-        android:key="about"/>
-
 </android.support.v7.preference.PreferenceScreen>

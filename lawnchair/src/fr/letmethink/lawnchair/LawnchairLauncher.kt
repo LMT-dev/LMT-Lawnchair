@@ -140,17 +140,21 @@ open class LawnchairLauncher : NexusLauncherActivity(),
             } else {
                 startActivity(settingsIntent)
             }
-            nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+            if (nm.isNotificationPolicyAccessGranted) {
+                nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+            }
             finishAffinity()
         } else {
             editor.putBoolean("IsLaunched", true)
             editor.apply()
-            if (deviceMan == "samsung") {
+            if (deviceMan == "samsung" || deviceMan == "xiaomi") {
                 changeDefaultHome(this)
             } else {
                 startActivity(settingsIntent)
             }
-            nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+            if (nm.isNotificationPolicyAccessGranted) {
+                nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+            }
         }
     }
 
@@ -328,8 +332,8 @@ open class LawnchairLauncher : NexusLauncherActivity(),
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>?,
-                                            grantResults: IntArray?) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>,
+                                            grantResults: IntArray) {
         if (requestCode == REQUEST_PERMISSION_STORAGE_ACCESS) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                                                                     android.Manifest.permission.READ_EXTERNAL_STORAGE)) {

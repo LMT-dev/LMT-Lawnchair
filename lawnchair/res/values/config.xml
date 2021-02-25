@@ -34,7 +34,7 @@
     <!-- Wether smartspace (at a glance) should be enabled per default -->
     <bool name="config_enable_smartspace">true</bool>
     <!-- Which search provider to use per default -->
-    <string name="config_default_search_provider" translatable="false">fr.letmethink.lawnchair.globalsearch.providers.GoogleSearchProvider</string>
+    <string name="config_default_search_provider" translatable="false">fr.letmethink.lawnchair.globalsearch.providers.AppSearchSearchProvider</string>
     <!-- Which color resolver to use per default; Possible values:
     fr.letmethink.lawnchair.colors.SystemAccentResolver
     fr.letmethink.lawnchair.colors.PixelAccentResolver
